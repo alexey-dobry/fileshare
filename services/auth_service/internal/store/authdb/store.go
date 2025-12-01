@@ -5,7 +5,7 @@ import (
 	"time"
 
 	"github.com/alexey-dobry/fileshare/pkg/logger"
-	"github.com/alexey-dobry/fileshare/services/auth_service/internal/model"
+	"github.com/alexey-dobry/fileshare/services/auth_service/internal/domain/model"
 	"github.com/alexey-dobry/fileshare/services/auth_service/internal/store"
 	"github.com/alexey-dobry/fileshare/services/auth_service/internal/store/authdb/pg"
 	"github.com/alexey-dobry/fileshare/services/auth_service/internal/store/authdb/rd"

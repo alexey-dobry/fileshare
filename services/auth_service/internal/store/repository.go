@@ -3,16 +3,17 @@ package store
 import (
 	"time"
 
-	"github.com/alexey-dobry/fileshare/services/auth_service/internal/model"
+	"github.com/alexey-dobry/fileshare/services/auth_service/internal/domain/model"
+	"github.com/google/uuid"
 )
 
 type UserRepository interface {
 	Add(model.Credentials) error
 
 	GetOneByMail(email string) (model.Credentials, error)
-	GetOneByID(ID uint) (model.Credentials, error)
+	GetOneByID(ID uuid.UUID) (model.Credentials, error)
 
-	UpdatePassword(ID uint, newHash string) error
+	UpdatePassword(ID uuid.UUID, newHash string) error
 }
 
 type TokenBlacklistRepository interface {
