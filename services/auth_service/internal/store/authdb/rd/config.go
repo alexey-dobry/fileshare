@@ -1,0 +1,9 @@
+package rd
+
+type Config struct {
+	Port         string `validate:"required" yaml:"port"`
+	Host         string `validate:"required" yaml:"host"`
+	User         string `validate:"required" yaml:"user"`
+	Password     string `validate:"required" yaml:"password"`
+	DatabaseName int    `validate:"required" yaml:"database"`
+}
