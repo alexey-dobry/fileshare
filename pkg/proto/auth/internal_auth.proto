@@ -7,18 +7,13 @@ option go_package = "/intauth";
 import "google/protobuf/empty.proto";
 
 service Auth {
-  rpc RegisterCredentials (RegisterCredentialsRequest) returns (RegisterCredentialsResponse);
+  rpc RegisterCredentials (RegisterCredentialsRequest) returns (google.protobuf.Empty);
   rpc DeleteCredentials (DeleteCredentialsRequest) returns (google.protobuf.Empty);
 }
 
 message RegisterCredentialsRequest {
   string email = 1;
   string password = 2;
-}
-
-message RegisterCredentialsResponse {
-  string access_token = 1;
-  string refresh_token = 2;
 }
 
 message DeleteCredentialsRequest {

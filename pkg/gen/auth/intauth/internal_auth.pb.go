@@ -74,58 +74,6 @@ func (x *RegisterCredentialsRequest) GetPassword() string {
 	return ""
 }
 
-type RegisterCredentialsResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	AccessToken   string                 `protobuf:"bytes,1,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
-	RefreshToken  string                 `protobuf:"bytes,2,opt,name=refresh_token,json=refreshToken,proto3" json:"refresh_token,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RegisterCredentialsResponse) Reset() {
-	*x = RegisterCredentialsResponse{}
-	mi := &file_proto_auth_internal_auth_proto_msgTypes[1]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *RegisterCredentialsResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RegisterCredentialsResponse) ProtoMessage() {}
-
-func (x *RegisterCredentialsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_auth_internal_auth_proto_msgTypes[1]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RegisterCredentialsResponse.ProtoReflect.Descriptor instead.
-func (*RegisterCredentialsResponse) Descriptor() ([]byte, []int) {
-	return file_proto_auth_internal_auth_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *RegisterCredentialsResponse) GetAccessToken() string {
-	if x != nil {
-		return x.AccessToken
-	}
-	return ""
-}
-
-func (x *RegisterCredentialsResponse) GetRefreshToken() string {
-	if x != nil {
-		return x.RefreshToken
-	}
-	return ""
-}
-
 type DeleteCredentialsRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Email         string                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
@@ -135,7 +83,7 @@ type DeleteCredentialsRequest struct {
 
 func (x *DeleteCredentialsRequest) Reset() {
 	*x = DeleteCredentialsRequest{}
-	mi := &file_proto_auth_internal_auth_proto_msgTypes[2]
+	mi := &file_proto_auth_internal_auth_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -147,7 +95,7 @@ func (x *DeleteCredentialsRequest) String() string {
 func (*DeleteCredentialsRequest) ProtoMessage() {}
 
 func (x *DeleteCredentialsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_auth_internal_auth_proto_msgTypes[2]
+	mi := &file_proto_auth_internal_auth_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -160,7 +108,7 @@ func (x *DeleteCredentialsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteCredentialsRequest.ProtoReflect.Descriptor instead.
 func (*DeleteCredentialsRequest) Descriptor() ([]byte, []int) {
-	return file_proto_auth_internal_auth_proto_rawDescGZIP(), []int{2}
+	return file_proto_auth_internal_auth_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *DeleteCredentialsRequest) GetEmail() string {
@@ -177,14 +125,11 @@ const file_proto_auth_internal_auth_proto_rawDesc = "" +
 	"\x1eproto/auth/internal_auth.proto\x12\x04auth\x1a\x1bgoogle/protobuf/empty.proto\"N\n" +
 	"\x1aRegisterCredentialsRequest\x12\x14\n" +
 	"\x05email\x18\x01 \x01(\tR\x05email\x12\x1a\n" +
-	"\bpassword\x18\x02 \x01(\tR\bpassword\"e\n" +
-	"\x1bRegisterCredentialsResponse\x12!\n" +
-	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\x12#\n" +
-	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken\"0\n" +
+	"\bpassword\x18\x02 \x01(\tR\bpassword\"0\n" +
 	"\x18DeleteCredentialsRequest\x12\x14\n" +
-	"\x05email\x18\x01 \x01(\tR\x05email2\xaf\x01\n" +
-	"\x04Auth\x12Z\n" +
-	"\x13RegisterCredentials\x12 .auth.RegisterCredentialsRequest\x1a!.auth.RegisterCredentialsResponse\x12K\n" +
+	"\x05email\x18\x01 \x01(\tR\x05email2\xa4\x01\n" +
+	"\x04Auth\x12O\n" +
+	"\x13RegisterCredentials\x12 .auth.RegisterCredentialsRequest\x1a\x16.google.protobuf.Empty\x12K\n" +
 	"\x11DeleteCredentials\x12\x1e.auth.DeleteCredentialsRequest\x1a\x16.google.protobuf.EmptyB\n" +
 	"Z\b/intauthb\x06proto3"
 
@@ -200,18 +145,17 @@ func file_proto_auth_internal_auth_proto_rawDescGZIP() []byte {
 	return file_proto_auth_internal_auth_proto_rawDescData
 }
 
-var file_proto_auth_internal_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
+var file_proto_auth_internal_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_proto_auth_internal_auth_proto_goTypes = []any{
-	(*RegisterCredentialsRequest)(nil),  // 0: auth.RegisterCredentialsRequest
-	(*RegisterCredentialsResponse)(nil), // 1: auth.RegisterCredentialsResponse
-	(*DeleteCredentialsRequest)(nil),    // 2: auth.DeleteCredentialsRequest
-	(*emptypb.Empty)(nil),               // 3: google.protobuf.Empty
+	(*RegisterCredentialsRequest)(nil), // 0: auth.RegisterCredentialsRequest
+	(*DeleteCredentialsRequest)(nil),   // 1: auth.DeleteCredentialsRequest
+	(*emptypb.Empty)(nil),              // 2: google.protobuf.Empty
 }
 var file_proto_auth_internal_auth_proto_depIdxs = []int32{
 	0, // 0: auth.Auth.RegisterCredentials:input_type -> auth.RegisterCredentialsRequest
-	2, // 1: auth.Auth.DeleteCredentials:input_type -> auth.DeleteCredentialsRequest
-	1, // 2: auth.Auth.RegisterCredentials:output_type -> auth.RegisterCredentialsResponse
-	3, // 3: auth.Auth.DeleteCredentials:output_type -> google.protobuf.Empty
+	1, // 1: auth.Auth.DeleteCredentials:input_type -> auth.DeleteCredentialsRequest
+	2, // 2: auth.Auth.RegisterCredentials:output_type -> google.protobuf.Empty
+	2, // 3: auth.Auth.DeleteCredentials:output_type -> google.protobuf.Empty
 	2, // [2:4] is the sub-list for method output_type
 	0, // [0:2] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
@@ -230,7 +174,7 @@ func file_proto_auth_internal_auth_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_auth_internal_auth_proto_rawDesc), len(file_proto_auth_internal_auth_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   3,
+			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

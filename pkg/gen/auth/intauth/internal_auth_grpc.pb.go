@@ -28,7 +28,7 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type AuthClient interface {
-	RegisterCredentials(ctx context.Context, in *RegisterCredentialsRequest, opts ...grpc.CallOption) (*RegisterCredentialsResponse, error)
+	RegisterCredentials(ctx context.Context, in *RegisterCredentialsRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	DeleteCredentials(ctx context.Context, in *DeleteCredentialsRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
@@ -40,9 +40,9 @@ func NewAuthClient(cc grpc.ClientConnInterface) AuthClient {
 	return &authClient{cc}
 }
 
-func (c *authClient) RegisterCredentials(ctx context.Context, in *RegisterCredentialsRequest, opts ...grpc.CallOption) (*RegisterCredentialsResponse, error) {
+func (c *authClient) RegisterCredentials(ctx context.Context, in *RegisterCredentialsRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(RegisterCredentialsResponse)
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, Auth_RegisterCredentials_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -64,7 +64,7 @@ func (c *authClient) DeleteCredentials(ctx context.Context, in *DeleteCredential
 // All implementations must embed UnimplementedAuthServer
 // for forward compatibility.
 type AuthServer interface {
-	RegisterCredentials(context.Context, *RegisterCredentialsRequest) (*RegisterCredentialsResponse, error)
+	RegisterCredentials(context.Context, *RegisterCredentialsRequest) (*emptypb.Empty, error)
 	DeleteCredentials(context.Context, *DeleteCredentialsRequest) (*emptypb.Empty, error)
 	mustEmbedUnimplementedAuthServer()
 }
@@ -76,7 +76,7 @@ type AuthServer interface {
 // pointer dereference when methods are called.
 type UnimplementedAuthServer struct{}
 
-func (UnimplementedAuthServer) RegisterCredentials(context.Context, *RegisterCredentialsRequest) (*RegisterCredentialsResponse, error) {
+func (UnimplementedAuthServer) RegisterCredentials(context.Context, *RegisterCredentialsRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RegisterCredentials not implemented")
 }
 func (UnimplementedAuthServer) DeleteCredentials(context.Context, *DeleteCredentialsRequest) (*emptypb.Empty, error) {
