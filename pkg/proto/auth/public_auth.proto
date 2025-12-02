@@ -10,6 +10,7 @@ service Auth {
   rpc Login (LoginRequest) returns (LoginResponse);
   rpc Refresh (RefreshRequest) returns (RefreshResponse);
   rpc Logout (LogoutRequest) returns (google.protobuf.Empty);
+  rpc UpdatePassword (UpdatePasswordRequest) returns (google.protobuf.Empty);
 }
 
 message LoginRequest {
@@ -34,4 +35,9 @@ message RefreshResponse {
 message LogoutRequest {
   string access_token = 1;
   string refresh_token = 2;
+}
+
+message UpdatePasswordRequest {
+  string access_token = 1;
+  string new_password = 2;
 }
