@@ -14,6 +14,7 @@ service Auth {
 message RegisterCredentialsRequest {
   string email = 1;
   string password = 2;
+  string role = 3;
 }
 
 message DeleteCredentialsRequest {

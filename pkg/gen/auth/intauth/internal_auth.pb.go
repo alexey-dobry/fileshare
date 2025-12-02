@@ -26,6 +26,7 @@ type RegisterCredentialsRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Email         string                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
 	Password      string                 `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
+	Role          string                 `protobuf:"bytes,3,opt,name=role,proto3" json:"role,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -70,6 +71,13 @@ func (x *RegisterCredentialsRequest) GetEmail() string {
 func (x *RegisterCredentialsRequest) GetPassword() string {
 	if x != nil {
 		return x.Password
+	}
+	return ""
+}
+
+func (x *RegisterCredentialsRequest) GetRole() string {
+	if x != nil {
+		return x.Role
 	}
 	return ""
 }
@@ -122,10 +130,11 @@ var File_proto_auth_internal_auth_proto protoreflect.FileDescriptor
 
 const file_proto_auth_internal_auth_proto_rawDesc = "" +
 	"\n" +
-	"\x1eproto/auth/internal_auth.proto\x12\x04auth\x1a\x1bgoogle/protobuf/empty.proto\"N\n" +
+	"\x1eproto/auth/internal_auth.proto\x12\x04auth\x1a\x1bgoogle/protobuf/empty.proto\"b\n" +
 	"\x1aRegisterCredentialsRequest\x12\x14\n" +
 	"\x05email\x18\x01 \x01(\tR\x05email\x12\x1a\n" +
-	"\bpassword\x18\x02 \x01(\tR\bpassword\"0\n" +
+	"\bpassword\x18\x02 \x01(\tR\bpassword\x12\x12\n" +
+	"\x04role\x18\x03 \x01(\tR\x04role\"0\n" +
 	"\x18DeleteCredentialsRequest\x12\x14\n" +
 	"\x05email\x18\x01 \x01(\tR\x05email2\xa4\x01\n" +
 	"\x04Auth\x12O\n" +
