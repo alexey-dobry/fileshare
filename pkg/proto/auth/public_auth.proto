@@ -39,6 +39,7 @@ message LogoutRequest {
 
 message UpdatePasswordRequest {
   string access_token = 1;
-  string old_password = 2;
-  string new_password = 3;
+  string email = 2;
+  string old_password = 3;
+  string new_password = 4;
 }
