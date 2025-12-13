@@ -58,6 +58,8 @@ func (h *jwtHandler) GenerateJWT(claims Claims, jwtType TokenType) (string, erro
 
 	claims.ID = uuid.New().String()
 
+	claims.IssuedAt = jwt.NewNumericDate(time.Now())
+
 	token, err := jwt.NewWithClaims(jwt.SigningMethodHS256, claims).SignedString(secret)
 	if err != nil {
 		return "", ErrFailedToGenerateJWT

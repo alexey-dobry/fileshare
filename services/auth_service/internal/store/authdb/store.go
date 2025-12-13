@@ -17,11 +17,6 @@ import (
 const maxRetries = 10
 const delay = 2 * time.Second
 
-type Config struct {
-	pgConfig    pg.Config
-	redisConfig rd.Config
-}
-
 type authStore struct {
 	userDB      *gorm.DB
 	blacklistDB *redis.Client
@@ -30,7 +25,7 @@ type authStore struct {
 }
 
 func New(logger logger.Logger, cfg Config) (store.Store, error) {
-	pgDSN := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%d sslmode=disable",
+	pgDSN := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=disable",
 		cfg.pgConfig.Host,
 		cfg.pgConfig.User,
 		cfg.pgConfig.Password,

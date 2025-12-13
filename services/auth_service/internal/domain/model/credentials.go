@@ -11,6 +11,7 @@ type Credentials struct {
 	UUID         uuid.UUID `gorm:"not null" validate:"required"`
 	Email        string    `gorm:"not null,uniqueIndex" validate:"required"`
 	PasswordHash string    `gorm:"not null" validate:"required"`
+	Role         string    `gorm:"not null" validate:"required"`
 }
 
 func (u *Credentials) Validate() error {

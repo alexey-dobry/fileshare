@@ -14,6 +14,8 @@ type UserRepository interface {
 	GetOneByID(ID uuid.UUID) (model.Credentials, error)
 
 	UpdatePassword(ID uuid.UUID, newHash string) error
+
+	Delete(email string) error
 }
 
 type TokenBlacklistRepository interface {
