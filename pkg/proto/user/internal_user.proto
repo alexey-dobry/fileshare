@@ -1,0 +1,85 @@
+syntax = "proto3";
+
+package user;
+
+option go_package = "/intuser";
+
+import "google/protobuf/empty.proto";
+
+service User {
+  rpc CreateUser(CreateUserRequest) returns (google.protobuf.Empty);
+  rpc DeleteUser(DeleteUserRequest) returns (google.protobuf.Empty);
+
+  rpc CreateGroup(GroupRequest) returns (CreateGroupResponse);
+  rpc DeleteGroup(GroupRequest) returns (google.protobuf.Empty);
+
+  rpc CreateCourse(CourseRequest) returns (CreateCourseResponse);
+  rpc DeleteCourse(CourseRequest) returns (google.protobuf.Empty);
+
+  rpc AttachGroupToCourse(GroupCourseRequest) returns (google.protobuf.Empty);
+  rpc DetachGroupFromCourse(GroupCourseRequest) returns (google.protobuf.Empty);
+  
+  rpc AttachTeacherToCourse(TeacherCourseRequest) returns (google.protobuf.Empty);
+  rpc DetachTeacherToCourse(TeacherCourseRequest) returns (google.protobuf.Empty);
+
+  rpc GetGroupsData(google.protobuf.Empty) returns (GroupsDataResponse);
+  rpc GetCoursesData(google.protobuf.Empty) returns (CoursesDataResponse);
+}
+
+message CreateUserRequest {
+  string email = 1;
+  string password = 2;
+  string role = 3;
+}
+
+message DeleteUserRequest {
+  string email = 1;
+}
+
+message GroupRequest {
+  string name = 1;
+}
+
+message CreateGroupResponse {
+  string ID = 1;
+}
+
+message CourseRequest {
+  string name = 1;
+}
+
+message CreateCourseResponse {
+  string ID = 1;
+}
+
+message GroupCourseRequest {
+  string GroupID = 1;
+  string CourseID = 2;
+}
+
+message TeacherCourseRequest {
+  string TeacherID = 1;
+  string CourseID = 2;
+}
+
+message GroupData {
+  string GroupName = 1;
+  string GroupID = 2;
+}
+
+message GroupsDataResponse {
+  repeated GroupData GroupsData = 1;
+}
+
+message CourseData {
+  string CourseName = 1;
+  string CourseID = 2;
+}
+
+message CoursesDataResponse {
+  repeated CourseData CoursesData = 1;
+}
+
+message UserDataRequest {
+  string Email = 1;
+}

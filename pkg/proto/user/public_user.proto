@@ -1,0 +1,66 @@
+syntax = "proto3";
+
+package user;
+
+option go_package = "/pubuser";
+
+message UserData {
+  string FullName = 1;
+  string Email = 2;
+  optional string UserID = 3;
+}
+
+message CourseData {
+  string CourseID = 1;
+  string CourseName = 2;
+}
+
+service User {
+  rpc GetMyProfile(GetMyProfileRequest) returns (GetMyProfileResponse);
+  rpc GetMyCourses(GetMyCoursesRequest) returns (GetMyCoursesResponse);
+
+  rpc StudentGetCourseTeachers(StudentGetCourseTeachersRequest) returns (StudentGetCourseTeachersResponse);
+
+  rpc TeacherGetCourseGroups(TeacherGetCourseGroupsRequest) returns (TeacherGetCourseGroupsResponse);
+  rpc TeacherGetGroupStudents(TeacherGetGroupStudentsRequest) returns (TeacherGetGroupStudentsResponse);
+}
+
+message GetMyProfileRequest {
+  string UserID = 1;
+}
+
+message GetMyProfileResponse {
+  UserData ProfileData = 1;
+}
+
+message GetMyCoursesRequest {
+  string UserID = 1;
+}
+
+message GetMyCoursesResponse {
+  repeated CourseData Courses = 1;
+}
+
+message StudentGetCourseTeachersRequest {
+  string UserID = 1;
+}
+
+message StudentGetCourseTeachersResponse {
+  repeated UserData TeachersData = 1;
+}
+
+message TeacherGetCourseGroupsRequest {
+  string UserID = 1;
+}
+
+message TeacherGetCourseGroupsResponse {
+  repeated CourseData Courses = 1;
+}
+
+message TeacherGetGroupStudentsRequest {
+  string CourseID = 1;
+}
+
+message TeacherGetGroupStudentsResponse {
+  repeated UserData StudentsData = 1;
+}
