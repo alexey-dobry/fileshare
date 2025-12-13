@@ -22,7 +22,7 @@ func (s *InternalServer) RegisterCredentials(ctx context.Context, req *pb.Regist
 	}
 
 	newUserCredentials := model.Credentials{
-		UUID:         uuid.New(),
+		UUID:         uuid.New().String(),
 		Email:        req.Email,
 		PasswordHash: passwordHash,
 		Role:         req.Role,

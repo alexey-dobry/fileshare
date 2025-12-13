@@ -2,7 +2,6 @@ package pg
 
 import (
 	"github.com/alexey-dobry/fileshare/services/auth_service/internal/domain/model"
-	"github.com/google/uuid"
 )
 
 func (ur *Repository) Add(userCredentials model.Credentials) error {
@@ -19,7 +18,7 @@ func (ur *Repository) GetOneByMail(email string) (model.Credentials, error) {
 	return user, nil
 }
 
-func (ur *Repository) GetOneByID(id uuid.UUID) (model.Credentials, error) {
+func (ur *Repository) GetOneByID(id string) (model.Credentials, error) {
 	user := model.Credentials{}
 
 	result := ur.db.Select("uuid", "email", "hash_password", "role").Where("uuid = ?", id).First(&user)
@@ -37,7 +36,7 @@ func (ur *Repository) Delete(email string) error {
 	return nil
 }
 
-func (ur *Repository) UpdatePassword(id uuid.UUID, newHash string) error {
+func (ur *Repository) UpdatePassword(id string, newHash string) error {
 	result := ur.db.Update("password_hash", newHash).Where("uuid = ?", id)
 	if result.Error != nil {
 		return result.Error

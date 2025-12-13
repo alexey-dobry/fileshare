@@ -4,16 +4,15 @@ import (
 	"time"
 
 	"github.com/alexey-dobry/fileshare/services/auth_service/internal/domain/model"
-	"github.com/google/uuid"
 )
 
 type UserRepository interface {
 	Add(model.Credentials) error
 
 	GetOneByMail(email string) (model.Credentials, error)
-	GetOneByID(ID uuid.UUID) (model.Credentials, error)
+	GetOneByID(ID string) (model.Credentials, error)
 
-	UpdatePassword(ID uuid.UUID, newHash string) error
+	UpdatePassword(ID string, newHash string) error
 
 	Delete(email string) error
 }
