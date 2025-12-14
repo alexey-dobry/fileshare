@@ -15,6 +15,11 @@ message CourseData {
   string CourseName = 2;
 }
 
+message GroupData {
+  string GroupID = 1;
+  string GroupName = 2;
+}
+
 service User {
   rpc GetMyProfile(GetMyProfileRequest) returns (GetMyProfileResponse);
   rpc GetMyCourses(GetMyCoursesRequest) returns (GetMyCoursesResponse);
@@ -42,7 +47,7 @@ message GetMyCoursesResponse {
 }
 
 message StudentGetCourseTeachersRequest {
-  string UserID = 1;
+  string CourseID = 1;
 }
 
 message StudentGetCourseTeachersResponse {
@@ -50,15 +55,15 @@ message StudentGetCourseTeachersResponse {
 }
 
 message TeacherGetCourseGroupsRequest {
-  string UserID = 1;
+  string CourseID = 1;
 }
 
 message TeacherGetCourseGroupsResponse {
-  repeated CourseData Courses = 1;
+  repeated GroupData Courses = 1;
 }
 
 message TeacherGetGroupStudentsRequest {
-  string CourseID = 1;
+  string GroupID = 1;
 }
 
 message TeacherGetGroupStudentsResponse {
