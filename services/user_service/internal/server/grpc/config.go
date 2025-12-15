@@ -1,0 +1,6 @@
+package grpc
+
+type Config struct {
+	PublicPort   string `validate:"required" yaml:"public_port"`
+	InternalPort string `validate:"required" yaml:"internal_port"`
+}
