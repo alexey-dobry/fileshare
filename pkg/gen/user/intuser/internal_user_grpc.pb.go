@@ -44,10 +44,10 @@ type UserClient interface {
 	DeleteGroup(ctx context.Context, in *GroupRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	CreateCourse(ctx context.Context, in *CourseRequest, opts ...grpc.CallOption) (*CreateCourseResponse, error)
 	DeleteCourse(ctx context.Context, in *CourseRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	AttachGroupToCourse(ctx context.Context, in *GroupCourseRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	DetachGroupFromCourse(ctx context.Context, in *GroupCourseRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	AttachTeacherToCourse(ctx context.Context, in *TeacherCourseRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	DetachTeacherToCourse(ctx context.Context, in *TeacherCourseRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	AttachGroupToCourse(ctx context.Context, in *AttachGroupCourseRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	DetachGroupFromCourse(ctx context.Context, in *DetachGroupCourseRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	AttachTeacherToCourse(ctx context.Context, in *AttachTeacherCourseRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	DetachTeacherToCourse(ctx context.Context, in *DetachTeacherCourseRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	GetGroupsData(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*GroupsDataResponse, error)
 	GetCoursesData(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*CoursesDataResponse, error)
 }
@@ -120,7 +120,7 @@ func (c *userClient) DeleteCourse(ctx context.Context, in *CourseRequest, opts .
 	return out, nil
 }
 
-func (c *userClient) AttachGroupToCourse(ctx context.Context, in *GroupCourseRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *userClient) AttachGroupToCourse(ctx context.Context, in *AttachGroupCourseRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, User_AttachGroupToCourse_FullMethodName, in, out, cOpts...)
@@ -130,7 +130,7 @@ func (c *userClient) AttachGroupToCourse(ctx context.Context, in *GroupCourseReq
 	return out, nil
 }
 
-func (c *userClient) DetachGroupFromCourse(ctx context.Context, in *GroupCourseRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *userClient) DetachGroupFromCourse(ctx context.Context, in *DetachGroupCourseRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, User_DetachGroupFromCourse_FullMethodName, in, out, cOpts...)
@@ -140,7 +140,7 @@ func (c *userClient) DetachGroupFromCourse(ctx context.Context, in *GroupCourseR
 	return out, nil
 }
 
-func (c *userClient) AttachTeacherToCourse(ctx context.Context, in *TeacherCourseRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *userClient) AttachTeacherToCourse(ctx context.Context, in *AttachTeacherCourseRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, User_AttachTeacherToCourse_FullMethodName, in, out, cOpts...)
@@ -150,7 +150,7 @@ func (c *userClient) AttachTeacherToCourse(ctx context.Context, in *TeacherCours
 	return out, nil
 }
 
-func (c *userClient) DetachTeacherToCourse(ctx context.Context, in *TeacherCourseRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *userClient) DetachTeacherToCourse(ctx context.Context, in *DetachTeacherCourseRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, User_DetachTeacherToCourse_FullMethodName, in, out, cOpts...)
@@ -190,10 +190,10 @@ type UserServer interface {
 	DeleteGroup(context.Context, *GroupRequest) (*emptypb.Empty, error)
 	CreateCourse(context.Context, *CourseRequest) (*CreateCourseResponse, error)
 	DeleteCourse(context.Context, *CourseRequest) (*emptypb.Empty, error)
-	AttachGroupToCourse(context.Context, *GroupCourseRequest) (*emptypb.Empty, error)
-	DetachGroupFromCourse(context.Context, *GroupCourseRequest) (*emptypb.Empty, error)
-	AttachTeacherToCourse(context.Context, *TeacherCourseRequest) (*emptypb.Empty, error)
-	DetachTeacherToCourse(context.Context, *TeacherCourseRequest) (*emptypb.Empty, error)
+	AttachGroupToCourse(context.Context, *AttachGroupCourseRequest) (*emptypb.Empty, error)
+	DetachGroupFromCourse(context.Context, *DetachGroupCourseRequest) (*emptypb.Empty, error)
+	AttachTeacherToCourse(context.Context, *AttachTeacherCourseRequest) (*emptypb.Empty, error)
+	DetachTeacherToCourse(context.Context, *DetachTeacherCourseRequest) (*emptypb.Empty, error)
 	GetGroupsData(context.Context, *emptypb.Empty) (*GroupsDataResponse, error)
 	GetCoursesData(context.Context, *emptypb.Empty) (*CoursesDataResponse, error)
 	mustEmbedUnimplementedUserServer()
@@ -224,16 +224,16 @@ func (UnimplementedUserServer) CreateCourse(context.Context, *CourseRequest) (*C
 func (UnimplementedUserServer) DeleteCourse(context.Context, *CourseRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteCourse not implemented")
 }
-func (UnimplementedUserServer) AttachGroupToCourse(context.Context, *GroupCourseRequest) (*emptypb.Empty, error) {
+func (UnimplementedUserServer) AttachGroupToCourse(context.Context, *AttachGroupCourseRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AttachGroupToCourse not implemented")
 }
-func (UnimplementedUserServer) DetachGroupFromCourse(context.Context, *GroupCourseRequest) (*emptypb.Empty, error) {
+func (UnimplementedUserServer) DetachGroupFromCourse(context.Context, *DetachGroupCourseRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DetachGroupFromCourse not implemented")
 }
-func (UnimplementedUserServer) AttachTeacherToCourse(context.Context, *TeacherCourseRequest) (*emptypb.Empty, error) {
+func (UnimplementedUserServer) AttachTeacherToCourse(context.Context, *AttachTeacherCourseRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AttachTeacherToCourse not implemented")
 }
-func (UnimplementedUserServer) DetachTeacherToCourse(context.Context, *TeacherCourseRequest) (*emptypb.Empty, error) {
+func (UnimplementedUserServer) DetachTeacherToCourse(context.Context, *DetachTeacherCourseRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DetachTeacherToCourse not implemented")
 }
 func (UnimplementedUserServer) GetGroupsData(context.Context, *emptypb.Empty) (*GroupsDataResponse, error) {
@@ -372,7 +372,7 @@ func _User_DeleteCourse_Handler(srv interface{}, ctx context.Context, dec func(i
 }
 
 func _User_AttachGroupToCourse_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GroupCourseRequest)
+	in := new(AttachGroupCourseRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -384,13 +384,13 @@ func _User_AttachGroupToCourse_Handler(srv interface{}, ctx context.Context, dec
 		FullMethod: User_AttachGroupToCourse_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServer).AttachGroupToCourse(ctx, req.(*GroupCourseRequest))
+		return srv.(UserServer).AttachGroupToCourse(ctx, req.(*AttachGroupCourseRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _User_DetachGroupFromCourse_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GroupCourseRequest)
+	in := new(DetachGroupCourseRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -402,13 +402,13 @@ func _User_DetachGroupFromCourse_Handler(srv interface{}, ctx context.Context, d
 		FullMethod: User_DetachGroupFromCourse_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServer).DetachGroupFromCourse(ctx, req.(*GroupCourseRequest))
+		return srv.(UserServer).DetachGroupFromCourse(ctx, req.(*DetachGroupCourseRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _User_AttachTeacherToCourse_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TeacherCourseRequest)
+	in := new(AttachTeacherCourseRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -420,13 +420,13 @@ func _User_AttachTeacherToCourse_Handler(srv interface{}, ctx context.Context, d
 		FullMethod: User_AttachTeacherToCourse_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServer).AttachTeacherToCourse(ctx, req.(*TeacherCourseRequest))
+		return srv.(UserServer).AttachTeacherToCourse(ctx, req.(*AttachTeacherCourseRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _User_DetachTeacherToCourse_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TeacherCourseRequest)
+	in := new(DetachTeacherCourseRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -438,7 +438,7 @@ func _User_DetachTeacherToCourse_Handler(srv interface{}, ctx context.Context, d
 		FullMethod: User_DetachTeacherToCourse_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServer).DetachTeacherToCourse(ctx, req.(*TeacherCourseRequest))
+		return srv.(UserServer).DetachTeacherToCourse(ctx, req.(*DetachTeacherCourseRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }

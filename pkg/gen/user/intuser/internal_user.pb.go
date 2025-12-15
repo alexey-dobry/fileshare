@@ -318,7 +318,7 @@ func (x *CreateCourseResponse) GetID() string {
 	return ""
 }
 
-type GroupCourseRequest struct {
+type AttachGroupCourseRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	GroupID       string                 `protobuf:"bytes,1,opt,name=GroupID,proto3" json:"GroupID,omitempty"`
 	CourseID      string                 `protobuf:"bytes,2,opt,name=CourseID,proto3" json:"CourseID,omitempty"`
@@ -326,20 +326,20 @@ type GroupCourseRequest struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GroupCourseRequest) Reset() {
-	*x = GroupCourseRequest{}
+func (x *AttachGroupCourseRequest) Reset() {
+	*x = AttachGroupCourseRequest{}
 	mi := &file_proto_user_internal_user_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GroupCourseRequest) String() string {
+func (x *AttachGroupCourseRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GroupCourseRequest) ProtoMessage() {}
+func (*AttachGroupCourseRequest) ProtoMessage() {}
 
-func (x *GroupCourseRequest) ProtoReflect() protoreflect.Message {
+func (x *AttachGroupCourseRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_proto_user_internal_user_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -351,26 +351,70 @@ func (x *GroupCourseRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GroupCourseRequest.ProtoReflect.Descriptor instead.
-func (*GroupCourseRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use AttachGroupCourseRequest.ProtoReflect.Descriptor instead.
+func (*AttachGroupCourseRequest) Descriptor() ([]byte, []int) {
 	return file_proto_user_internal_user_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *GroupCourseRequest) GetGroupID() string {
+func (x *AttachGroupCourseRequest) GetGroupID() string {
 	if x != nil {
 		return x.GroupID
 	}
 	return ""
 }
 
-func (x *GroupCourseRequest) GetCourseID() string {
+func (x *AttachGroupCourseRequest) GetCourseID() string {
 	if x != nil {
 		return x.CourseID
 	}
 	return ""
 }
 
-type TeacherCourseRequest struct {
+type DetachGroupCourseRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	GroupID       string                 `protobuf:"bytes,1,opt,name=GroupID,proto3" json:"GroupID,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DetachGroupCourseRequest) Reset() {
+	*x = DetachGroupCourseRequest{}
+	mi := &file_proto_user_internal_user_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DetachGroupCourseRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DetachGroupCourseRequest) ProtoMessage() {}
+
+func (x *DetachGroupCourseRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_user_internal_user_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DetachGroupCourseRequest.ProtoReflect.Descriptor instead.
+func (*DetachGroupCourseRequest) Descriptor() ([]byte, []int) {
+	return file_proto_user_internal_user_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *DetachGroupCourseRequest) GetGroupID() string {
+	if x != nil {
+		return x.GroupID
+	}
+	return ""
+}
+
+type AttachTeacherCourseRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	TeacherID     string                 `protobuf:"bytes,1,opt,name=TeacherID,proto3" json:"TeacherID,omitempty"`
 	CourseID      string                 `protobuf:"bytes,2,opt,name=CourseID,proto3" json:"CourseID,omitempty"`
@@ -378,21 +422,21 @@ type TeacherCourseRequest struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *TeacherCourseRequest) Reset() {
-	*x = TeacherCourseRequest{}
-	mi := &file_proto_user_internal_user_proto_msgTypes[7]
+func (x *AttachTeacherCourseRequest) Reset() {
+	*x = AttachTeacherCourseRequest{}
+	mi := &file_proto_user_internal_user_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *TeacherCourseRequest) String() string {
+func (x *AttachTeacherCourseRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*TeacherCourseRequest) ProtoMessage() {}
+func (*AttachTeacherCourseRequest) ProtoMessage() {}
 
-func (x *TeacherCourseRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_user_internal_user_proto_msgTypes[7]
+func (x *AttachTeacherCourseRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_user_internal_user_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -403,21 +447,65 @@ func (x *TeacherCourseRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use TeacherCourseRequest.ProtoReflect.Descriptor instead.
-func (*TeacherCourseRequest) Descriptor() ([]byte, []int) {
-	return file_proto_user_internal_user_proto_rawDescGZIP(), []int{7}
+// Deprecated: Use AttachTeacherCourseRequest.ProtoReflect.Descriptor instead.
+func (*AttachTeacherCourseRequest) Descriptor() ([]byte, []int) {
+	return file_proto_user_internal_user_proto_rawDescGZIP(), []int{8}
 }
 
-func (x *TeacherCourseRequest) GetTeacherID() string {
+func (x *AttachTeacherCourseRequest) GetTeacherID() string {
 	if x != nil {
 		return x.TeacherID
 	}
 	return ""
 }
 
-func (x *TeacherCourseRequest) GetCourseID() string {
+func (x *AttachTeacherCourseRequest) GetCourseID() string {
 	if x != nil {
 		return x.CourseID
+	}
+	return ""
+}
+
+type DetachTeacherCourseRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	TeacherID     string                 `protobuf:"bytes,1,opt,name=TeacherID,proto3" json:"TeacherID,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DetachTeacherCourseRequest) Reset() {
+	*x = DetachTeacherCourseRequest{}
+	mi := &file_proto_user_internal_user_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DetachTeacherCourseRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DetachTeacherCourseRequest) ProtoMessage() {}
+
+func (x *DetachTeacherCourseRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_user_internal_user_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DetachTeacherCourseRequest.ProtoReflect.Descriptor instead.
+func (*DetachTeacherCourseRequest) Descriptor() ([]byte, []int) {
+	return file_proto_user_internal_user_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *DetachTeacherCourseRequest) GetTeacherID() string {
+	if x != nil {
+		return x.TeacherID
 	}
 	return ""
 }
@@ -432,7 +520,7 @@ type GroupData struct {
 
 func (x *GroupData) Reset() {
 	*x = GroupData{}
-	mi := &file_proto_user_internal_user_proto_msgTypes[8]
+	mi := &file_proto_user_internal_user_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -444,7 +532,7 @@ func (x *GroupData) String() string {
 func (*GroupData) ProtoMessage() {}
 
 func (x *GroupData) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_user_internal_user_proto_msgTypes[8]
+	mi := &file_proto_user_internal_user_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -457,7 +545,7 @@ func (x *GroupData) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GroupData.ProtoReflect.Descriptor instead.
 func (*GroupData) Descriptor() ([]byte, []int) {
-	return file_proto_user_internal_user_proto_rawDescGZIP(), []int{8}
+	return file_proto_user_internal_user_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *GroupData) GetGroupName() string {
@@ -483,7 +571,7 @@ type GroupsDataResponse struct {
 
 func (x *GroupsDataResponse) Reset() {
 	*x = GroupsDataResponse{}
-	mi := &file_proto_user_internal_user_proto_msgTypes[9]
+	mi := &file_proto_user_internal_user_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -495,7 +583,7 @@ func (x *GroupsDataResponse) String() string {
 func (*GroupsDataResponse) ProtoMessage() {}
 
 func (x *GroupsDataResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_user_internal_user_proto_msgTypes[9]
+	mi := &file_proto_user_internal_user_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -508,7 +596,7 @@ func (x *GroupsDataResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GroupsDataResponse.ProtoReflect.Descriptor instead.
 func (*GroupsDataResponse) Descriptor() ([]byte, []int) {
-	return file_proto_user_internal_user_proto_rawDescGZIP(), []int{9}
+	return file_proto_user_internal_user_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *GroupsDataResponse) GetGroupsData() []*GroupData {
@@ -528,7 +616,7 @@ type CourseData struct {
 
 func (x *CourseData) Reset() {
 	*x = CourseData{}
-	mi := &file_proto_user_internal_user_proto_msgTypes[10]
+	mi := &file_proto_user_internal_user_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -540,7 +628,7 @@ func (x *CourseData) String() string {
 func (*CourseData) ProtoMessage() {}
 
 func (x *CourseData) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_user_internal_user_proto_msgTypes[10]
+	mi := &file_proto_user_internal_user_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -553,7 +641,7 @@ func (x *CourseData) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CourseData.ProtoReflect.Descriptor instead.
 func (*CourseData) Descriptor() ([]byte, []int) {
-	return file_proto_user_internal_user_proto_rawDescGZIP(), []int{10}
+	return file_proto_user_internal_user_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *CourseData) GetCourseName() string {
@@ -579,7 +667,7 @@ type CoursesDataResponse struct {
 
 func (x *CoursesDataResponse) Reset() {
 	*x = CoursesDataResponse{}
-	mi := &file_proto_user_internal_user_proto_msgTypes[11]
+	mi := &file_proto_user_internal_user_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -591,7 +679,7 @@ func (x *CoursesDataResponse) String() string {
 func (*CoursesDataResponse) ProtoMessage() {}
 
 func (x *CoursesDataResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_user_internal_user_proto_msgTypes[11]
+	mi := &file_proto_user_internal_user_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -604,7 +692,7 @@ func (x *CoursesDataResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CoursesDataResponse.ProtoReflect.Descriptor instead.
 func (*CoursesDataResponse) Descriptor() ([]byte, []int) {
-	return file_proto_user_internal_user_proto_rawDescGZIP(), []int{11}
+	return file_proto_user_internal_user_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *CoursesDataResponse) GetCoursesData() []*CourseData {
@@ -623,7 +711,7 @@ type UserDataRequest struct {
 
 func (x *UserDataRequest) Reset() {
 	*x = UserDataRequest{}
-	mi := &file_proto_user_internal_user_proto_msgTypes[12]
+	mi := &file_proto_user_internal_user_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -635,7 +723,7 @@ func (x *UserDataRequest) String() string {
 func (*UserDataRequest) ProtoMessage() {}
 
 func (x *UserDataRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_user_internal_user_proto_msgTypes[12]
+	mi := &file_proto_user_internal_user_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -648,7 +736,7 @@ func (x *UserDataRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UserDataRequest.ProtoReflect.Descriptor instead.
 func (*UserDataRequest) Descriptor() ([]byte, []int) {
-	return file_proto_user_internal_user_proto_rawDescGZIP(), []int{12}
+	return file_proto_user_internal_user_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *UserDataRequest) GetEmail() string {
@@ -678,13 +766,17 @@ const file_proto_user_internal_user_proto_rawDesc = "" +
 	"\rCourseRequest\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\"&\n" +
 	"\x14CreateCourseResponse\x12\x0e\n" +
-	"\x02ID\x18\x01 \x01(\tR\x02ID\"J\n" +
-	"\x12GroupCourseRequest\x12\x18\n" +
+	"\x02ID\x18\x01 \x01(\tR\x02ID\"P\n" +
+	"\x18AttachGroupCourseRequest\x12\x18\n" +
 	"\aGroupID\x18\x01 \x01(\tR\aGroupID\x12\x1a\n" +
-	"\bCourseID\x18\x02 \x01(\tR\bCourseID\"P\n" +
-	"\x14TeacherCourseRequest\x12\x1c\n" +
+	"\bCourseID\x18\x02 \x01(\tR\bCourseID\"4\n" +
+	"\x18DetachGroupCourseRequest\x12\x18\n" +
+	"\aGroupID\x18\x01 \x01(\tR\aGroupID\"V\n" +
+	"\x1aAttachTeacherCourseRequest\x12\x1c\n" +
 	"\tTeacherID\x18\x01 \x01(\tR\tTeacherID\x12\x1a\n" +
-	"\bCourseID\x18\x02 \x01(\tR\bCourseID\"C\n" +
+	"\bCourseID\x18\x02 \x01(\tR\bCourseID\":\n" +
+	"\x1aDetachTeacherCourseRequest\x12\x1c\n" +
+	"\tTeacherID\x18\x01 \x01(\tR\tTeacherID\"C\n" +
 	"\tGroupData\x12\x1c\n" +
 	"\tGroupName\x18\x01 \x01(\tR\tGroupName\x12\x18\n" +
 	"\aGroupID\x18\x02 \x01(\tR\aGroupID\"E\n" +
@@ -701,7 +793,7 @@ const file_proto_user_internal_user_proto_rawDesc = "" +
 	"\x13CoursesDataResponse\x122\n" +
 	"\vCoursesData\x18\x01 \x03(\v2\x10.user.CourseDataR\vCoursesData\"'\n" +
 	"\x0fUserDataRequest\x12\x14\n" +
-	"\x05Email\x18\x01 \x01(\tR\x05Email2\xb1\x06\n" +
+	"\x05Email\x18\x01 \x01(\tR\x05Email2\xc9\x06\n" +
 	"\x04User\x12=\n" +
 	"\n" +
 	"CreateUser\x12\x17.user.CreateUserRequest\x1a\x16.google.protobuf.Empty\x12=\n" +
@@ -710,11 +802,11 @@ const file_proto_user_internal_user_proto_rawDesc = "" +
 	"\vCreateGroup\x12\x12.user.GroupRequest\x1a\x19.user.CreateGroupResponse\x129\n" +
 	"\vDeleteGroup\x12\x12.user.GroupRequest\x1a\x16.google.protobuf.Empty\x12?\n" +
 	"\fCreateCourse\x12\x13.user.CourseRequest\x1a\x1a.user.CreateCourseResponse\x12;\n" +
-	"\fDeleteCourse\x12\x13.user.CourseRequest\x1a\x16.google.protobuf.Empty\x12G\n" +
-	"\x13AttachGroupToCourse\x12\x18.user.GroupCourseRequest\x1a\x16.google.protobuf.Empty\x12I\n" +
-	"\x15DetachGroupFromCourse\x12\x18.user.GroupCourseRequest\x1a\x16.google.protobuf.Empty\x12K\n" +
-	"\x15AttachTeacherToCourse\x12\x1a.user.TeacherCourseRequest\x1a\x16.google.protobuf.Empty\x12K\n" +
-	"\x15DetachTeacherToCourse\x12\x1a.user.TeacherCourseRequest\x1a\x16.google.protobuf.Empty\x12A\n" +
+	"\fDeleteCourse\x12\x13.user.CourseRequest\x1a\x16.google.protobuf.Empty\x12M\n" +
+	"\x13AttachGroupToCourse\x12\x1e.user.AttachGroupCourseRequest\x1a\x16.google.protobuf.Empty\x12O\n" +
+	"\x15DetachGroupFromCourse\x12\x1e.user.DetachGroupCourseRequest\x1a\x16.google.protobuf.Empty\x12Q\n" +
+	"\x15AttachTeacherToCourse\x12 .user.AttachTeacherCourseRequest\x1a\x16.google.protobuf.Empty\x12Q\n" +
+	"\x15DetachTeacherToCourse\x12 .user.DetachTeacherCourseRequest\x1a\x16.google.protobuf.Empty\x12A\n" +
 	"\rGetGroupsData\x12\x16.google.protobuf.Empty\x1a\x18.user.GroupsDataResponse\x12C\n" +
 	"\x0eGetCoursesData\x12\x16.google.protobuf.Empty\x1a\x19.user.CoursesDataResponseB\n" +
 	"Z\b/intuserb\x06proto3"
@@ -731,50 +823,52 @@ func file_proto_user_internal_user_proto_rawDescGZIP() []byte {
 	return file_proto_user_internal_user_proto_rawDescData
 }
 
-var file_proto_user_internal_user_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
+var file_proto_user_internal_user_proto_msgTypes = make([]protoimpl.MessageInfo, 15)
 var file_proto_user_internal_user_proto_goTypes = []any{
-	(*CreateUserRequest)(nil),    // 0: user.CreateUserRequest
-	(*DeleteUserRequest)(nil),    // 1: user.DeleteUserRequest
-	(*GroupRequest)(nil),         // 2: user.GroupRequest
-	(*CreateGroupResponse)(nil),  // 3: user.CreateGroupResponse
-	(*CourseRequest)(nil),        // 4: user.CourseRequest
-	(*CreateCourseResponse)(nil), // 5: user.CreateCourseResponse
-	(*GroupCourseRequest)(nil),   // 6: user.GroupCourseRequest
-	(*TeacherCourseRequest)(nil), // 7: user.TeacherCourseRequest
-	(*GroupData)(nil),            // 8: user.GroupData
-	(*GroupsDataResponse)(nil),   // 9: user.GroupsDataResponse
-	(*CourseData)(nil),           // 10: user.CourseData
-	(*CoursesDataResponse)(nil),  // 11: user.CoursesDataResponse
-	(*UserDataRequest)(nil),      // 12: user.UserDataRequest
-	(*emptypb.Empty)(nil),        // 13: google.protobuf.Empty
+	(*CreateUserRequest)(nil),          // 0: user.CreateUserRequest
+	(*DeleteUserRequest)(nil),          // 1: user.DeleteUserRequest
+	(*GroupRequest)(nil),               // 2: user.GroupRequest
+	(*CreateGroupResponse)(nil),        // 3: user.CreateGroupResponse
+	(*CourseRequest)(nil),              // 4: user.CourseRequest
+	(*CreateCourseResponse)(nil),       // 5: user.CreateCourseResponse
+	(*AttachGroupCourseRequest)(nil),   // 6: user.AttachGroupCourseRequest
+	(*DetachGroupCourseRequest)(nil),   // 7: user.DetachGroupCourseRequest
+	(*AttachTeacherCourseRequest)(nil), // 8: user.AttachTeacherCourseRequest
+	(*DetachTeacherCourseRequest)(nil), // 9: user.DetachTeacherCourseRequest
+	(*GroupData)(nil),                  // 10: user.GroupData
+	(*GroupsDataResponse)(nil),         // 11: user.GroupsDataResponse
+	(*CourseData)(nil),                 // 12: user.CourseData
+	(*CoursesDataResponse)(nil),        // 13: user.CoursesDataResponse
+	(*UserDataRequest)(nil),            // 14: user.UserDataRequest
+	(*emptypb.Empty)(nil),              // 15: google.protobuf.Empty
 }
 var file_proto_user_internal_user_proto_depIdxs = []int32{
-	8,  // 0: user.GroupsDataResponse.GroupsData:type_name -> user.GroupData
-	10, // 1: user.CoursesDataResponse.CoursesData:type_name -> user.CourseData
+	10, // 0: user.GroupsDataResponse.GroupsData:type_name -> user.GroupData
+	12, // 1: user.CoursesDataResponse.CoursesData:type_name -> user.CourseData
 	0,  // 2: user.User.CreateUser:input_type -> user.CreateUserRequest
 	1,  // 3: user.User.DeleteUser:input_type -> user.DeleteUserRequest
 	2,  // 4: user.User.CreateGroup:input_type -> user.GroupRequest
 	2,  // 5: user.User.DeleteGroup:input_type -> user.GroupRequest
 	4,  // 6: user.User.CreateCourse:input_type -> user.CourseRequest
 	4,  // 7: user.User.DeleteCourse:input_type -> user.CourseRequest
-	6,  // 8: user.User.AttachGroupToCourse:input_type -> user.GroupCourseRequest
-	6,  // 9: user.User.DetachGroupFromCourse:input_type -> user.GroupCourseRequest
-	7,  // 10: user.User.AttachTeacherToCourse:input_type -> user.TeacherCourseRequest
-	7,  // 11: user.User.DetachTeacherToCourse:input_type -> user.TeacherCourseRequest
-	13, // 12: user.User.GetGroupsData:input_type -> google.protobuf.Empty
-	13, // 13: user.User.GetCoursesData:input_type -> google.protobuf.Empty
-	13, // 14: user.User.CreateUser:output_type -> google.protobuf.Empty
-	13, // 15: user.User.DeleteUser:output_type -> google.protobuf.Empty
+	6,  // 8: user.User.AttachGroupToCourse:input_type -> user.AttachGroupCourseRequest
+	7,  // 9: user.User.DetachGroupFromCourse:input_type -> user.DetachGroupCourseRequest
+	8,  // 10: user.User.AttachTeacherToCourse:input_type -> user.AttachTeacherCourseRequest
+	9,  // 11: user.User.DetachTeacherToCourse:input_type -> user.DetachTeacherCourseRequest
+	15, // 12: user.User.GetGroupsData:input_type -> google.protobuf.Empty
+	15, // 13: user.User.GetCoursesData:input_type -> google.protobuf.Empty
+	15, // 14: user.User.CreateUser:output_type -> google.protobuf.Empty
+	15, // 15: user.User.DeleteUser:output_type -> google.protobuf.Empty
 	3,  // 16: user.User.CreateGroup:output_type -> user.CreateGroupResponse
-	13, // 17: user.User.DeleteGroup:output_type -> google.protobuf.Empty
+	15, // 17: user.User.DeleteGroup:output_type -> google.protobuf.Empty
 	5,  // 18: user.User.CreateCourse:output_type -> user.CreateCourseResponse
-	13, // 19: user.User.DeleteCourse:output_type -> google.protobuf.Empty
-	13, // 20: user.User.AttachGroupToCourse:output_type -> google.protobuf.Empty
-	13, // 21: user.User.DetachGroupFromCourse:output_type -> google.protobuf.Empty
-	13, // 22: user.User.AttachTeacherToCourse:output_type -> google.protobuf.Empty
-	13, // 23: user.User.DetachTeacherToCourse:output_type -> google.protobuf.Empty
-	9,  // 24: user.User.GetGroupsData:output_type -> user.GroupsDataResponse
-	11, // 25: user.User.GetCoursesData:output_type -> user.CoursesDataResponse
+	15, // 19: user.User.DeleteCourse:output_type -> google.protobuf.Empty
+	15, // 20: user.User.AttachGroupToCourse:output_type -> google.protobuf.Empty
+	15, // 21: user.User.DetachGroupFromCourse:output_type -> google.protobuf.Empty
+	15, // 22: user.User.AttachTeacherToCourse:output_type -> google.protobuf.Empty
+	15, // 23: user.User.DetachTeacherToCourse:output_type -> google.protobuf.Empty
+	11, // 24: user.User.GetGroupsData:output_type -> user.GroupsDataResponse
+	13, // 25: user.User.GetCoursesData:output_type -> user.CoursesDataResponse
 	14, // [14:26] is the sub-list for method output_type
 	2,  // [2:14] is the sub-list for method input_type
 	2,  // [2:2] is the sub-list for extension type_name
@@ -793,7 +887,7 @@ func file_proto_user_internal_user_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_user_internal_user_proto_rawDesc), len(file_proto_user_internal_user_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   13,
+			NumMessages:   15,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

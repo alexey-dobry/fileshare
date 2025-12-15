@@ -16,11 +16,11 @@ service User {
   rpc CreateCourse(CourseRequest) returns (CreateCourseResponse);
   rpc DeleteCourse(CourseRequest) returns (google.protobuf.Empty);
 
-  rpc AttachGroupToCourse(GroupCourseRequest) returns (google.protobuf.Empty);
-  rpc DetachGroupFromCourse(GroupCourseRequest) returns (google.protobuf.Empty);
+  rpc AttachGroupToCourse(AttachGroupCourseRequest) returns (google.protobuf.Empty);
+  rpc DetachGroupFromCourse(DetachGroupCourseRequest) returns (google.protobuf.Empty);
   
-  rpc AttachTeacherToCourse(TeacherCourseRequest) returns (google.protobuf.Empty);
-  rpc DetachTeacherToCourse(TeacherCourseRequest) returns (google.protobuf.Empty);
+  rpc AttachTeacherToCourse(AttachTeacherCourseRequest) returns (google.protobuf.Empty);
+  rpc DetachTeacherToCourse(DetachTeacherCourseRequest) returns (google.protobuf.Empty);
 
   rpc GetGroupsData(google.protobuf.Empty) returns (GroupsDataResponse);
   rpc GetCoursesData(google.protobuf.Empty) returns (CoursesDataResponse);
@@ -54,14 +54,22 @@ message CreateCourseResponse {
   string ID = 1;
 }
 
-message GroupCourseRequest {
+message AttachGroupCourseRequest {
   string GroupID = 1;
   string CourseID = 2;
 }
 
-message TeacherCourseRequest {
+message DetachGroupCourseRequest {
+  string GroupID = 1;
+}
+
+message AttachTeacherCourseRequest {
   string TeacherID = 1;
   string CourseID = 2;
+}
+
+message DetachTeacherCourseRequest {
+  string TeacherID = 1;
 }
 
 message GroupData {
