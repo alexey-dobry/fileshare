@@ -24,9 +24,11 @@ const (
 
 type CreateUserRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Email         string                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
-	Password      string                 `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
-	Role          string                 `protobuf:"bytes,3,opt,name=role,proto3" json:"role,omitempty"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Surname       string                 `protobuf:"bytes,3,opt,name=surname,proto3" json:"surname,omitempty"`
+	Email         string                 `protobuf:"bytes,4,opt,name=email,proto3" json:"email,omitempty"`
+	Role          string                 `protobuf:"bytes,5,opt,name=role,proto3" json:"role,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -61,16 +63,30 @@ func (*CreateUserRequest) Descriptor() ([]byte, []int) {
 	return file_proto_user_internal_user_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *CreateUserRequest) GetEmail() string {
+func (x *CreateUserRequest) GetId() string {
 	if x != nil {
-		return x.Email
+		return x.Id
 	}
 	return ""
 }
 
-func (x *CreateUserRequest) GetPassword() string {
+func (x *CreateUserRequest) GetName() string {
 	if x != nil {
-		return x.Password
+		return x.Name
+	}
+	return ""
+}
+
+func (x *CreateUserRequest) GetSurname() string {
+	if x != nil {
+		return x.Surname
+	}
+	return ""
+}
+
+func (x *CreateUserRequest) GetEmail() string {
+	if x != nil {
+		return x.Email
 	}
 	return ""
 }
@@ -646,11 +662,13 @@ var File_proto_user_internal_user_proto protoreflect.FileDescriptor
 
 const file_proto_user_internal_user_proto_rawDesc = "" +
 	"\n" +
-	"\x1eproto/user/internal_user.proto\x12\x04user\x1a\x1bgoogle/protobuf/empty.proto\"Y\n" +
-	"\x11CreateUserRequest\x12\x14\n" +
-	"\x05email\x18\x01 \x01(\tR\x05email\x12\x1a\n" +
-	"\bpassword\x18\x02 \x01(\tR\bpassword\x12\x12\n" +
-	"\x04role\x18\x03 \x01(\tR\x04role\")\n" +
+	"\x1eproto/user/internal_user.proto\x12\x04user\x1a\x1bgoogle/protobuf/empty.proto\"{\n" +
+	"\x11CreateUserRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12\x18\n" +
+	"\asurname\x18\x03 \x01(\tR\asurname\x12\x14\n" +
+	"\x05email\x18\x04 \x01(\tR\x05email\x12\x12\n" +
+	"\x04role\x18\x05 \x01(\tR\x04role\")\n" +
 	"\x11DeleteUserRequest\x12\x14\n" +
 	"\x05email\x18\x01 \x01(\tR\x05email\"\"\n" +
 	"\fGroupRequest\x12\x12\n" +
