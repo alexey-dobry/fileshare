@@ -59,7 +59,7 @@ message TeacherGetCourseGroupsRequest {
 }
 
 message TeacherGetCourseGroupsResponse {
-  repeated GroupData Courses = 1;
+  repeated GroupData Groups = 1;
 }
 
 message TeacherGetGroupStudentsRequest {

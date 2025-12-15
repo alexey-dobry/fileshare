@@ -495,7 +495,7 @@ func (x *TeacherGetCourseGroupsRequest) GetCourseID() string {
 
 type TeacherGetCourseGroupsResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Courses       []*GroupData           `protobuf:"bytes,1,rep,name=Courses,proto3" json:"Courses,omitempty"`
+	Groups        []*GroupData           `protobuf:"bytes,1,rep,name=Groups,proto3" json:"Groups,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -530,9 +530,9 @@ func (*TeacherGetCourseGroupsResponse) Descriptor() ([]byte, []int) {
 	return file_proto_user_public_user_proto_rawDescGZIP(), []int{10}
 }
 
-func (x *TeacherGetCourseGroupsResponse) GetCourses() []*GroupData {
+func (x *TeacherGetCourseGroupsResponse) GetGroups() []*GroupData {
 	if x != nil {
-		return x.Courses
+		return x.Groups
 	}
 	return nil
 }
@@ -657,9 +657,9 @@ const file_proto_user_public_user_proto_rawDesc = "" +
 	" StudentGetCourseTeachersResponse\x122\n" +
 	"\fTeachersData\x18\x01 \x03(\v2\x0e.user.UserDataR\fTeachersData\";\n" +
 	"\x1dTeacherGetCourseGroupsRequest\x12\x1a\n" +
-	"\bCourseID\x18\x01 \x01(\tR\bCourseID\"K\n" +
-	"\x1eTeacherGetCourseGroupsResponse\x12)\n" +
-	"\aCourses\x18\x01 \x03(\v2\x0f.user.GroupDataR\aCourses\":\n" +
+	"\bCourseID\x18\x01 \x01(\tR\bCourseID\"I\n" +
+	"\x1eTeacherGetCourseGroupsResponse\x12'\n" +
+	"\x06Groups\x18\x01 \x03(\v2\x0f.user.GroupDataR\x06Groups\":\n" +
 	"\x1eTeacherGetGroupStudentsRequest\x12\x18\n" +
 	"\aGroupID\x18\x01 \x01(\tR\aGroupID\"U\n" +
 	"\x1fTeacherGetGroupStudentsResponse\x122\n" +
@@ -704,7 +704,7 @@ var file_proto_user_public_user_proto_depIdxs = []int32{
 	0,  // 0: user.GetMyProfileResponse.ProfileData:type_name -> user.UserData
 	1,  // 1: user.GetMyCoursesResponse.Courses:type_name -> user.CourseData
 	0,  // 2: user.StudentGetCourseTeachersResponse.TeachersData:type_name -> user.UserData
-	2,  // 3: user.TeacherGetCourseGroupsResponse.Courses:type_name -> user.GroupData
+	2,  // 3: user.TeacherGetCourseGroupsResponse.Groups:type_name -> user.GroupData
 	0,  // 4: user.TeacherGetGroupStudentsResponse.StudentsData:type_name -> user.UserData
 	3,  // 5: user.User.GetMyProfile:input_type -> user.GetMyProfileRequest
 	5,  // 6: user.User.GetMyCourses:input_type -> user.GetMyCoursesRequest
