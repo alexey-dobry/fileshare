@@ -27,9 +27,11 @@ service User {
 }
 
 message CreateUserRequest {
-  string email = 1;
-  string password = 2;
-  string role = 3;
+  string id = 1;
+  string name = 2;
+  string surname = 3;
+  string email = 4;
+  string role = 5;
 }
 
 message DeleteUserRequest {
