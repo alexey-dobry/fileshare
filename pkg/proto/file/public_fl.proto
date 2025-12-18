@@ -1,0 +1,161 @@
+syntax = "proto3";
+
+package file;
+
+option go_package = "/pubfile";
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+
+/*
+ ============================
+  FILE SERVICE
+ ============================
+*/
+
+service FileService {
+
+  // ===== Upload =====
+
+  // Upload file (streaming)
+  rpc UploadFile(stream UploadFileRequest) returns (UploadFileResponse) {
+    option (google.api.http) = {
+      post: "/files/upload"
+      body: "*"
+    };
+  }
+
+  // ===== Download =====
+
+  rpc DownloadFile(DownloadFileRequest) returns (stream DownloadFileResponse) {
+    option (google.api.http) = {
+      get: "/files/{file_id}/download"
+    };
+  }
+
+  // ===== Metadata =====
+
+  rpc GetFile(GetFileRequest) returns (File) {
+    option (google.api.http) = {
+      get: "/files/{file_id}"
+    };
+  }
+
+  rpc DeleteFile(DeleteFileRequest) returns (DeleteFileResponse) {
+    option (google.api.http) = {
+      delete: "/files/{file_id}"
+    };
+  }
+
+  // ===== List =====
+
+  rpc ListFilesByCourse(ListFilesByCourseRequest) returns (ListFilesResponse) {
+    option (google.api.http) = {
+      get: "/files/course/{course_id}"
+    };
+  }
+
+  rpc ListFilesByGroup(ListFilesByGroupRequest) returns (ListFilesResponse) {
+    option (google.api.http) = {
+      get: "/files/group/{group_id}"
+    };
+  }
+}
+
+/*
+ ============================
+  REQUESTS / RESPONSES
+ ============================
+*/
+
+// ---------- Upload ----------
+
+message UploadFileRequest {
+  oneof data {
+    FileMetadata metadata = 1;
+    bytes chunk = 2;
+  }
+}
+
+message UploadFileResponse {
+  string file_id = 1;
+}
+
+// ---------- Download ----------
+
+message DownloadFileRequest {
+  string file_id = 1;
+}
+
+message DownloadFileResponse {
+  bytes chunk = 1;
+}
+
+// ---------- Get ----------
+
+message GetFileRequest {
+  string file_id = 1;
+}
+
+// ---------- Delete ----------
+
+message DeleteFileRequest {
+  string file_id = 1;
+}
+
+message DeleteFileResponse {
+  bool success = 1;
+}
+
+// ---------- List ----------
+
+message ListFilesByCourseRequest {
+  string course_id = 1;
+  int32 page = 2;
+  int32 page_size = 3;
+}
+
+message ListFilesByGroupRequest {
+  string group_id = 1;
+  int32 page = 2;
+  int32 page_size = 3;
+}
+
+message ListFilesResponse {
+  repeated File files = 1;
+  int32 total = 2;
+}
+
+/*
+ ============================
+  DOMAIN MODELS
+ ============================
+*/
+
+message File {
+  string id = 1;
+  string name = 2;
+  string mime_type = 3;
+  int64 size = 4;
+
+  string uploader_id = 5;
+
+  string course_id = 6;
+  string group_id = 7;
+
+  google.protobuf.Timestamp created_at = 8;
+}
+
+/*
+ ============================
+  METADATA
+ ============================
+*/
+
+message FileMetadata {
+  string filename = 1;
+  string mime_type = 2;
+
+  string course_id = 3;
+  string group_id = 4;
+}
