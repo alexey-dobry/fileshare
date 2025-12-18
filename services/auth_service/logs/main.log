@@ -1,0 +1,47 @@
+{"L":"FATAL","T":"2025-12-18T18:46:17.856+0300","M":"Failed to create store instance: cannot parse `host= user= password=xxxxx dbname= port= sslmode=disable`: invalid port (strconv.ParseUint: parsing \"sslmode=disable\": invalid syntax)","layer":"app"}
+{"L":"FATAL","T":"2025-12-18T19:08:31.495+0300","M":"Failed to create store instance: cannot parse `host= user= password=xxxxx dbname= port= sslmode=disable`: invalid port (strconv.ParseUint: parsing \"sslmode=disable\": invalid syntax)","layer":"app"}
+{"L":"FATAL","T":"2025-12-18T19:10:00.268+0300","M":"Failed to create store instance: cannot parse `host= user= password=xxxxx dbname= port= sslmode=disable`: invalid port (strconv.ParseUint: parsing \"sslmode=disable\": invalid syntax)","layer":"app"}
+{"L":"ERROR","T":"2025-12-18T19:21:58.787+0300","M":"","layer":"app"}
+{"L":"ERROR","T":"2025-12-18T19:22:50.805+0300","M":"","layer":"app"}
+{"L":"ERROR","T":"2025-12-18T19:25:18.888+0300","M":"","layer":"app"}
+{"L":"ERROR","T":"2025-12-18T19:26:57.300+0300","M":"","layer":"app"}
+{"L":"FATAL","T":"2025-12-18T19:27:17.314+0300","M":"Failed to create store instance: cannot parse `host= user= password=xxxxx dbname= port= sslmode=disable`: invalid port (strconv.ParseUint: parsing \"sslmode=disable\": invalid syntax)","layer":"app"}
+{"L":"ERROR","T":"2025-12-18T19:28:13.098+0300","M":"","layer":"app"}
+{"L":"ERROR","T":"2025-12-18T19:28:47.499+0300","M":"","layer":"app"}
+{"L":"ERROR","T":"2025-12-18T19:30:24.982+0300","M":"","layer":"app"}
+{"L":"ERROR","T":"2025-12-18T19:32:51.153+0300","M":"","layer":"app"}
+{"L":"ERROR","T":"2025-12-18T19:34:58.638+0300","M":"","layer":"app"}
+{"L":"ERROR","T":"2025-12-18T20:05:37.407+0300","M":"Ignored key without a value.","layer":"app","ignored":"internal"}
+{"L":"ERROR","T":"2025-12-18T20:05:37.407+0300","M":"Ignored key without a value.","layer":"app","ignored":"public"}
+{"L":"FATAL","T":"2025-12-18T20:05:37.440+0300","M":"listen tcp: lookup tcp/%!d(string=50051): unknown port","layer":"app"}
+{"L":"ERROR","T":"2025-12-18T20:06:26.224+0300","M":"Ignored key without a value.","layer":"app","ignored":"internal"}
+{"L":"ERROR","T":"2025-12-18T20:06:26.225+0300","M":"Ignored key without a value.","layer":"app","ignored":"public"}
+{"L":"FATAL","T":"2025-12-18T20:06:26.244+0300","M":"listen tcp: lookup tcp/%!d(string=50051): unknown port","layer":"app"}
+{"L":"ERROR","T":"2025-12-18T20:06:46.416+0300","M":"Ignored key without a value.","layer":"app","ignored":"internal"}
+{"L":"ERROR","T":"2025-12-18T20:06:46.419+0300","M":"Ignored key without a value.","layer":"app","ignored":"public"}
+{"L":"ERROR","T":"2025-12-18T20:07:07.210+0300","M":"Ignored key without a value.","layer":"app","ignored":"internal"}
+{"L":"ERROR","T":"2025-12-18T20:07:07.210+0300","M":"Ignored key without a value.","layer":"app","ignored":"public"}
+{"L":"ERROR","T":"2025-12-18T20:08:10.128+0300","M":"Ignored key without a value.","layer":"app","ignored":"internal"}
+{"L":"ERROR","T":"2025-12-18T20:08:10.128+0300","M":"Ignored key without a value.","layer":"app","ignored":"public"}
+{"L":"ERROR","T":"2025-12-18T20:08:41.110+0300","M":"Ignored key without a value.","layer":"app","ignored":"internal"}
+{"L":"ERROR","T":"2025-12-18T20:08:41.110+0300","M":"Ignored key without a value.","layer":"app","ignored":"public"}
+{"L":"ERROR","T":"2025-12-18T20:09:05.463+0300","M":"Ignored key without a value.","layer":"app","ignored":"internal"}
+{"L":"ERROR","T":"2025-12-18T20:09:05.463+0300","M":"Ignored key without a value.","layer":"app","ignored":"public"}
+{"L":"ERROR","T":"2025-12-18T20:09:31.749+0300","M":"created store","layer":"app"}
+{"L":"ERROR","T":"2025-12-18T20:09:31.749+0300","M":"Ignored key without a value.","layer":"app","ignored":"internal"}
+{"L":"ERROR","T":"2025-12-18T20:09:31.749+0300","M":"Ignored key without a value.","layer":"app","ignored":"public"}
+{"L":"ERROR","T":"2025-12-18T20:09:43.309+0300","M":"created store","layer":"app"}
+{"L":"ERROR","T":"2025-12-18T20:09:43.309+0300","M":"Ignored key without a value.","layer":"app","ignored":"internal"}
+{"L":"ERROR","T":"2025-12-18T20:09:43.309+0300","M":"Ignored key without a value.","layer":"app","ignored":"public"}
+{"L":"ERROR","T":"2025-12-18T20:10:14.090+0300","M":"created store","layer":"app"}
+{"L":"ERROR","T":"2025-12-18T20:10:14.090+0300","M":"jwt handler created","layer":"app"}
+{"L":"ERROR","T":"2025-12-18T20:10:14.090+0300","M":"Ignored key without a value.","layer":"app","ignored":"internal"}
+{"L":"ERROR","T":"2025-12-18T20:10:14.090+0300","M":"Ignored key without a value.","layer":"app","ignored":"public"}
+{"L":"ERROR","T":"2025-12-18T20:10:39.506+0300","M":"Ignored key without a value.","layer":"app","ignored":"internal"}
+{"L":"ERROR","T":"2025-12-18T20:10:39.506+0300","M":"Ignored key without a value.","layer":"app","ignored":"public"}
+{"L":"ERROR","T":"2025-12-18T20:10:39.506+0300","M":"jwt handler created","layer":"app"}
+{"L":"ERROR","T":"2025-12-18T20:13:03.394+0300","M":"Ignored key without a value.","layer":"app","ignored":"internal"}
+{"L":"ERROR","T":"2025-12-18T20:13:03.394+0300","M":"Ignored key without a value.","layer":"app","ignored":"public"}
+{"L":"ERROR","T":"2025-12-18T20:13:03.394+0300","M":"jwt handler created","layer":"app"}
+{"L":"ERROR","T":"2025-12-18T20:13:03.395+0300","M":"Starting internal grpc server at address %s...:50052","layer":"app"}
+{"L":"ERROR","T":"2025-12-18T20:13:03.395+0300","M":"Starting public grpc server at address %s...:50051","layer":"app"}

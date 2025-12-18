@@ -7,6 +7,6 @@ type Config struct {
 }
 
 type TTL struct {
-	AccessTTL  string `validate:"required,duration" yaml:"access-ttl"`
-	RefreshTTL string `validate:"required,duration" yaml:"refresh-ttl"`
+	AccessTTL  string `validate:"required" yaml:"access-ttl"`
+	RefreshTTL string `validate:"required" yaml:"refresh-ttl"`
 }

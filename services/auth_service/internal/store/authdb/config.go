@@ -6,6 +6,6 @@ import (
 )
 
 type Config struct {
-	pgConfig    pg.Config `yaml:"pg_config"`
-	redisConfig rd.Config `yaml:"rd_config"`
+	PgConfig    pg.Config `yaml:"pg_config"`
+	RedisConfig rd.Config `yaml:"rd_config"`
 }

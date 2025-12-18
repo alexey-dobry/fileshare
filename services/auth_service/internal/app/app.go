@@ -38,8 +38,8 @@ func New(cfg config.Config) App {
 
 	a.logger = zap.NewLogger(cfg.Logger).WithFields("layer", "app")
 
-	a.publicServerAddress = fmt.Sprintf(":%d", cfg.GRPC.PublicPort)
-	a.internalServerAddress = fmt.Sprintf(":%d", cfg.GRPC.InternalPort)
+	a.publicServerAddress = fmt.Sprintf(":%s", cfg.GRPC.PublicPort)
+	a.internalServerAddress = fmt.Sprintf(":%s", cfg.GRPC.InternalPort)
 
 	a.store, err = authdb.New(a.logger, cfg.Store)
 	if err != nil {
@@ -81,7 +81,7 @@ func (a *app) Run(ctx context.Context) {
 	go func() {
 		defer wg.Done()
 
-		a.logger.Infof("Starting public grpc server at address %s...", a.publicServerAddress)
+		a.logger.Error("Starting public grpc server at address %s...", a.publicServerAddress)
 		if err := a.publicServer.Serve(pubListener); err != nil {
 			select {
 			case <-ctx.Done():
@@ -97,7 +97,7 @@ func (a *app) Run(ctx context.Context) {
 	go func() {
 		defer wg.Done()
 
-		a.logger.Infof("Starting internal grpc server at address %s...", a.internalServerAddress)
+		a.logger.Error("Starting internal grpc server at address %s...", a.internalServerAddress)
 		if err := a.internalServer.Serve(intListener); err != nil {
 			select {
 			case <-ctx.Done():

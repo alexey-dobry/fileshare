@@ -25,12 +25,13 @@ type authStore struct {
 }
 
 func New(logger logger.Logger, cfg Config) (store.Store, error) {
+
 	pgDSN := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=disable",
-		cfg.pgConfig.Host,
-		cfg.pgConfig.User,
-		cfg.pgConfig.Password,
-		cfg.pgConfig.DatabaseName,
-		cfg.pgConfig.Port,
+		cfg.PgConfig.Host,
+		cfg.PgConfig.User,
+		cfg.PgConfig.Password,
+		cfg.PgConfig.DatabaseName,
+		cfg.PgConfig.Port,
 	)
 
 	var pgDB *gorm.DB
@@ -48,11 +49,11 @@ func New(logger logger.Logger, cfg Config) (store.Store, error) {
 	}
 
 	redisDSN := fmt.Sprintf("redis://%s:%s@%s:%s/%d",
-		cfg.redisConfig.User,
-		cfg.redisConfig.Password,
-		cfg.redisConfig.Host,
-		cfg.redisConfig.Port,
-		cfg.redisConfig.DatabaseName,
+		cfg.RedisConfig.User,
+		cfg.RedisConfig.Password,
+		cfg.RedisConfig.Host,
+		cfg.RedisConfig.Port,
+		cfg.RedisConfig.DatabaseName,
 	)
 
 	var redisDB *redis.Client

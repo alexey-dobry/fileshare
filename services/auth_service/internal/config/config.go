@@ -41,6 +41,8 @@ func ParseFlag(cfg Config) string {
 	configPath := flag.String("config", "./configs/config.yaml", "config file path")
 	configHelp := flag.Bool("help", false, "show configuration help")
 
+	flag.Parse()
+
 	if *configHelp {
 		headerText := "Configuration options:"
 		help, err := cleanenv.GetDescription(&cfg, &headerText)
