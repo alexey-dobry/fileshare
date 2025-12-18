@@ -4,8 +4,9 @@ package file;
 
 option go_package = "/pubfile";
 
-import "google/api/annotations.proto";
 import "google/protobuf/timestamp.proto";
+import "google/api/annotations.proto";
+
 
 /*
  ============================
