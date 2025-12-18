@@ -4,6 +4,6 @@ version: '3'
 
 tasks:
   run:
-    desc: Run service
+    desc: run
     cmds:
       - go run ./cmd/auth/main.go
