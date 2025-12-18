@@ -19,7 +19,7 @@ service FileService {
   // ===== Upload =====
 
   // Upload file (streaming)
-  rpc UploadFile(stream UploadFileRequest) returns (UploadFileResponse) {
+  rpc UploadFileUnary(UploadFileUnaryRequest) returns (UploadFileUnaryResponse) {
     option (google.api.http) = {
       post: "/files/upload"
       body: "*"
@@ -28,9 +28,9 @@ service FileService {
 
   // ===== Download =====
 
-  rpc DownloadFile(DownloadFileRequest) returns (stream DownloadFileResponse) {
+  rpc DownloadFileUnary(DownloadFileUnaryRequest) returns (DownloadFileUnaryResponse) {
     option (google.api.http) = {
-      get: "/files/{file_id}/download"
+      get: "/files/get/{file_id}"
     };
   }
 
@@ -71,25 +71,28 @@ service FileService {
 
 // ---------- Upload ----------
 
-message UploadFileRequest {
-  oneof data {
-    FileMetadata metadata = 1;
-    bytes chunk = 2;
-  }
+message UploadFileUnaryRequest {
+  string filename = 1;
+  string course_id = 2;
+  string group_id = 3;
+  bytes content = 4; // файл целиком
+  string mime_type = 5;
 }
 
-message UploadFileResponse {
+message UploadFileUnaryResponse {
   string file_id = 1;
 }
 
 // ---------- Download ----------
 
-message DownloadFileRequest {
+message DownloadFileUnaryRequest {
   string file_id = 1;
 }
 
-message DownloadFileResponse {
-  bytes chunk = 1;
+message DownloadFileUnaryResponse {
+  bytes content = 1;
+  string filename = 2;
+  string mime_type = 3;
 }
 
 // ---------- Get ----------
