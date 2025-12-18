@@ -666,11 +666,11 @@ const file_user_public_user_proto_rawDesc = "" +
 	"\x1fTeacherGetGroupStudentsResponse\x126\n" +
 	"\fStudentsData\x18\x01 \x03(\v2\x12.user_int.UserDataR\fStudentsData2\x99\x05\n" +
 	"\x04User\x12j\n" +
-	"\fGetMyProfile\x12\x1d.user_int.GetMyProfileRequest\x1a\x1e.user_int.GetMyProfileResponse\"\x1b\x82\xd3\xe4\x93\x02\x15\"\x13/users/{UserID}/get\x12n\n" +
-	"\fGetMyCourses\x12\x1d.user_int.GetMyCoursesRequest\x1a\x1e.user_int.GetMyCoursesResponse\"\x1f\x82\xd3\xe4\x93\x02\x19\"\x17/users/{UserID}/courses\x12\x98\x01\n" +
-	"\x18StudentGetCourseTeachers\x12).user_int.StudentGetCourseTeachersRequest\x1a*.user_int.StudentGetCourseTeachersResponse\"%\x82\xd3\xe4\x93\x02\x1f\"\x1d/users/{CourseID}/teacher/get\x12\x8a\x01\n" +
-	"\x16TeacherGetCourseGroups\x12'.user_int.TeacherGetCourseGroupsRequest\x1a(.user_int.TeacherGetCourseGroupsResponse\"\x1d\x82\xd3\xe4\x93\x02\x17\"\x15/users/{CourseID}/get\x12\x8c\x01\n" +
-	"\x17TeacherGetGroupStudents\x12(.user_int.TeacherGetGroupStudentsRequest\x1a).user_int.TeacherGetGroupStudentsResponse\"\x1c\x82\xd3\xe4\x93\x02\x16\"\x14/users/{GroupID}/getB\n" +
+	"\fGetMyProfile\x12\x1d.user_int.GetMyProfileRequest\x1a\x1e.user_int.GetMyProfileResponse\"\x1b\x82\xd3\xe4\x93\x02\x15\x12\x13/users/{UserID}/get\x12n\n" +
+	"\fGetMyCourses\x12\x1d.user_int.GetMyCoursesRequest\x1a\x1e.user_int.GetMyCoursesResponse\"\x1f\x82\xd3\xe4\x93\x02\x19\x12\x17/users/{UserID}/courses\x12\x98\x01\n" +
+	"\x18StudentGetCourseTeachers\x12).user_int.StudentGetCourseTeachersRequest\x1a*.user_int.StudentGetCourseTeachersResponse\"%\x82\xd3\xe4\x93\x02\x1f\x12\x1d/users/{CourseID}/teacher/get\x12\x8a\x01\n" +
+	"\x16TeacherGetCourseGroups\x12'.user_int.TeacherGetCourseGroupsRequest\x1a(.user_int.TeacherGetCourseGroupsResponse\"\x1d\x82\xd3\xe4\x93\x02\x17\x12\x15/users/{CourseID}/get\x12\x8c\x01\n" +
+	"\x17TeacherGetGroupStudents\x12(.user_int.TeacherGetGroupStudentsRequest\x1a).user_int.TeacherGetGroupStudentsResponse\"\x1c\x82\xd3\xe4\x93\x02\x16\x12\x14/users/{GroupID}/getB\n" +
 	"Z\b/pubuserb\x06proto3"
 
 var (

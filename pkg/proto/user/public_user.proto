@@ -25,30 +25,30 @@ message GroupData {
 service User {
   rpc GetMyProfile(GetMyProfileRequest) returns (GetMyProfileResponse) {
     option (google.api.http) = {
-      post: "/users/{UserID}/get"
+      get: "/users/{UserID}/get"
     };
   };
   rpc GetMyCourses(GetMyCoursesRequest) returns (GetMyCoursesResponse) {
     option (google.api.http) = {
-      post: "/users/{UserID}/courses"
+      get: "/users/{UserID}/courses"
     };
   };
 
   rpc StudentGetCourseTeachers(StudentGetCourseTeachersRequest) returns (StudentGetCourseTeachersResponse) {
     option (google.api.http) = {
-      post: "/users/{CourseID}/teacher/get"
+      get: "/users/{CourseID}/teacher/get"
     };
   };
 
   rpc TeacherGetCourseGroups(TeacherGetCourseGroupsRequest) returns (TeacherGetCourseGroupsResponse) {
     option (google.api.http) = {
-      post: "/users/{CourseID}/get"
+      get: "/users/{CourseID}/get"
     };
   };
 
   rpc TeacherGetGroupStudents(TeacherGetGroupStudentsRequest) returns (TeacherGetGroupStudentsResponse) {
     option (google.api.http) = {
-      post: "/users/{GroupID}/get"
+      get: "/users/{GroupID}/get"
     };
   };
 }
