@@ -22,10 +22,10 @@ func NewPublicServer(logger logger.Logger, repository store.Store, jwtHandler jw
 	return s
 }
 
-func NewInternalServer(logger logger.Logger, repository store.Store, jwtHandler jwt.JWTHandler) *grpc.Server {
+func NewInternalServer(logger logger.Logger, repository store.Store) *grpc.Server {
 	s := grpc.NewServer()
 
-	intauthrpc.RegisterInternalAuthServer(s, internal.New(logger, repository, jwtHandler))
+	intauthrpc.RegisterInternalAuthServer(s, internal.New(logger, repository))
 
 	reflection.Register(s)
 

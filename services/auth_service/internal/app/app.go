@@ -60,7 +60,7 @@ func New(cfg config.Config) App {
 		a.logger.Fatalf("Failed to create jwt handler: %s", err)
 	}
 
-	a.internalServer = authrpc.NewInternalServer(a.logger, a.store, jwtHandler)
+	a.internalServer = authrpc.NewInternalServer(a.logger, a.store)
 	a.publicServer = authrpc.NewPublicServer(a.logger, a.store, jwtHandler)
 
 	a.logger.Info("app was built")

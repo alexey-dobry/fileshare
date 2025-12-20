@@ -96,6 +96,7 @@ func (h *jwtHandler) ValidateJWT(token string, jwtType TokenType) (Claims, error
 		}
 		return secret, nil
 	})
+
 	if errors.Is(err, jwt.ErrTokenExpired) {
 		return Claims{}, ErrJWTTokenExpired
 	} else if err != nil {
