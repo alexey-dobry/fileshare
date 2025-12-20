@@ -136,8 +136,8 @@ const file_proto_auth_internal_auth_proto_rawDesc = "" +
 	"\bpassword\x18\x02 \x01(\tR\bpassword\x12\x12\n" +
 	"\x04role\x18\x03 \x01(\tR\x04role\"0\n" +
 	"\x18DeleteCredentialsRequest\x12\x14\n" +
-	"\x05email\x18\x01 \x01(\tR\x05email2\xac\x01\n" +
-	"\x04Auth\x12S\n" +
+	"\x05email\x18\x01 \x01(\tR\x05email2\xb4\x01\n" +
+	"\fInternalAuth\x12S\n" +
 	"\x13RegisterCredentials\x12$.auth_int.RegisterCredentialsRequest\x1a\x16.google.protobuf.Empty\x12O\n" +
 	"\x11DeleteCredentials\x12\".auth_int.DeleteCredentialsRequest\x1a\x16.google.protobuf.EmptyB\n" +
 	"Z\b/intauthb\x06proto3"
@@ -161,10 +161,10 @@ var file_proto_auth_internal_auth_proto_goTypes = []any{
 	(*emptypb.Empty)(nil),              // 2: google.protobuf.Empty
 }
 var file_proto_auth_internal_auth_proto_depIdxs = []int32{
-	0, // 0: auth_int.Auth.RegisterCredentials:input_type -> auth_int.RegisterCredentialsRequest
-	1, // 1: auth_int.Auth.DeleteCredentials:input_type -> auth_int.DeleteCredentialsRequest
-	2, // 2: auth_int.Auth.RegisterCredentials:output_type -> google.protobuf.Empty
-	2, // 3: auth_int.Auth.DeleteCredentials:output_type -> google.protobuf.Empty
+	0, // 0: auth_int.InternalAuth.RegisterCredentials:input_type -> auth_int.RegisterCredentialsRequest
+	1, // 1: auth_int.InternalAuth.DeleteCredentials:input_type -> auth_int.DeleteCredentialsRequest
+	2, // 2: auth_int.InternalAuth.RegisterCredentials:output_type -> google.protobuf.Empty
+	2, // 3: auth_int.InternalAuth.DeleteCredentials:output_type -> google.protobuf.Empty
 	2, // [2:4] is the sub-list for method output_type
 	0, // [0:2] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name

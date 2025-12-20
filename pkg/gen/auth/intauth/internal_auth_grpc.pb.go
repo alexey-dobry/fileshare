@@ -20,139 +20,139 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	Auth_RegisterCredentials_FullMethodName = "/auth_int.Auth/RegisterCredentials"
-	Auth_DeleteCredentials_FullMethodName   = "/auth_int.Auth/DeleteCredentials"
+	InternalAuth_RegisterCredentials_FullMethodName = "/auth_int.InternalAuth/RegisterCredentials"
+	InternalAuth_DeleteCredentials_FullMethodName   = "/auth_int.InternalAuth/DeleteCredentials"
 )
 
-// AuthClient is the client API for Auth service.
+// InternalAuthClient is the client API for InternalAuth service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type AuthClient interface {
+type InternalAuthClient interface {
 	RegisterCredentials(ctx context.Context, in *RegisterCredentialsRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	DeleteCredentials(ctx context.Context, in *DeleteCredentialsRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
-type authClient struct {
+type internalAuthClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewAuthClient(cc grpc.ClientConnInterface) AuthClient {
-	return &authClient{cc}
+func NewInternalAuthClient(cc grpc.ClientConnInterface) InternalAuthClient {
+	return &internalAuthClient{cc}
 }
 
-func (c *authClient) RegisterCredentials(ctx context.Context, in *RegisterCredentialsRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *internalAuthClient) RegisterCredentials(ctx context.Context, in *RegisterCredentialsRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, Auth_RegisterCredentials_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, InternalAuth_RegisterCredentials_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *authClient) DeleteCredentials(ctx context.Context, in *DeleteCredentialsRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *internalAuthClient) DeleteCredentials(ctx context.Context, in *DeleteCredentialsRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, Auth_DeleteCredentials_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, InternalAuth_DeleteCredentials_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// AuthServer is the server API for Auth service.
-// All implementations must embed UnimplementedAuthServer
+// InternalAuthServer is the server API for InternalAuth service.
+// All implementations must embed UnimplementedInternalAuthServer
 // for forward compatibility.
-type AuthServer interface {
+type InternalAuthServer interface {
 	RegisterCredentials(context.Context, *RegisterCredentialsRequest) (*emptypb.Empty, error)
 	DeleteCredentials(context.Context, *DeleteCredentialsRequest) (*emptypb.Empty, error)
-	mustEmbedUnimplementedAuthServer()
+	mustEmbedUnimplementedInternalAuthServer()
 }
 
-// UnimplementedAuthServer must be embedded to have
+// UnimplementedInternalAuthServer must be embedded to have
 // forward compatible implementations.
 //
 // NOTE: this should be embedded by value instead of pointer to avoid a nil
 // pointer dereference when methods are called.
-type UnimplementedAuthServer struct{}
+type UnimplementedInternalAuthServer struct{}
 
-func (UnimplementedAuthServer) RegisterCredentials(context.Context, *RegisterCredentialsRequest) (*emptypb.Empty, error) {
+func (UnimplementedInternalAuthServer) RegisterCredentials(context.Context, *RegisterCredentialsRequest) (*emptypb.Empty, error) {
 	return nil, status.Error(codes.Unimplemented, "method RegisterCredentials not implemented")
 }
-func (UnimplementedAuthServer) DeleteCredentials(context.Context, *DeleteCredentialsRequest) (*emptypb.Empty, error) {
+func (UnimplementedInternalAuthServer) DeleteCredentials(context.Context, *DeleteCredentialsRequest) (*emptypb.Empty, error) {
 	return nil, status.Error(codes.Unimplemented, "method DeleteCredentials not implemented")
 }
-func (UnimplementedAuthServer) mustEmbedUnimplementedAuthServer() {}
-func (UnimplementedAuthServer) testEmbeddedByValue()              {}
+func (UnimplementedInternalAuthServer) mustEmbedUnimplementedInternalAuthServer() {}
+func (UnimplementedInternalAuthServer) testEmbeddedByValue()                      {}
 
-// UnsafeAuthServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to AuthServer will
+// UnsafeInternalAuthServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to InternalAuthServer will
 // result in compilation errors.
-type UnsafeAuthServer interface {
-	mustEmbedUnimplementedAuthServer()
+type UnsafeInternalAuthServer interface {
+	mustEmbedUnimplementedInternalAuthServer()
 }
 
-func RegisterAuthServer(s grpc.ServiceRegistrar, srv AuthServer) {
-	// If the following call panics, it indicates UnimplementedAuthServer was
+func RegisterInternalAuthServer(s grpc.ServiceRegistrar, srv InternalAuthServer) {
+	// If the following call panics, it indicates UnimplementedInternalAuthServer was
 	// embedded by pointer and is nil.  This will cause panics if an
 	// unimplemented method is ever invoked, so we test this at initialization
 	// time to prevent it from happening at runtime later due to I/O.
 	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
 		t.testEmbeddedByValue()
 	}
-	s.RegisterService(&Auth_ServiceDesc, srv)
+	s.RegisterService(&InternalAuth_ServiceDesc, srv)
 }
 
-func _Auth_RegisterCredentials_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _InternalAuth_RegisterCredentials_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(RegisterCredentialsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AuthServer).RegisterCredentials(ctx, in)
+		return srv.(InternalAuthServer).RegisterCredentials(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Auth_RegisterCredentials_FullMethodName,
+		FullMethod: InternalAuth_RegisterCredentials_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthServer).RegisterCredentials(ctx, req.(*RegisterCredentialsRequest))
+		return srv.(InternalAuthServer).RegisterCredentials(ctx, req.(*RegisterCredentialsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Auth_DeleteCredentials_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _InternalAuth_DeleteCredentials_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DeleteCredentialsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AuthServer).DeleteCredentials(ctx, in)
+		return srv.(InternalAuthServer).DeleteCredentials(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Auth_DeleteCredentials_FullMethodName,
+		FullMethod: InternalAuth_DeleteCredentials_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthServer).DeleteCredentials(ctx, req.(*DeleteCredentialsRequest))
+		return srv.(InternalAuthServer).DeleteCredentials(ctx, req.(*DeleteCredentialsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// Auth_ServiceDesc is the grpc.ServiceDesc for Auth service.
+// InternalAuth_ServiceDesc is the grpc.ServiceDesc for InternalAuth service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var Auth_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "auth_int.Auth",
-	HandlerType: (*AuthServer)(nil),
+var InternalAuth_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "auth_int.InternalAuth",
+	HandlerType: (*InternalAuthServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "RegisterCredentials",
-			Handler:    _Auth_RegisterCredentials_Handler,
+			Handler:    _InternalAuth_RegisterCredentials_Handler,
 		},
 		{
 			MethodName: "DeleteCredentials",
-			Handler:    _Auth_DeleteCredentials_Handler,
+			Handler:    _InternalAuth_DeleteCredentials_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

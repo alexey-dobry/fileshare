@@ -6,7 +6,7 @@ option go_package = "/intauth";
 
 import "google/protobuf/empty.proto";
 
-service Auth {
+service InternalAuth {
   rpc RegisterCredentials (RegisterCredentialsRequest) returns (google.protobuf.Empty);
   rpc DeleteCredentials (DeleteCredentialsRequest) returns (google.protobuf.Empty);
 }
