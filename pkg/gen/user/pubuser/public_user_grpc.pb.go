@@ -19,11 +19,11 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	User_GetMyProfile_FullMethodName             = "/user_int.User/GetMyProfile"
-	User_GetMyCourses_FullMethodName             = "/user_int.User/GetMyCourses"
-	User_StudentGetCourseTeachers_FullMethodName = "/user_int.User/StudentGetCourseTeachers"
-	User_TeacherGetCourseGroups_FullMethodName   = "/user_int.User/TeacherGetCourseGroups"
-	User_TeacherGetGroupStudents_FullMethodName  = "/user_int.User/TeacherGetGroupStudents"
+	User_GetMyProfile_FullMethodName             = "/user_pub.User/GetMyProfile"
+	User_GetMyCourses_FullMethodName             = "/user_pub.User/GetMyCourses"
+	User_StudentGetCourseTeachers_FullMethodName = "/user_pub.User/StudentGetCourseTeachers"
+	User_TeacherGetCourseGroups_FullMethodName   = "/user_pub.User/TeacherGetCourseGroups"
+	User_TeacherGetGroupStudents_FullMethodName  = "/user_pub.User/TeacherGetGroupStudents"
 )
 
 // UserClient is the client API for User service.
@@ -244,7 +244,7 @@ func _User_TeacherGetGroupStudents_Handler(srv interface{}, ctx context.Context,
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var User_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "user_int.User",
+	ServiceName: "user_pub.User",
 	HandlerType: (*UserServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{

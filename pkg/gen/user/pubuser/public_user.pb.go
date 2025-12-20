@@ -630,7 +630,7 @@ var File_user_public_user_proto protoreflect.FileDescriptor
 
 const file_user_public_user_proto_rawDesc = "" +
 	"\n" +
-	"\x16user/public_user.proto\x12\buser_int\x1a\x1cgoogle/api/annotations.proto\"d\n" +
+	"\x16user/public_user.proto\x12\buser_pub\x1a\x1cgoogle/api/annotations.proto\"d\n" +
 	"\bUserData\x12\x1a\n" +
 	"\bFullName\x18\x01 \x01(\tR\bFullName\x12\x14\n" +
 	"\x05Email\x18\x02 \x01(\tR\x05Email\x12\x1b\n" +
@@ -648,29 +648,29 @@ const file_user_public_user_proto_rawDesc = "" +
 	"\x13GetMyProfileRequest\x12\x16\n" +
 	"\x06UserID\x18\x01 \x01(\tR\x06UserID\"L\n" +
 	"\x14GetMyProfileResponse\x124\n" +
-	"\vProfileData\x18\x01 \x01(\v2\x12.user_int.UserDataR\vProfileData\"-\n" +
+	"\vProfileData\x18\x01 \x01(\v2\x12.user_pub.UserDataR\vProfileData\"-\n" +
 	"\x13GetMyCoursesRequest\x12\x16\n" +
 	"\x06UserID\x18\x01 \x01(\tR\x06UserID\"F\n" +
 	"\x14GetMyCoursesResponse\x12.\n" +
-	"\aCourses\x18\x01 \x03(\v2\x14.user_int.CourseDataR\aCourses\"=\n" +
+	"\aCourses\x18\x01 \x03(\v2\x14.user_pub.CourseDataR\aCourses\"=\n" +
 	"\x1fStudentGetCourseTeachersRequest\x12\x1a\n" +
 	"\bCourseID\x18\x01 \x01(\tR\bCourseID\"Z\n" +
 	" StudentGetCourseTeachersResponse\x126\n" +
-	"\fTeachersData\x18\x01 \x03(\v2\x12.user_int.UserDataR\fTeachersData\";\n" +
+	"\fTeachersData\x18\x01 \x03(\v2\x12.user_pub.UserDataR\fTeachersData\";\n" +
 	"\x1dTeacherGetCourseGroupsRequest\x12\x1a\n" +
 	"\bCourseID\x18\x01 \x01(\tR\bCourseID\"M\n" +
 	"\x1eTeacherGetCourseGroupsResponse\x12+\n" +
-	"\x06Groups\x18\x01 \x03(\v2\x13.user_int.GroupDataR\x06Groups\":\n" +
+	"\x06Groups\x18\x01 \x03(\v2\x13.user_pub.GroupDataR\x06Groups\":\n" +
 	"\x1eTeacherGetGroupStudentsRequest\x12\x18\n" +
 	"\aGroupID\x18\x01 \x01(\tR\aGroupID\"Y\n" +
 	"\x1fTeacherGetGroupStudentsResponse\x126\n" +
-	"\fStudentsData\x18\x01 \x03(\v2\x12.user_int.UserDataR\fStudentsData2\x99\x05\n" +
+	"\fStudentsData\x18\x01 \x03(\v2\x12.user_pub.UserDataR\fStudentsData2\x99\x05\n" +
 	"\x04User\x12j\n" +
-	"\fGetMyProfile\x12\x1d.user_int.GetMyProfileRequest\x1a\x1e.user_int.GetMyProfileResponse\"\x1b\x82\xd3\xe4\x93\x02\x15\x12\x13/users/{UserID}/get\x12n\n" +
-	"\fGetMyCourses\x12\x1d.user_int.GetMyCoursesRequest\x1a\x1e.user_int.GetMyCoursesResponse\"\x1f\x82\xd3\xe4\x93\x02\x19\x12\x17/users/{UserID}/courses\x12\x98\x01\n" +
-	"\x18StudentGetCourseTeachers\x12).user_int.StudentGetCourseTeachersRequest\x1a*.user_int.StudentGetCourseTeachersResponse\"%\x82\xd3\xe4\x93\x02\x1f\x12\x1d/users/{CourseID}/teacher/get\x12\x8a\x01\n" +
-	"\x16TeacherGetCourseGroups\x12'.user_int.TeacherGetCourseGroupsRequest\x1a(.user_int.TeacherGetCourseGroupsResponse\"\x1d\x82\xd3\xe4\x93\x02\x17\x12\x15/users/{CourseID}/get\x12\x8c\x01\n" +
-	"\x17TeacherGetGroupStudents\x12(.user_int.TeacherGetGroupStudentsRequest\x1a).user_int.TeacherGetGroupStudentsResponse\"\x1c\x82\xd3\xe4\x93\x02\x16\x12\x14/users/{GroupID}/getB\n" +
+	"\fGetMyProfile\x12\x1d.user_pub.GetMyProfileRequest\x1a\x1e.user_pub.GetMyProfileResponse\"\x1b\x82\xd3\xe4\x93\x02\x15\x12\x13/users/{UserID}/get\x12n\n" +
+	"\fGetMyCourses\x12\x1d.user_pub.GetMyCoursesRequest\x1a\x1e.user_pub.GetMyCoursesResponse\"\x1f\x82\xd3\xe4\x93\x02\x19\x12\x17/users/{UserID}/courses\x12\x98\x01\n" +
+	"\x18StudentGetCourseTeachers\x12).user_pub.StudentGetCourseTeachersRequest\x1a*.user_pub.StudentGetCourseTeachersResponse\"%\x82\xd3\xe4\x93\x02\x1f\x12\x1d/users/{CourseID}/teacher/get\x12\x8a\x01\n" +
+	"\x16TeacherGetCourseGroups\x12'.user_pub.TeacherGetCourseGroupsRequest\x1a(.user_pub.TeacherGetCourseGroupsResponse\"\x1d\x82\xd3\xe4\x93\x02\x17\x12\x15/users/{CourseID}/get\x12\x8c\x01\n" +
+	"\x17TeacherGetGroupStudents\x12(.user_pub.TeacherGetGroupStudentsRequest\x1a).user_pub.TeacherGetGroupStudentsResponse\"\x1c\x82\xd3\xe4\x93\x02\x16\x12\x14/users/{GroupID}/getB\n" +
 	"Z\b/pubuserb\x06proto3"
 
 var (
@@ -687,36 +687,36 @@ func file_user_public_user_proto_rawDescGZIP() []byte {
 
 var file_user_public_user_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
 var file_user_public_user_proto_goTypes = []any{
-	(*UserData)(nil),                         // 0: user_int.UserData
-	(*CourseData)(nil),                       // 1: user_int.CourseData
-	(*GroupData)(nil),                        // 2: user_int.GroupData
-	(*GetMyProfileRequest)(nil),              // 3: user_int.GetMyProfileRequest
-	(*GetMyProfileResponse)(nil),             // 4: user_int.GetMyProfileResponse
-	(*GetMyCoursesRequest)(nil),              // 5: user_int.GetMyCoursesRequest
-	(*GetMyCoursesResponse)(nil),             // 6: user_int.GetMyCoursesResponse
-	(*StudentGetCourseTeachersRequest)(nil),  // 7: user_int.StudentGetCourseTeachersRequest
-	(*StudentGetCourseTeachersResponse)(nil), // 8: user_int.StudentGetCourseTeachersResponse
-	(*TeacherGetCourseGroupsRequest)(nil),    // 9: user_int.TeacherGetCourseGroupsRequest
-	(*TeacherGetCourseGroupsResponse)(nil),   // 10: user_int.TeacherGetCourseGroupsResponse
-	(*TeacherGetGroupStudentsRequest)(nil),   // 11: user_int.TeacherGetGroupStudentsRequest
-	(*TeacherGetGroupStudentsResponse)(nil),  // 12: user_int.TeacherGetGroupStudentsResponse
+	(*UserData)(nil),                         // 0: user_pub.UserData
+	(*CourseData)(nil),                       // 1: user_pub.CourseData
+	(*GroupData)(nil),                        // 2: user_pub.GroupData
+	(*GetMyProfileRequest)(nil),              // 3: user_pub.GetMyProfileRequest
+	(*GetMyProfileResponse)(nil),             // 4: user_pub.GetMyProfileResponse
+	(*GetMyCoursesRequest)(nil),              // 5: user_pub.GetMyCoursesRequest
+	(*GetMyCoursesResponse)(nil),             // 6: user_pub.GetMyCoursesResponse
+	(*StudentGetCourseTeachersRequest)(nil),  // 7: user_pub.StudentGetCourseTeachersRequest
+	(*StudentGetCourseTeachersResponse)(nil), // 8: user_pub.StudentGetCourseTeachersResponse
+	(*TeacherGetCourseGroupsRequest)(nil),    // 9: user_pub.TeacherGetCourseGroupsRequest
+	(*TeacherGetCourseGroupsResponse)(nil),   // 10: user_pub.TeacherGetCourseGroupsResponse
+	(*TeacherGetGroupStudentsRequest)(nil),   // 11: user_pub.TeacherGetGroupStudentsRequest
+	(*TeacherGetGroupStudentsResponse)(nil),  // 12: user_pub.TeacherGetGroupStudentsResponse
 }
 var file_user_public_user_proto_depIdxs = []int32{
-	0,  // 0: user_int.GetMyProfileResponse.ProfileData:type_name -> user_int.UserData
-	1,  // 1: user_int.GetMyCoursesResponse.Courses:type_name -> user_int.CourseData
-	0,  // 2: user_int.StudentGetCourseTeachersResponse.TeachersData:type_name -> user_int.UserData
-	2,  // 3: user_int.TeacherGetCourseGroupsResponse.Groups:type_name -> user_int.GroupData
-	0,  // 4: user_int.TeacherGetGroupStudentsResponse.StudentsData:type_name -> user_int.UserData
-	3,  // 5: user_int.User.GetMyProfile:input_type -> user_int.GetMyProfileRequest
-	5,  // 6: user_int.User.GetMyCourses:input_type -> user_int.GetMyCoursesRequest
-	7,  // 7: user_int.User.StudentGetCourseTeachers:input_type -> user_int.StudentGetCourseTeachersRequest
-	9,  // 8: user_int.User.TeacherGetCourseGroups:input_type -> user_int.TeacherGetCourseGroupsRequest
-	11, // 9: user_int.User.TeacherGetGroupStudents:input_type -> user_int.TeacherGetGroupStudentsRequest
-	4,  // 10: user_int.User.GetMyProfile:output_type -> user_int.GetMyProfileResponse
-	6,  // 11: user_int.User.GetMyCourses:output_type -> user_int.GetMyCoursesResponse
-	8,  // 12: user_int.User.StudentGetCourseTeachers:output_type -> user_int.StudentGetCourseTeachersResponse
-	10, // 13: user_int.User.TeacherGetCourseGroups:output_type -> user_int.TeacherGetCourseGroupsResponse
-	12, // 14: user_int.User.TeacherGetGroupStudents:output_type -> user_int.TeacherGetGroupStudentsResponse
+	0,  // 0: user_pub.GetMyProfileResponse.ProfileData:type_name -> user_pub.UserData
+	1,  // 1: user_pub.GetMyCoursesResponse.Courses:type_name -> user_pub.CourseData
+	0,  // 2: user_pub.StudentGetCourseTeachersResponse.TeachersData:type_name -> user_pub.UserData
+	2,  // 3: user_pub.TeacherGetCourseGroupsResponse.Groups:type_name -> user_pub.GroupData
+	0,  // 4: user_pub.TeacherGetGroupStudentsResponse.StudentsData:type_name -> user_pub.UserData
+	3,  // 5: user_pub.User.GetMyProfile:input_type -> user_pub.GetMyProfileRequest
+	5,  // 6: user_pub.User.GetMyCourses:input_type -> user_pub.GetMyCoursesRequest
+	7,  // 7: user_pub.User.StudentGetCourseTeachers:input_type -> user_pub.StudentGetCourseTeachersRequest
+	9,  // 8: user_pub.User.TeacherGetCourseGroups:input_type -> user_pub.TeacherGetCourseGroupsRequest
+	11, // 9: user_pub.User.TeacherGetGroupStudents:input_type -> user_pub.TeacherGetGroupStudentsRequest
+	4,  // 10: user_pub.User.GetMyProfile:output_type -> user_pub.GetMyProfileResponse
+	6,  // 11: user_pub.User.GetMyCourses:output_type -> user_pub.GetMyCoursesResponse
+	8,  // 12: user_pub.User.StudentGetCourseTeachers:output_type -> user_pub.StudentGetCourseTeachersResponse
+	10, // 13: user_pub.User.TeacherGetCourseGroups:output_type -> user_pub.TeacherGetCourseGroupsResponse
+	12, // 14: user_pub.User.TeacherGetGroupStudents:output_type -> user_pub.TeacherGetGroupStudentsResponse
 	10, // [10:15] is the sub-list for method output_type
 	5,  // [5:10] is the sub-list for method input_type
 	5,  // [5:5] is the sub-list for extension type_name

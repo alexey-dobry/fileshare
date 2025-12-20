@@ -242,7 +242,7 @@ func RegisterUserHandlerServer(ctx context.Context, mux *runtime.ServeMux, serve
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/user_int.User/GetMyProfile", runtime.WithHTTPPathPattern("/users/{UserID}/get"))
+		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/user_pub.User/GetMyProfile", runtime.WithHTTPPathPattern("/users/{UserID}/get"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -262,7 +262,7 @@ func RegisterUserHandlerServer(ctx context.Context, mux *runtime.ServeMux, serve
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/user_int.User/GetMyCourses", runtime.WithHTTPPathPattern("/users/{UserID}/courses"))
+		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/user_pub.User/GetMyCourses", runtime.WithHTTPPathPattern("/users/{UserID}/courses"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -282,7 +282,7 @@ func RegisterUserHandlerServer(ctx context.Context, mux *runtime.ServeMux, serve
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/user_int.User/StudentGetCourseTeachers", runtime.WithHTTPPathPattern("/users/{CourseID}/teacher/get"))
+		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/user_pub.User/StudentGetCourseTeachers", runtime.WithHTTPPathPattern("/users/{CourseID}/teacher/get"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -302,7 +302,7 @@ func RegisterUserHandlerServer(ctx context.Context, mux *runtime.ServeMux, serve
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/user_int.User/TeacherGetCourseGroups", runtime.WithHTTPPathPattern("/users/{CourseID}/get"))
+		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/user_pub.User/TeacherGetCourseGroups", runtime.WithHTTPPathPattern("/users/{CourseID}/get"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -322,7 +322,7 @@ func RegisterUserHandlerServer(ctx context.Context, mux *runtime.ServeMux, serve
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/user_int.User/TeacherGetGroupStudents", runtime.WithHTTPPathPattern("/users/{GroupID}/get"))
+		annotatedContext, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/user_pub.User/TeacherGetGroupStudents", runtime.WithHTTPPathPattern("/users/{GroupID}/get"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -380,7 +380,7 @@ func RegisterUserHandlerClient(ctx context.Context, mux *runtime.ServeMux, clien
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/user_int.User/GetMyProfile", runtime.WithHTTPPathPattern("/users/{UserID}/get"))
+		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/user_pub.User/GetMyProfile", runtime.WithHTTPPathPattern("/users/{UserID}/get"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -397,7 +397,7 @@ func RegisterUserHandlerClient(ctx context.Context, mux *runtime.ServeMux, clien
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/user_int.User/GetMyCourses", runtime.WithHTTPPathPattern("/users/{UserID}/courses"))
+		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/user_pub.User/GetMyCourses", runtime.WithHTTPPathPattern("/users/{UserID}/courses"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -414,7 +414,7 @@ func RegisterUserHandlerClient(ctx context.Context, mux *runtime.ServeMux, clien
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/user_int.User/StudentGetCourseTeachers", runtime.WithHTTPPathPattern("/users/{CourseID}/teacher/get"))
+		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/user_pub.User/StudentGetCourseTeachers", runtime.WithHTTPPathPattern("/users/{CourseID}/teacher/get"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -431,7 +431,7 @@ func RegisterUserHandlerClient(ctx context.Context, mux *runtime.ServeMux, clien
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/user_int.User/TeacherGetCourseGroups", runtime.WithHTTPPathPattern("/users/{CourseID}/get"))
+		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/user_pub.User/TeacherGetCourseGroups", runtime.WithHTTPPathPattern("/users/{CourseID}/get"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -448,7 +448,7 @@ func RegisterUserHandlerClient(ctx context.Context, mux *runtime.ServeMux, clien
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/user_int.User/TeacherGetGroupStudents", runtime.WithHTTPPathPattern("/users/{GroupID}/get"))
+		annotatedContext, err := runtime.AnnotateContext(ctx, mux, req, "/user_pub.User/TeacherGetGroupStudents", runtime.WithHTTPPathPattern("/users/{GroupID}/get"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
