@@ -37,7 +37,7 @@ func (r *Repository) GetGroupByUserID(userID string) (models.Group, error) {
 	// build query
 	query, args, err := psql.Select("id", "name", "created_at").
 		From("groups").
-		Join("groups_users ON groups.id = groups_users.group_id").
+		Join("user_group ON groups.id = user_group.group_id").
 		Where(squirrel.Eq{"user_id": userID}).
 		ToSql()
 	if err != nil {
@@ -59,17 +59,14 @@ func (r *Repository) GetGroupsByUserID(userID string) ([]models.Group, error) {
 	result := make([]models.Group, 0)
 
 	// build query
-	query := `
-	SELECT
-			g.*
-	FROM group_user gu
-	JOIN groups g
-			ON g.id = gu.group_id
-	WHERE gu.user_id = %s;
-	`
+	query, args, err := squirrel.Select("g.id", "g.name", "g.created_at").
+		From("user_group gu").
+		Join("groups g ON g.id = gu.group_id").
+		Where(squirrel.Eq{"gu.user_id": userID}).
+		ToSql()
 
 	// executing query
-	rows, err := r.db.Query(query, userID)
+	rows, err := r.db.Query(query, args...)
 	if err != nil {
 		return []models.Group{}, err
 	}
@@ -92,7 +89,7 @@ func (r *Repository) AssignUserToGroup(userID, groupID string) error {
 	psql := squirrel.StatementBuilder.PlaceholderFormat(squirrel.Dollar)
 
 	// build query
-	query, args, err := psql.Insert("groups_users").
+	query, args, err := psql.Insert("user_group").
 		Columns("user_id", "group_id").
 		Values(userID, groupID).
 		ToSql()
@@ -135,10 +132,10 @@ func (r *Repository) GetGroupsByCourseID(courseID string) ([]models.Group, error
 	psql := squirrel.StatementBuilder.PlaceholderFormat(squirrel.Dollar)
 
 	// build query
-	query, args, err := psql.Select("id", "name", "created_at").
-		From("groups").
-		Join("groups_courses ON groups.id = groups_courses.group_id").
-		Where(squirrel.Eq{"course_id": courseID}).
+	query, args, err := psql.Select("g.id", "g.name", "g.created_at").
+		From("groups g").
+		Join(`group_course gc ON gc.group_id = g.id`).
+		Where(squirrel.Eq{"gc.course_id": courseID}).
 		ToSql()
 	if err != nil {
 		return []models.Group{}, err
@@ -167,7 +164,7 @@ func (r *Repository) AttachGroupToCourse(courseID, groupID string) error {
 	psql := squirrel.StatementBuilder.PlaceholderFormat(squirrel.Dollar)
 
 	// build query
-	query, args, err := psql.Insert("groups_courses").
+	query, args, err := psql.Insert("group_course").
 		Columns("course_id", "group_id").
 		Values(courseID, groupID).
 		ToSql()
@@ -188,7 +185,7 @@ func (r *Repository) DetachGroupToCourse(groupID string) error {
 	psql := squirrel.StatementBuilder.PlaceholderFormat(squirrel.Dollar)
 
 	// build query
-	query, args, err := psql.Delete("groups_courses").
+	query, args, err := psql.Delete("group_course").
 		Where(squirrel.Eq{"group_id": groupID}).
 		ToSql()
 	if err != nil {
@@ -212,7 +209,6 @@ func (r *Repository) GetGroups() ([]models.Group, error) {
 	// build query
 	query, args, err := psql.Select("id", "name", "created_at").
 		From("groups").
-		Offset(15).
 		ToSql()
 	if err != nil {
 		return []models.Group{}, err

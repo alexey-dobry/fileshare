@@ -10,15 +10,17 @@ import (
 	"github.com/alexey-dobry/fileshare/services/user_service/internal/store/pg/group"
 	"github.com/alexey-dobry/fileshare/services/user_service/internal/store/pg/user"
 
+	"github.com/pressly/goose/v3"
+
 	_ "github.com/lib/pq"
 )
 
 type Config struct {
-	Host     string `mapstructure:"host"`
-	Port     int    `validate:"required" mapstructure:"port"`
-	User     string `validate:"required" mapstructure:"user"`
-	Password string `validate:"required" mapstructure:"password"`
-	DB       string `validate:"required" mapstructure:"db"`
+	Host     string `yaml:"host"`
+	Port     string `validate:"required" yaml:"port"`
+	User     string `validate:"required" yaml:"user"`
+	Password string `validate:"required" yaml:"password"`
+	DB       string `yaml:"database"`
 }
 
 type pgStore struct {
@@ -33,7 +35,13 @@ func New(logger logger.Logger, cfg Config) (store.Store, error) {
 	logger = logger.WithFields("layer", "pgstore")
 
 	// pgs connection string
-	dsn := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable", cfg.Host, cfg.Port, cfg.User, cfg.Password, cfg.DB)
+	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=disable",
+		cfg.Host,
+		cfg.User,
+		cfg.Password,
+		cfg.DB,
+		cfg.Port,
+	)
 
 	// opening sql connection
 	db, err := sql.Open("postgres", dsn)
@@ -48,6 +56,12 @@ func New(logger logger.Logger, cfg Config) (store.Store, error) {
 	}
 
 	logger.Info("pgstore was connected")
+
+	if err := goose.Up(db, "migrations"); err != nil {
+		return nil, err
+	}
+
+	logger.Info("migrations are up")
 
 	return &pgStore{
 		db:     db,

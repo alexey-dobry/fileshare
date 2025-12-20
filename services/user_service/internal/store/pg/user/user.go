@@ -10,7 +10,7 @@ func (r *Repository) CreateUser(userData models.User) error {
 	psql := squirrel.StatementBuilder.PlaceholderFormat(squirrel.Dollar)
 
 	// build query
-	query, args, err := psql.Insert("users").
+	query, args, err := psql.Insert("user").
 		Columns("uuid", "name", "surname", "email", "role", "created_at").
 		Values(userData.ID, userData.Name, userData.Surname, userData.Email, userData.Role, userData.CreatedAt).
 		ToSql()
@@ -34,7 +34,7 @@ func (r *Repository) GetUserByID(ID string) (models.User, error) {
 
 	// build query
 	query, args, err := psql.Select("name", "surname", "email").
-		From("users").
+		From("user").
 		Where(squirrel.Eq{"uuid": ID}).
 		ToSql()
 	if err != nil {
@@ -56,7 +56,7 @@ func (r *Repository) DeleteUser(Email string) error {
 	psql := squirrel.StatementBuilder.PlaceholderFormat(squirrel.Dollar)
 
 	// build query
-	query, args, err := psql.Delete("users").
+	query, args, err := psql.Delete("user").
 		Where(squirrel.Eq{"email": Email}).
 		ToSql()
 	if err != nil {
@@ -79,8 +79,8 @@ func (r *Repository) GetUsersByGroupID(groupID string) ([]models.User, error) {
 
 	// build query
 	query, args, err := psql.Select("uuid", "name", "surname", "email").
-		From("groups_users").
-		Join("users ON groups_users.user_id = users.uuid").
+		From("user_group").
+		Join("user ON user_group.user_id = user.uuid").
 		Where(squirrel.Eq{"group_id": groupID}).
 		ToSql()
 	if err != nil {
@@ -95,7 +95,7 @@ func (r *Repository) GetUsersByGroupID(groupID string) ([]models.User, error) {
 
 	for rows.Next() {
 		var u models.User
-		err = rows.Scan(&u.ID, &u.Name, &u.CreatedAt)
+		err = rows.Scan(&u.ID, &u.Name, &u.Surname, &u.Email)
 		if err != nil {
 			return []models.User{}, err
 		}
@@ -113,8 +113,8 @@ func (r *Repository) GetTeachersByCourseID(courseID string) ([]models.User, erro
 
 	// build query
 	query, args, err := psql.Select("uuid", "name", "surname", "email").
-		From("users").
-		Join("teacher_courses ON teacher_courses.user_id = users.uuid").
+		From("user").
+		Join("teacher_course ON teacher_course.user_id = user.uuid").
 		Where(squirrel.Eq{"course_id": courseID}).
 		ToSql()
 	if err != nil {
@@ -129,7 +129,7 @@ func (r *Repository) GetTeachersByCourseID(courseID string) ([]models.User, erro
 
 	for rows.Next() {
 		var u models.User
-		err = rows.Scan(&u.ID, &u.Name, &u.CreatedAt)
+		err = rows.Scan(&u.ID, &u.Name, &u.Surname, &u.Email)
 		if err != nil {
 			return []models.User{}, err
 		}

@@ -10,7 +10,7 @@ func (r *Repository) CreateCourse(courseData models.Course) error {
 	psql := squirrel.StatementBuilder.PlaceholderFormat(squirrel.Dollar)
 
 	// build query
-	query, args, err := psql.Insert("courses").
+	query, args, err := psql.Insert("course").
 		Columns("name", "created_at").
 		Values(courseData.Name, courseData.CreatedAt).
 		ToSql()
@@ -31,21 +31,19 @@ func (r *Repository) GetCoursesByUserID(userID string) ([]models.Course, error) 
 	result := make([]models.Course, 0)
 
 	// build query
-	query := `
-	SELECT DISTINCT
-			c.*
-	FROM users u
-	JOIN groups_users gu
-			ON gu.user_id = u.id
-	JOIN courses_groups cg
-			ON cg.group_id = gu.group_id
-	JOIN courses c
-			ON c.id = cg.course_id
-	WHERE u.uuid = %s;
-	`
+	query, args, err := squirrel.Select("c.id", "c.name", "c.created_at").
+		From("user u").
+		Join("user_group gu ON gu.user_id = u.id").
+		Join("group_course gc ON gc.group_id = gu.group_id").
+		Join("course c ON c.id = gc.course_id").
+		Where(squirrel.Eq{"u.uuid": userID}).
+		ToSql()
+	if err != nil {
+		return []models.Course{}, err
+	}
 
 	// executing query
-	rows, err := r.db.Query(query, userID)
+	rows, err := r.db.Query(query, args...)
 	if err != nil {
 		return []models.Course{}, err
 	}
@@ -68,8 +66,8 @@ func (r *Repository) AssignTeacherToCourse(teacherID, courseID string) error {
 	psql := squirrel.StatementBuilder.PlaceholderFormat(squirrel.Dollar)
 
 	// build query
-	query, args, err := psql.Insert("groups_courses").
-		Columns("teacher_id", "course_id").
+	query, args, err := psql.Insert("teacher_course").
+		Columns("user_id", "course_id").
 		Values(teacherID, courseID).
 		ToSql()
 	if err != nil {
@@ -89,7 +87,7 @@ func (r *Repository) DeleteCourse(ID string) error {
 	psql := squirrel.StatementBuilder.PlaceholderFormat(squirrel.Dollar)
 
 	// build query
-	query, args, err := psql.Delete("courses").
+	query, args, err := psql.Delete("course").
 		Where(squirrel.Eq{"id": ID}).
 		ToSql()
 	if err != nil {
@@ -109,8 +107,9 @@ func (r *Repository) DetachTeacherToCourse(teacherID string) error {
 	psql := squirrel.StatementBuilder.PlaceholderFormat(squirrel.Dollar)
 
 	// build query
-	query, args, err := psql.Delete("groups_courses").
-		Where(squirrel.Eq{"teacher_id": teacherID}).
+	query, args, err := psql.
+		Delete("teacher_course").
+		Where(squirrel.Eq{"user_id": teacherID}).
 		ToSql()
 	if err != nil {
 		return err
@@ -132,8 +131,7 @@ func (r *Repository) GetCourses() ([]models.Course, error) {
 
 	// build query
 	query, args, err := psql.Select("id", "name", "created_at").
-		From("courses").
-		Offset(15).
+		From("course").
 		ToSql()
 	if err != nil {
 		return []models.Course{}, err

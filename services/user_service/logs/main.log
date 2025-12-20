@@ -1,0 +1,36 @@
+{"L":"FATAL","T":"2025-12-20T11:10:24.460+0300","M":"Failed to create store instance: pq: SSL is not enabled on the server","layer":"app"}
+{"L":"FATAL","T":"2025-12-20T11:12:38.163+0300","M":"Failed to create store instance: pq: SSL is not enabled on the server","layer":"app"}
+{"L":"FATAL","T":"2025-12-20T11:15:03.963+0300","M":"Failed to create store instance: pq: database \"port=%!s(int=5432)\" does not exist","layer":"app"}
+{"L":"FATAL","T":"2025-12-20T11:15:34.452+0300","M":"Failed to create store instance: pq: database \"port=5432\" does not exist","layer":"app"}
+{"L":"INFO","T":"2025-12-20T11:16:18.404+0300","M":"pgstore was connected","layer":"app","layer":"pgstore"}
+{"L":"ERROR","T":"2025-12-20T11:16:18.407+0300","M":"Ignored key without a value.","layer":"app","ignored":"internal"}
+{"L":"ERROR","T":"2025-12-20T11:16:18.407+0300","M":"Ignored key without a value.","layer":"app","ignored":"public"}
+{"L":"INFO","T":"2025-12-20T11:16:18.407+0300","M":"app was built","layer":"app"}
+{"L":"INFO","T":"2025-12-20T11:16:18.407+0300","M":"App is running...","layer":"app"}
+{"L":"INFO","T":"2025-12-20T11:16:18.407+0300","M":"Starting public grpc server at address :50053...","layer":"app"}
+{"L":"INFO","T":"2025-12-20T11:16:18.407+0300","M":"Starting internal grpc server at address :50054...","layer":"app"}
+{"L":"INFO","T":"2025-12-20T11:16:30.442+0300","M":"shutdown signal received","layer":"app"}
+{"L":"INFO","T":"2025-12-20T11:16:30.443+0300","M":"stopping all services","layer":"app"}
+{"L":"INFO","T":"2025-12-20T11:16:30.444+0300","M":"app was gracefully shutdown","layer":"app"}
+{"L":"INFO","T":"2025-12-20T11:21:16.057+0300","M":"pgstore was connected","layer":"app","layer":"pgstore"}
+{"L":"ERROR","T":"2025-12-20T11:21:16.057+0300","M":"Ignored key without a value.","layer":"app","ignored":"internal"}
+{"L":"ERROR","T":"2025-12-20T11:21:16.057+0300","M":"Ignored key without a value.","layer":"app","ignored":"public"}
+{"L":"INFO","T":"2025-12-20T11:21:16.057+0300","M":"app was built","layer":"app"}
+{"L":"INFO","T":"2025-12-20T11:21:16.058+0300","M":"App is running...","layer":"app"}
+{"L":"INFO","T":"2025-12-20T11:21:16.058+0300","M":"Starting http gateway at :8082","layer":"app"}
+{"L":"INFO","T":"2025-12-20T11:21:16.058+0300","M":"Starting internal grpc server at address :50054...","layer":"app"}
+{"L":"INFO","T":"2025-12-20T11:21:16.058+0300","M":"Starting public grpc server at address :50053...","layer":"app"}
+{"L":"INFO","T":"2025-12-20T11:21:22.715+0300","M":"shutdown signal received","layer":"app"}
+{"L":"INFO","T":"2025-12-20T11:21:22.715+0300","M":"stopping all services","layer":"app"}
+{"L":"INFO","T":"2025-12-20T11:21:22.716+0300","M":"app was gracefully shutdown","layer":"app"}
+{"L":"INFO","T":"2025-12-20T11:24:22.820+0300","M":"pgstore was connected","layer":"app","layer":"pgstore"}
+{"L":"ERROR","T":"2025-12-20T11:24:22.821+0300","M":"Ignored key without a value.","layer":"app","ignored":"internal"}
+{"L":"ERROR","T":"2025-12-20T11:24:22.821+0300","M":"Ignored key without a value.","layer":"app","ignored":"public"}
+{"L":"INFO","T":"2025-12-20T11:24:22.821+0300","M":"app was built","layer":"app"}
+{"L":"INFO","T":"2025-12-20T11:24:22.821+0300","M":"App is running...","layer":"app"}
+{"L":"INFO","T":"2025-12-20T11:24:22.821+0300","M":"Starting http gateway at :8082","layer":"app"}
+{"L":"INFO","T":"2025-12-20T11:24:22.821+0300","M":"Starting public grpc server at address :50053...","layer":"app"}
+{"L":"INFO","T":"2025-12-20T11:24:22.821+0300","M":"Starting internal grpc server at address :50054...","layer":"app"}
+{"L":"INFO","T":"2025-12-20T11:24:37.118+0300","M":"shutdown signal received","layer":"app"}
+{"L":"INFO","T":"2025-12-20T11:24:37.119+0300","M":"stopping all services","layer":"app"}
+{"L":"INFO","T":"2025-12-20T11:24:37.119+0300","M":"app was gracefully shutdown","layer":"app"}
