@@ -8,7 +8,7 @@ import (
 )
 
 type InternalServer struct {
-	pb.UnimplementedAuthServer
+	pb.UnimplementedInternalAuthServer
 
 	logger     logger.Logger
 	store      store.Store

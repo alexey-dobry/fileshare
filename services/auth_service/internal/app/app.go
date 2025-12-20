@@ -4,11 +4,13 @@ import (
 	"context"
 	"fmt"
 	"net"
+	"net/http"
 	"os"
 	"os/signal"
 	"sync"
 	"syscall"
 
+	pb "github.com/alexey-dobry/fileshare/pkg/gen/auth/pubauth"
 	"github.com/alexey-dobry/fileshare/pkg/logger"
 	"github.com/alexey-dobry/fileshare/pkg/logger/zap"
 	"github.com/alexey-dobry/fileshare/services/auth_service/internal/config"
@@ -16,7 +18,9 @@ import (
 	authrpc "github.com/alexey-dobry/fileshare/services/auth_service/internal/server/grpc"
 	"github.com/alexey-dobry/fileshare/services/auth_service/internal/store"
 	"github.com/alexey-dobry/fileshare/services/auth_service/internal/store/authdb"
+	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials/insecure"
 )
 
 type App interface {
@@ -28,8 +32,12 @@ type app struct {
 	internalServer        *grpc.Server
 	publicServerAddress   string
 	internalServerAddress string
-	store                 store.Store
-	logger                logger.Logger
+
+	gatewayServer  *http.Server
+	gatewayAddress string
+
+	store  store.Store
+	logger logger.Logger
 }
 
 func New(cfg config.Config) App {
@@ -38,6 +46,7 @@ func New(cfg config.Config) App {
 
 	a.logger = zap.NewLogger(cfg.Logger).WithFields("layer", "app")
 
+	a.gatewayAddress = fmt.Sprintf(":%s", cfg.GRPC.GatewayPort)
 	a.publicServerAddress = fmt.Sprintf(":%s", cfg.GRPC.PublicPort)
 	a.internalServerAddress = fmt.Sprintf(":%s", cfg.GRPC.InternalPort)
 
@@ -75,13 +84,18 @@ func (a *app) Run(ctx context.Context) {
 		a.logger.Fatal(err)
 	}
 
+	if err := a.initGateway(ctx); err != nil {
+		a.logger.Fatalf("failed to init gateway: %s", err)
+	}
+
 	var wg sync.WaitGroup
 
+	// gRPC servers
 	wg.Add(1)
 	go func() {
 		defer wg.Done()
 
-		a.logger.Error("Starting public grpc server at address %s...", a.publicServerAddress)
+		a.logger.Infof("Starting public grpc server at address %s...", a.publicServerAddress)
 		if err := a.publicServer.Serve(pubListener); err != nil {
 			select {
 			case <-ctx.Done():
@@ -97,7 +111,7 @@ func (a *app) Run(ctx context.Context) {
 	go func() {
 		defer wg.Done()
 
-		a.logger.Error("Starting internal grpc server at address %s...", a.internalServerAddress)
+		a.logger.Infof("Starting internal grpc server at address %s...", a.internalServerAddress)
 		if err := a.internalServer.Serve(intListener); err != nil {
 			select {
 			case <-ctx.Done():
@@ -106,6 +120,16 @@ func (a *app) Run(ctx context.Context) {
 				a.logger.Errorf("Grpc server error: %s", err)
 				cancel()
 			}
+		}
+	}()
+
+	wg.Add(1)
+	go func() {
+		defer wg.Done()
+		a.logger.Infof("Starting http gateway at %s", a.gatewayAddress)
+		if err := a.gatewayServer.ListenAndServe(); err != nil && err != http.ErrServerClosed {
+			a.logger.Errorf("gateway error: %s", err)
+			cancel()
 		}
 	}()
 	a.logger.Info("App is running...")
@@ -127,6 +151,9 @@ func (a *app) Run(ctx context.Context) {
 	if err := pubListener.Close(); err != nil {
 		a.logger.Warnf("Public net listener closing ended with error: %s", err)
 	}
+
+	_ = a.gatewayServer.Shutdown(context.Background())
+
 	wg.Wait()
 
 	if err := a.store.Close(); err != nil {
@@ -134,4 +161,32 @@ func (a *app) Run(ctx context.Context) {
 	}
 
 	a.logger.Info("app was gracefully shutdown")
+}
+
+func (a *app) initGateway(ctx context.Context) error {
+	mux := runtime.NewServeMux()
+
+	conn, err := grpc.DialContext(
+		ctx,
+		a.publicServerAddress,
+		grpc.WithTransportCredentials(insecure.NewCredentials()),
+	)
+	if err != nil {
+		return err
+	}
+
+	if err := pb.RegisterAuthHandlerClient(
+		ctx,
+		mux,
+		pb.NewAuthClient(conn),
+	); err != nil {
+		return err
+	}
+
+	a.gatewayServer = &http.Server{
+		Addr:    a.gatewayAddress,
+		Handler: mux,
+	}
+
+	return nil
 }

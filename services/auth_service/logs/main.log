@@ -45,3 +45,172 @@
 {"L":"ERROR","T":"2025-12-18T20:13:03.394+0300","M":"jwt handler created","layer":"app"}
 {"L":"ERROR","T":"2025-12-18T20:13:03.395+0300","M":"Starting internal grpc server at address %s...:50052","layer":"app"}
 {"L":"ERROR","T":"2025-12-18T20:13:03.395+0300","M":"Starting public grpc server at address %s...:50051","layer":"app"}
+{"L":"ERROR","T":"2025-12-20T09:26:57.622+0300","M":"Ignored key without a value.","layer":"app","ignored":"internal"}
+{"L":"ERROR","T":"2025-12-20T09:26:57.622+0300","M":"Ignored key without a value.","layer":"app","ignored":"public"}
+{"L":"INFO","T":"2025-12-20T09:26:57.622+0300","M":"app was built","layer":"app"}
+{"L":"INFO","T":"2025-12-20T09:26:57.622+0300","M":"App is running...","layer":"app"}
+{"L":"ERROR","T":"2025-12-20T09:26:57.622+0300","M":"Starting public grpc server at address %s...:50051","layer":"app"}
+{"L":"ERROR","T":"2025-12-20T09:26:57.622+0300","M":"Starting internal grpc server at address %s...:50052","layer":"app"}
+{"L":"INFO","T":"2025-12-20T09:26:57.622+0300","M":"Starting http gateway at :8080","layer":"app"}
+{"L":"INFO","T":"2025-12-20T09:34:04.490+0300","M":"shutdown signal received","layer":"app"}
+{"L":"INFO","T":"2025-12-20T09:34:04.493+0300","M":"stopping all services","layer":"app"}
+{"L":"ERROR","T":"2025-12-20T09:47:08.133+0300","M":"Ignored key without a value.","layer":"app","ignored":"internal"}
+{"L":"ERROR","T":"2025-12-20T09:47:08.133+0300","M":"Ignored key without a value.","layer":"app","ignored":"public"}
+{"L":"INFO","T":"2025-12-20T09:47:08.133+0300","M":"app was built","layer":"app"}
+{"L":"INFO","T":"2025-12-20T09:47:08.135+0300","M":"App is running...","layer":"app"}
+{"L":"ERROR","T":"2025-12-20T09:47:08.135+0300","M":"Starting public grpc server at address %s...:50051","layer":"app"}
+{"L":"INFO","T":"2025-12-20T09:47:08.135+0300","M":"Starting http gateway at :8080","layer":"app"}
+{"L":"ERROR","T":"2025-12-20T09:47:08.135+0300","M":"Starting internal grpc server at address %s...:50052","layer":"app"}
+{"L":"ERROR","T":"2025-12-20T09:47:08.135+0300","M":"gateway error: listen tcp :8080: bind: address already in use","layer":"app"}
+{"L":"INFO","T":"2025-12-20T09:47:08.135+0300","M":"context canceled","layer":"app"}
+{"L":"INFO","T":"2025-12-20T09:47:08.135+0300","M":"stopping all services","layer":"app"}
+{"L":"INFO","T":"2025-12-20T09:47:08.135+0300","M":"app was gracefully shutdown","layer":"app"}
+{"L":"ERROR","T":"2025-12-20T09:47:27.640+0300","M":"Ignored key without a value.","layer":"app","ignored":"internal"}
+{"L":"ERROR","T":"2025-12-20T09:47:27.640+0300","M":"Ignored key without a value.","layer":"app","ignored":"public"}
+{"L":"INFO","T":"2025-12-20T09:47:27.640+0300","M":"app was built","layer":"app"}
+{"L":"INFO","T":"2025-12-20T09:47:27.641+0300","M":"App is running...","layer":"app"}
+{"L":"INFO","T":"2025-12-20T09:47:27.641+0300","M":"Starting http gateway at :8081","layer":"app"}
+{"L":"ERROR","T":"2025-12-20T09:47:27.641+0300","M":"Starting public grpc server at address %s...:50051","layer":"app"}
+{"L":"ERROR","T":"2025-12-20T09:47:27.641+0300","M":"Starting internal grpc server at address %s...:50052","layer":"app"}
+{"L":"INFO","T":"2025-12-20T09:47:54.637+0300","M":"shutdown signal received","layer":"app"}
+{"L":"INFO","T":"2025-12-20T09:47:54.638+0300","M":"stopping all services","layer":"app"}
+{"L":"INFO","T":"2025-12-20T09:47:54.639+0300","M":"app was gracefully shutdown","layer":"app"}
+{"L":"ERROR","T":"2025-12-20T09:47:59.637+0300","M":"Ignored key without a value.","layer":"app","ignored":"internal"}
+{"L":"ERROR","T":"2025-12-20T09:47:59.637+0300","M":"Ignored key without a value.","layer":"app","ignored":"public"}
+{"L":"INFO","T":"2025-12-20T09:47:59.637+0300","M":"app was built","layer":"app"}
+{"L":"INFO","T":"2025-12-20T09:47:59.639+0300","M":"App is running...","layer":"app"}
+{"L":"INFO","T":"2025-12-20T09:47:59.639+0300","M":"Starting internal grpc server at address :50052...","layer":"app"}
+{"L":"INFO","T":"2025-12-20T09:47:59.639+0300","M":"Starting http gateway at :8081","layer":"app"}
+{"L":"INFO","T":"2025-12-20T09:47:59.639+0300","M":"Starting public grpc server at address :50051...","layer":"app"}
+{"L":"ERROR","T":"2025-12-20T09:51:37.176+0300","M":"Failed validate refresh token: error parsing jwt with claims: token is malformed: token contains an invalid number of segments","layer":"app","layer":"grpc server api"}
+{"L":"INFO","T":"2025-12-20T09:52:17.420+0300","M":"shutdown signal received","layer":"app"}
+{"L":"INFO","T":"2025-12-20T09:52:17.420+0300","M":"stopping all services","layer":"app"}
+{"L":"INFO","T":"2025-12-20T09:52:17.422+0300","M":"app was gracefully shutdown","layer":"app"}
+{"L":"ERROR","T":"2025-12-20T10:15:18.506+0300","M":"Ignored key without a value.","layer":"app","ignored":"internal"}
+{"L":"ERROR","T":"2025-12-20T10:15:18.506+0300","M":"Ignored key without a value.","layer":"app","ignored":"public"}
+{"L":"INFO","T":"2025-12-20T10:15:18.506+0300","M":"app was built","layer":"app"}
+{"L":"INFO","T":"2025-12-20T10:15:18.507+0300","M":"App is running...","layer":"app"}
+{"L":"INFO","T":"2025-12-20T10:15:18.507+0300","M":"Starting http gateway at :8081","layer":"app"}
+{"L":"INFO","T":"2025-12-20T10:15:18.507+0300","M":"Starting internal grpc server at address :50052...","layer":"app"}
+{"L":"INFO","T":"2025-12-20T10:15:18.507+0300","M":"Starting public grpc server at address :50051...","layer":"app"}
+{"L":"INFO","T":"2025-12-20T10:31:10.643+0300","M":"shutdown signal received","layer":"app"}
+{"L":"INFO","T":"2025-12-20T10:31:10.644+0300","M":"stopping all services","layer":"app"}
+{"L":"INFO","T":"2025-12-20T10:31:10.645+0300","M":"app was gracefully shutdown","layer":"app"}
+{"L":"ERROR","T":"2025-12-20T10:31:59.622+0300","M":"Ignored key without a value.","layer":"app","ignored":"internal"}
+{"L":"ERROR","T":"2025-12-20T10:31:59.622+0300","M":"Ignored key without a value.","layer":"app","ignored":"public"}
+{"L":"INFO","T":"2025-12-20T10:31:59.622+0300","M":"app was built","layer":"app"}
+{"L":"INFO","T":"2025-12-20T10:31:59.622+0300","M":"App is running...","layer":"app"}
+{"L":"INFO","T":"2025-12-20T10:31:59.622+0300","M":"Starting public grpc server at address :50051...","layer":"app"}
+{"L":"INFO","T":"2025-12-20T10:31:59.622+0300","M":"Starting internal grpc server at address :50052...","layer":"app"}
+{"L":"INFO","T":"2025-12-20T10:31:59.622+0300","M":"Starting http gateway at :8081","layer":"app"}
+{"L":"ERROR","T":"2025-12-20T10:36:19.455+0300","M":"Ignored key without a value.","layer":"app","ignored":"internal"}
+{"L":"ERROR","T":"2025-12-20T10:36:19.455+0300","M":"Ignored key without a value.","layer":"app","ignored":"public"}
+{"L":"INFO","T":"2025-12-20T10:36:19.455+0300","M":"app was built","layer":"app"}
+{"L":"INFO","T":"2025-12-20T10:36:19.457+0300","M":"App is running...","layer":"app"}
+{"L":"INFO","T":"2025-12-20T10:36:19.457+0300","M":"Starting public grpc server at address :50051...","layer":"app"}
+{"L":"INFO","T":"2025-12-20T10:36:19.457+0300","M":"Starting internal grpc server at address :50052...","layer":"app"}
+{"L":"INFO","T":"2025-12-20T10:36:19.457+0300","M":"Starting http gateway at :8081","layer":"app"}
+{"L":"INFO","T":"2025-12-20T10:37:02.204+0300","M":"shutdown signal received","layer":"app"}
+{"L":"INFO","T":"2025-12-20T10:37:02.205+0300","M":"stopping all services","layer":"app"}
+{"L":"INFO","T":"2025-12-20T10:37:02.208+0300","M":"app was gracefully shutdown","layer":"app"}
+{"L":"ERROR","T":"2025-12-20T10:39:37.422+0300","M":"Ignored key without a value.","layer":"app","ignored":"internal"}
+{"L":"ERROR","T":"2025-12-20T10:39:37.422+0300","M":"Ignored key without a value.","layer":"app","ignored":"public"}
+{"L":"INFO","T":"2025-12-20T10:39:37.422+0300","M":"app was built","layer":"app"}
+{"L":"INFO","T":"2025-12-20T10:39:37.424+0300","M":"App is running...","layer":"app"}
+{"L":"INFO","T":"2025-12-20T10:39:37.424+0300","M":"Starting public grpc server at address :50051...","layer":"app"}
+{"L":"INFO","T":"2025-12-20T10:39:37.424+0300","M":"Starting internal grpc server at address :50052...","layer":"app"}
+{"L":"INFO","T":"2025-12-20T10:39:37.424+0300","M":"Starting http gateway at :8081","layer":"app"}
+{"L":"INFO","T":"2025-12-20T10:40:04.439+0300","M":"shutdown signal received","layer":"app"}
+{"L":"INFO","T":"2025-12-20T10:40:04.439+0300","M":"stopping all services","layer":"app"}
+{"L":"INFO","T":"2025-12-20T10:40:04.440+0300","M":"app was gracefully shutdown","layer":"app"}
+{"L":"ERROR","T":"2025-12-20T17:32:15.895+0300","M":"Ignored key without a value.","layer":"app","ignored":"internal"}
+{"L":"ERROR","T":"2025-12-20T17:32:15.895+0300","M":"Ignored key without a value.","layer":"app","ignored":"public"}
+{"L":"INFO","T":"2025-12-20T17:32:15.895+0300","M":"app was built","layer":"app"}
+{"L":"INFO","T":"2025-12-20T17:32:15.897+0300","M":"App is running...","layer":"app"}
+{"L":"INFO","T":"2025-12-20T17:32:15.897+0300","M":"Starting internal grpc server at address :50052...","layer":"app"}
+{"L":"INFO","T":"2025-12-20T17:32:15.897+0300","M":"Starting http gateway at :8081","layer":"app"}
+{"L":"INFO","T":"2025-12-20T17:32:15.897+0300","M":"Starting public grpc server at address :50051...","layer":"app"}
+{"L":"ERROR","T":"2025-12-20T17:34:20.676+0300","M":"Ignored key without a value.","layer":"app","ignored":"internal"}
+{"L":"ERROR","T":"2025-12-20T17:34:20.676+0300","M":"Ignored key without a value.","layer":"app","ignored":"public"}
+{"L":"INFO","T":"2025-12-20T17:34:20.676+0300","M":"app was built","layer":"app"}
+{"L":"INFO","T":"2025-12-20T17:34:20.677+0300","M":"App is running...","layer":"app"}
+{"L":"INFO","T":"2025-12-20T17:34:20.677+0300","M":"Starting http gateway at :8081","layer":"app"}
+{"L":"INFO","T":"2025-12-20T17:34:20.677+0300","M":"Starting public grpc server at address :50051...","layer":"app"}
+{"L":"INFO","T":"2025-12-20T17:34:20.677+0300","M":"Starting internal grpc server at address :50052...","layer":"app"}
+{"L":"INFO","T":"2025-12-20T17:34:45.345+0300","M":"shutdown signal received","layer":"app"}
+{"L":"INFO","T":"2025-12-20T17:34:45.346+0300","M":"stopping all services","layer":"app"}
+{"L":"INFO","T":"2025-12-20T17:34:45.347+0300","M":"app was gracefully shutdown","layer":"app"}
+{"L":"ERROR","T":"2025-12-20T17:34:52.276+0300","M":"Ignored key without a value.","layer":"app","ignored":"internal"}
+{"L":"ERROR","T":"2025-12-20T17:34:52.276+0300","M":"Ignored key without a value.","layer":"app","ignored":"public"}
+{"L":"INFO","T":"2025-12-20T17:34:52.276+0300","M":"app was built","layer":"app"}
+{"L":"INFO","T":"2025-12-20T17:34:52.276+0300","M":"App is running...","layer":"app"}
+{"L":"INFO","T":"2025-12-20T17:34:52.277+0300","M":"Starting http gateway at :8081","layer":"app"}
+{"L":"INFO","T":"2025-12-20T17:34:52.277+0300","M":"Starting public grpc server at address :50051...","layer":"app"}
+{"L":"INFO","T":"2025-12-20T17:34:52.277+0300","M":"Starting internal grpc server at address :50052...","layer":"app"}
+{"L":"ERROR","T":"2025-12-20T17:34:57.256+0300","M":"Failed to get user data from database: ERROR: column \"hash_password\" does not exist (SQLSTATE 42703)","layer":"app","layer":"grpc server api"}
+{"L":"INFO","T":"2025-12-20T17:36:11.539+0300","M":"shutdown signal received","layer":"app"}
+{"L":"INFO","T":"2025-12-20T17:36:11.539+0300","M":"stopping all services","layer":"app"}
+{"L":"INFO","T":"2025-12-20T17:36:11.540+0300","M":"app was gracefully shutdown","layer":"app"}
+{"L":"ERROR","T":"2025-12-20T17:36:30.445+0300","M":"Ignored key without a value.","layer":"app","ignored":"internal"}
+{"L":"ERROR","T":"2025-12-20T17:36:30.445+0300","M":"Ignored key without a value.","layer":"app","ignored":"public"}
+{"L":"INFO","T":"2025-12-20T17:36:30.445+0300","M":"app was built","layer":"app"}
+{"L":"INFO","T":"2025-12-20T17:36:30.446+0300","M":"App is running...","layer":"app"}
+{"L":"INFO","T":"2025-12-20T17:36:30.446+0300","M":"Starting public grpc server at address :50051...","layer":"app"}
+{"L":"INFO","T":"2025-12-20T17:36:30.447+0300","M":"Starting http gateway at :8081","layer":"app"}
+{"L":"INFO","T":"2025-12-20T17:36:30.446+0300","M":"Starting internal grpc server at address :50052...","layer":"app"}
+{"L":"ERROR","T":"2025-12-20T17:39:33.156+0300","M":"Ignored key without a value.","layer":"app","ignored":"internal"}
+{"L":"ERROR","T":"2025-12-20T17:39:33.156+0300","M":"Ignored key without a value.","layer":"app","ignored":"public"}
+{"L":"INFO","T":"2025-12-20T17:39:33.156+0300","M":"app was built","layer":"app"}
+{"L":"INFO","T":"2025-12-20T17:39:33.157+0300","M":"App is running...","layer":"app"}
+{"L":"INFO","T":"2025-12-20T17:39:33.157+0300","M":"Starting internal grpc server at address :50052...","layer":"app"}
+{"L":"INFO","T":"2025-12-20T17:39:33.157+0300","M":"Starting http gateway at :8081","layer":"app"}
+{"L":"INFO","T":"2025-12-20T17:39:33.157+0300","M":"Starting public grpc server at address :50051...","layer":"app"}
+{"L":"ERROR","T":"2025-12-20T17:39:37.458+0300","M":"Failed to update user password hash: unsupported data type: map[password_hash:$2a$10$OO6zv6TcNCVO9RYedihtxuFKvFbeWorQU.LytAOV.cPB6bNig0mZm]: Table not set, please set it like: db.Model(&user) or db.Table(\"users\")","layer":"app","layer":"grpc server api"}
+{"L":"ERROR","T":"2025-12-20T17:41:27.998+0300","M":"Failed to update user password hash: unsupported data type: map[password_hash:$2a$10$HNaAYnGqRNZWOd0MqMQYL.7mX7rzKb6c6qHq/ak4VfqfglPPl6Z02]: Table not set, please set it like: db.Model(&user) or db.Table(\"users\")","layer":"app","layer":"grpc server api"}
+{"L":"INFO","T":"2025-12-20T17:43:42.632+0300","M":"shutdown signal received","layer":"app"}
+{"L":"INFO","T":"2025-12-20T17:43:42.632+0300","M":"stopping all services","layer":"app"}
+{"L":"INFO","T":"2025-12-20T17:43:42.633+0300","M":"app was gracefully shutdown","layer":"app"}
+{"L":"ERROR","T":"2025-12-20T17:43:45.132+0300","M":"Ignored key without a value.","layer":"app","ignored":"internal"}
+{"L":"ERROR","T":"2025-12-20T17:43:45.132+0300","M":"Ignored key without a value.","layer":"app","ignored":"public"}
+{"L":"INFO","T":"2025-12-20T17:43:45.132+0300","M":"app was built","layer":"app"}
+{"L":"INFO","T":"2025-12-20T17:43:45.132+0300","M":"App is running...","layer":"app"}
+{"L":"INFO","T":"2025-12-20T17:43:45.132+0300","M":"Starting http gateway at :8081","layer":"app"}
+{"L":"INFO","T":"2025-12-20T17:43:45.132+0300","M":"Starting public grpc server at address :50051...","layer":"app"}
+{"L":"INFO","T":"2025-12-20T17:43:45.132+0300","M":"Starting internal grpc server at address :50052...","layer":"app"}
+{"L":"ERROR","T":"2025-12-20T17:43:48.384+0300","M":"Failed to update user password hash: WHERE conditions required","layer":"app","layer":"grpc server api"}
+{"L":"INFO","T":"2025-12-20T17:45:15.585+0300","M":"shutdown signal received","layer":"app"}
+{"L":"INFO","T":"2025-12-20T17:45:15.586+0300","M":"stopping all services","layer":"app"}
+{"L":"INFO","T":"2025-12-20T17:45:15.587+0300","M":"app was gracefully shutdown","layer":"app"}
+{"L":"ERROR","T":"2025-12-20T17:45:17.293+0300","M":"Ignored key without a value.","layer":"app","ignored":"internal"}
+{"L":"ERROR","T":"2025-12-20T17:45:17.293+0300","M":"Ignored key without a value.","layer":"app","ignored":"public"}
+{"L":"INFO","T":"2025-12-20T17:45:17.293+0300","M":"app was built","layer":"app"}
+{"L":"INFO","T":"2025-12-20T17:45:17.294+0300","M":"App is running...","layer":"app"}
+{"L":"INFO","T":"2025-12-20T17:45:17.294+0300","M":"Starting public grpc server at address :50051...","layer":"app"}
+{"L":"INFO","T":"2025-12-20T17:45:17.294+0300","M":"Starting http gateway at :8081","layer":"app"}
+{"L":"INFO","T":"2025-12-20T17:45:17.294+0300","M":"Starting internal grpc server at address :50052...","layer":"app"}
+{"L":"ERROR","T":"2025-12-20T17:45:20.952+0300","M":"Failed to update user password hash: WHERE conditions required","layer":"app","layer":"grpc server api"}
+{"L":"INFO","T":"2025-12-20T17:49:27.752+0300","M":"shutdown signal received","layer":"app"}
+{"L":"INFO","T":"2025-12-20T17:49:27.752+0300","M":"stopping all services","layer":"app"}
+{"L":"INFO","T":"2025-12-20T17:49:27.753+0300","M":"app was gracefully shutdown","layer":"app"}
+{"L":"ERROR","T":"2025-12-20T17:49:31.070+0300","M":"Ignored key without a value.","layer":"app","ignored":"internal"}
+{"L":"ERROR","T":"2025-12-20T17:49:31.070+0300","M":"Ignored key without a value.","layer":"app","ignored":"public"}
+{"L":"INFO","T":"2025-12-20T17:49:31.070+0300","M":"app was built","layer":"app"}
+{"L":"INFO","T":"2025-12-20T17:49:31.071+0300","M":"App is running...","layer":"app"}
+{"L":"INFO","T":"2025-12-20T17:49:31.071+0300","M":"Starting internal grpc server at address :50052...","layer":"app"}
+{"L":"INFO","T":"2025-12-20T17:49:31.071+0300","M":"Starting http gateway at :8081","layer":"app"}
+{"L":"INFO","T":"2025-12-20T17:49:31.071+0300","M":"Starting public grpc server at address :50051...","layer":"app"}
+{"L":"ERROR","T":"2025-12-20T17:50:53.159+0300","M":"Failed validate access token: error parsing jwt with claims: token signature is invalid: signature is invalid","layer":"app","layer":"grpc server api"}
+{"L":"ERROR","T":"2025-12-20T17:52:25.232+0300","M":"Failed to delete user from database: invalid value, should be pointer to struct or slice","layer":"app","layer":"grpc server api"}
+{"L":"INFO","T":"2025-12-20T17:53:41.087+0300","M":"shutdown signal received","layer":"app"}
+{"L":"INFO","T":"2025-12-20T17:53:41.087+0300","M":"stopping all services","layer":"app"}
+{"L":"INFO","T":"2025-12-20T17:53:41.089+0300","M":"app was gracefully shutdown","layer":"app"}
+{"L":"ERROR","T":"2025-12-20T17:53:43.585+0300","M":"Ignored key without a value.","layer":"app","ignored":"internal"}
+{"L":"ERROR","T":"2025-12-20T17:53:43.585+0300","M":"Ignored key without a value.","layer":"app","ignored":"public"}
+{"L":"INFO","T":"2025-12-20T17:53:43.585+0300","M":"app was built","layer":"app"}
+{"L":"INFO","T":"2025-12-20T17:53:43.586+0300","M":"App is running...","layer":"app"}
+{"L":"INFO","T":"2025-12-20T17:53:43.586+0300","M":"Starting public grpc server at address :50051...","layer":"app"}
+{"L":"INFO","T":"2025-12-20T17:53:43.586+0300","M":"Starting internal grpc server at address :50052...","layer":"app"}
+{"L":"INFO","T":"2025-12-20T17:53:43.586+0300","M":"Starting http gateway at :8081","layer":"app"}
+{"L":"INFO","T":"2025-12-20T17:56:40.216+0300","M":"shutdown signal received","layer":"app"}
+{"L":"INFO","T":"2025-12-20T17:56:40.216+0300","M":"stopping all services","layer":"app"}
+{"L":"INFO","T":"2025-12-20T17:56:40.218+0300","M":"app was gracefully shutdown","layer":"app"}

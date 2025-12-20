@@ -6,7 +6,6 @@ import (
 	"time"
 
 	pb "github.com/alexey-dobry/fileshare/pkg/gen/auth/pubauth"
-	"github.com/alexey-dobry/fileshare/pkg/validator"
 	"github.com/alexey-dobry/fileshare/services/auth_service/internal/domain/jwt"
 	"github.com/alexey-dobry/fileshare/services/auth_service/internal/domain/utils"
 	"gorm.io/gorm"
@@ -17,13 +16,13 @@ import (
 )
 
 func (s *PublicServer) Login(ctx context.Context, req *pb.LoginRequest) (*pb.LoginResponse, error) {
-	if err := validator.V.Var(req.Email, "not null"); err != nil {
-		return nil, status.Error(codes.InvalidArgument, "Invalid login arguments")
-	}
+	// if err := validator.V.Var(req.Email, "email"); err != nil {
+	// 	return nil, status.Error(codes.InvalidArgument, "Invalid login arguments")
+	// }
 
-	if err := validator.V.Var(req.Password, "not null"); err != nil {
-		return nil, status.Error(codes.InvalidArgument, "Invalid login arguments")
-	}
+	// if err := validator.V.Var(req.Password, "required"); err != nil {
+	// 	return nil, status.Error(codes.InvalidArgument, "Invalid login arguments")
+	// }
 
 	user, err := s.store.User().GetOneByMail(req.Email)
 	if errors.Is(err, gorm.ErrRecordNotFound) {
@@ -140,9 +139,9 @@ func (s *PublicServer) UpdatePassword(ctx context.Context, req *pb.UpdatePasswor
 		return nil, status.Error(codes.Internal, "Internal server error")
 	}
 
-	if err := validator.V.Var(req.OldPassword, "not null"); err != nil {
-		return nil, status.Error(codes.InvalidArgument, "Invalid login arguments")
-	}
+	// if err := validator.V.Var(req.OldPassword, "not null"); err != nil {
+	// 	return nil, status.Error(codes.InvalidArgument, "Invalid login arguments")
+	// }
 
 	user, err := s.store.User().GetOneByID(claims.UserID)
 	if errors.Is(err, gorm.ErrRecordNotFound) {

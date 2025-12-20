@@ -13,7 +13,7 @@ RUN go mod download
 
 COPY . .
 
-RUN CGO_ENABLED=0 GOOS=linux go build -o auth-service ./cmd/auth
+RUN CGO_ENABLED=0 GOOS=linux go build -o auth_service ./cmd/auth
 
 FROM alpine:latest
 
@@ -24,8 +24,5 @@ WORKDIR /app
 COPY --from=builder /app/auth_service .
 COPY --from=builder /app/config ./config
 COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
-
-EXPOSE 50051
-EXPOSE 50052
 
 CMD ["./auth_service"]

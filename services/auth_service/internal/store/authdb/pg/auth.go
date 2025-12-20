@@ -11,7 +11,7 @@ func (ur *Repository) Add(userCredentials model.Credentials) error {
 func (ur *Repository) GetOneByMail(email string) (model.Credentials, error) {
 	user := model.Credentials{}
 
-	result := ur.db.Select("uuid", "email", "hash_password", "role").Where("email = ?", email).First(&user)
+	result := ur.db.Select("uuid", "email", "password_hash", "role").Where("email = ?", email).First(&user)
 	if result.Error != nil {
 		return model.Credentials{}, result.Error
 	}
@@ -21,7 +21,7 @@ func (ur *Repository) GetOneByMail(email string) (model.Credentials, error) {
 func (ur *Repository) GetOneByID(id string) (model.Credentials, error) {
 	user := model.Credentials{}
 
-	result := ur.db.Select("uuid", "email", "hash_password", "role").Where("uuid = ?", id).First(&user)
+	result := ur.db.Select("uuid", "email", "password_hash", "role").Where("uuid = ?", id).First(&user)
 	if result.Error != nil {
 		return model.Credentials{}, result.Error
 	}
@@ -29,7 +29,7 @@ func (ur *Repository) GetOneByID(id string) (model.Credentials, error) {
 }
 
 func (ur *Repository) Delete(email string) error {
-	result := ur.db.Where("email = ?", email).Delete(model.Credentials{})
+	result := ur.db.Where("email = ?", email).Delete(&model.Credentials{})
 	if result.Error != nil {
 		return result.Error
 	}
@@ -37,7 +37,7 @@ func (ur *Repository) Delete(email string) error {
 }
 
 func (ur *Repository) UpdatePassword(id string, newHash string) error {
-	result := ur.db.Update("password_hash", newHash).Where("uuid = ?", id)
+	result := ur.db.Model(&model.Credentials{}).Where("uuid = ?", id).Update("password_hash", newHash)
 	if result.Error != nil {
 		return result.Error
 	}
