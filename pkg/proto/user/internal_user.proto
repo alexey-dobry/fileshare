@@ -16,6 +16,9 @@ service User {
   rpc CreateCourse(CourseRequest) returns (CreateCourseResponse);
   rpc DeleteCourse(CourseRequest) returns (google.protobuf.Empty);
 
+  rpc AttachStudentToCourse(AttachStudentToCourseRequest) returns (google.protobuf.Empty);
+  rpc DetachStudentToCourse(DetachStudentToCourseRequest) returns (google.protobuf.Empty);
+
   rpc AttachGroupToCourse(AttachGroupCourseRequest) returns (google.protobuf.Empty);
   rpc DetachGroupFromCourse(DetachGroupCourseRequest) returns (google.protobuf.Empty);
   
@@ -24,6 +27,16 @@ service User {
 
   rpc GetGroupsData(google.protobuf.Empty) returns (GroupsDataResponse);
   rpc GetCoursesData(google.protobuf.Empty) returns (CoursesDataResponse);
+}
+
+message AttachStudentToCourseRequest {
+  string student_id = 1;
+  string group_id = 2;
+}
+
+message DetachStudentToCourseRequest {
+  string student_id = 1;
+  string group_id = 2;
 }
 
 message CreateUserRequest {
