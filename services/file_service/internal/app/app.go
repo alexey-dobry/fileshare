@@ -43,6 +43,8 @@ func New(cfg config.Config) App {
 
 	a.logger = zap.NewLogger(cfg.Logger).WithFields("layer", "app")
 
+	a.logger.Info("Init logger")
+
 	a.publicServerAddress = fmt.Sprintf(":%s", cfg.GRPC.PublicPort)
 	a.gatewayAddress = fmt.Sprintf(":%s", cfg.GRPC.GatewayPort)
 
@@ -50,6 +52,8 @@ func New(cfg config.Config) App {
 	if err != nil {
 		a.logger.Fatalf("Failed to create store instance: %s", err)
 	}
+
+	a.logger.Info("Init store")
 
 	a.publicServer = rpc.NewPublicServer(a.logger, a.store)
 

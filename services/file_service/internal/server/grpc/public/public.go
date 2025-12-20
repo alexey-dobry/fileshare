@@ -1,6 +1,7 @@
 package public
 
 import (
+	"bytes"
 	"context"
 	"fmt"
 	"io"
@@ -15,128 +16,85 @@ import (
 	"google.golang.org/protobuf/types/known/timestamppb"
 )
 
-func (s *PublicServer) UploadFile(
-	stream pb.FileService_UploadFileServer,
-) error {
-
-	ctx := stream.Context()
+func (s *PublicServer) UploadFileUnary(
+	ctx context.Context,
+	req *pb.UploadFileUnaryRequest,
+) (*pb.UploadFileUnaryResponse, error) {
 
 	userID, err := utils.UserIDFromContext(ctx)
 	if err != nil {
-		return err
+		return nil, err
 	}
 
 	fileID := uuid.New()
 	storageKey := fmt.Sprintf("files/%s", fileID)
 
-	var (
-		meta  *pb.FileMetadata
-		pipeR *io.PipeReader
-		pipeW *io.PipeWriter
-		size  int64
+	// Загружаем в MinIO
+	err = s.store.File().Put(
+		storageKey,
+		bytes.NewReader(req.Content),
+		int64(len(req.Content)),
+		req.MimeType,
 	)
-
-	pipeR, pipeW = io.Pipe()
-
-	// Upload to MinIO in background
-	errCh := make(chan error, 1)
-	go func() {
-		errCh <- s.store.File().Put(
-			storageKey,
-			pipeR,
-			-1,
-			meta.GetMimeType(),
-		)
-	}()
-
-	for {
-		req, err := stream.Recv()
-		if err == io.EOF {
-			pipeW.Close()
-			break
-		}
-		if err != nil {
-			return err
-		}
-
-		switch data := req.Data.(type) {
-		case *pb.UploadFileRequest_Metadata:
-			meta = data.Metadata
-
-		case *pb.UploadFileRequest_Chunk:
-			n, err := pipeW.Write(data.Chunk)
-			if err != nil {
-				return err
-			}
-			size += int64(n)
-		}
+	if err != nil {
+		return nil, status.Errorf(codes.Internal, "minio upload failed: %v", err)
 	}
 
-	if err := <-errCh; err != nil {
-		return status.Errorf(codes.Internal, "upload failed: %v", err)
-	}
-
+	// Сохраняем метаданные в Postgres
 	file := &model.File{
 		UUID:       fileID.String(),
-		Name:       meta.Filename,
-		MimeType:   meta.MimeType,
-		Size:       size,
+		Name:       req.Filename,
+		MimeType:   req.MimeType,
+		Size:       int64(len(req.Content)),
 		UploaderID: userID.String(),
-		CourseID:   meta.CourseId,
-		GroupID:    meta.GroupId,
+		CourseID:   req.CourseId,
+		GroupID:    req.GroupId,
 		StorageKey: storageKey,
 		CreatedAt:  time.Now(),
 	}
 
 	if err := s.store.Meta().Create(file); err != nil {
-		_ = s.store.File().Delete(storageKey) // rollback
-		return status.Errorf(codes.Internal, "db error: %v", err)
+		// rollback MinIO
+		_ = s.store.File().Delete(storageKey)
+		return nil, status.Errorf(codes.Internal, "db insert failed: %v", err)
 	}
 
-	return stream.SendAndClose(&pb.UploadFileResponse{
+	return &pb.UploadFileUnaryResponse{
 		FileId: fileID.String(),
-	})
+	}, nil
 }
 
-func (s *PublicServer) DownloadFile(
-	req *pb.DownloadFileRequest,
-	stream pb.FileService_DownloadFileServer,
-) error {
+func (s *PublicServer) DownloadFileUnary(
+	ctx context.Context,
+	req *pb.DownloadFileUnaryRequest,
+) (*pb.DownloadFileUnaryResponse, error) {
+
 	fileID, err := uuid.Parse(req.FileId)
 	if err != nil {
-		return status.Error(codes.InvalidArgument, "invalid file id")
+		return nil, status.Error(codes.InvalidArgument, "invalid file id")
 	}
 
 	file, err := s.store.Meta().GetByID(fileID.String())
 	if err != nil {
-		return status.Error(codes.NotFound, "file not found")
+		return nil, status.Error(codes.NotFound, "file not found")
 	}
 
 	reader, err := s.store.File().Get(file.StorageKey)
 	if err != nil {
-		return status.Error(codes.Internal, "storage error")
+		return nil, status.Errorf(codes.Internal, "storage error: %v", err)
 	}
 	defer reader.Close()
 
-	buf := make([]byte, 32*1024)
-	for {
-		n, err := reader.Read(buf)
-		if n > 0 {
-			if err := stream.Send(&pb.DownloadFileResponse{
-				Chunk: buf[:n],
-			}); err != nil {
-				return err
-			}
-		}
-		if err == io.EOF {
-			break
-		}
-		if err != nil {
-			return err
-		}
+	content, err := io.ReadAll(reader)
+	if err != nil {
+		return nil, status.Errorf(codes.Internal, "read failed: %v", err)
 	}
 
-	return nil
+	return &pb.DownloadFileUnaryResponse{
+		Content:  content,
+		Filename: file.Name,
+		MimeType: file.MimeType,
+	}, nil
 }
 
 func (s *PublicServer) GetFile(

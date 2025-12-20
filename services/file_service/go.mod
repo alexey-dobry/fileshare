@@ -3,7 +3,7 @@ module github.com/alexey-dobry/fileshare/services/file_service
 go 1.25.3
 
 require (
-	github.com/alexey-dobry/fileshare/pkg v0.0.0-20251218132220-66e162dc3cc1
+	github.com/alexey-dobry/fileshare/pkg v0.0.0-20251218172316-d82940ede2c1
 	github.com/google/uuid v1.6.0
 	github.com/ilyakaznacheev/cleanenv v1.5.0
 	github.com/minio/minio-go/v7 v7.0.97
@@ -20,6 +20,7 @@ require (
 	github.com/go-playground/locales v0.14.1 // indirect
 	github.com/go-playground/universal-translator v0.18.1 // indirect
 	github.com/go-playground/validator/v10 v10.28.0 // indirect
+	github.com/golang-jwt/jwt/v5 v5.3.0 // indirect
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.27.3 // indirect
 	github.com/jackc/pgpassfile v1.0.0 // indirect
 	github.com/jackc/pgservicefile v0.0.0-20240606120523-5a60cdf6a761 // indirect

@@ -1,0 +1,17 @@
+{"L":"INFO","T":"2025-12-20T16:14:00.532+0300","M":"Init logger","layer":"app"}
+{"L":"INFO","T":"2025-12-20T16:30:08.880+0300","M":"Init logger","layer":"app"}
+{"L":"FATAL","T":"2025-12-20T16:30:28.892+0300","M":"Failed to create store instance: cannot parse `host= user= password=xxxxx dbname= port= sslmode=disable`: invalid port (strconv.ParseUint: parsing \"sslmode=disable\": invalid syntax)","layer":"app"}
+{"L":"INFO","T":"2025-12-20T16:32:03.737+0300","M":"Init logger","layer":"app"}
+{"L":"FATAL","T":"2025-12-20T16:32:23.752+0300","M":"Failed to create store instance: cannot parse `host= user= password=xxxxx dbname= port= sslmode=disable`: invalid port (strconv.ParseUint: parsing \"sslmode=disable\": invalid syntax)","layer":"app"}
+{"L":"INFO","T":"2025-12-20T16:35:30.665+0300","M":"Init logger","layer":"app"}
+{"L":"FATAL","T":"2025-12-20T16:35:30.672+0300","M":"Failed to create store instance: The Access Key Id you provided does not exist in our records.","layer":"app"}
+{"L":"INFO","T":"2025-12-20T16:36:33.360+0300","M":"Init logger","layer":"app"}
+{"L":"INFO","T":"2025-12-20T16:36:33.392+0300","M":"Init store","layer":"app"}
+{"L":"ERROR","T":"2025-12-20T16:36:33.393+0300","M":"Ignored key without a value.","layer":"app","ignored":"public"}
+{"L":"INFO","T":"2025-12-20T16:36:33.393+0300","M":"app was built","layer":"app"}
+{"L":"INFO","T":"2025-12-20T16:36:33.393+0300","M":"App is running...","layer":"app"}
+{"L":"INFO","T":"2025-12-20T16:36:33.393+0300","M":"Starting public grpc server at :50051","layer":"app"}
+{"L":"INFO","T":"2025-12-20T16:36:33.393+0300","M":"Starting http gateway at :8081","layer":"app"}
+{"L":"INFO","T":"2025-12-20T16:39:10.232+0300","M":"shutdown signal received","layer":"app"}
+{"L":"INFO","T":"2025-12-20T16:39:10.234+0300","M":"stopping all services","layer":"app"}
+{"L":"INFO","T":"2025-12-20T16:39:10.238+0300","M":"app was gracefully shutdown","layer":"app"}

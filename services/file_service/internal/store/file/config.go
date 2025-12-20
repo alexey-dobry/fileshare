@@ -6,6 +6,6 @@ import (
 )
 
 type Config struct {
-	pgConfig    pg.Config    `yaml:"pg_config"`
-	minioConfig minio.Config `yaml:"minio_config"`
+	PgConfig    pg.Config    `yaml:"pg_config"`
+	MinioConfig minio.Config `yaml:"minio_config"`
 }

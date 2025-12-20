@@ -28,11 +28,11 @@ type authStore struct {
 
 func New(logger logger.Logger, cfg Config) (store.Store, error) {
 	pgDSN := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=disable",
-		cfg.pgConfig.Host,
-		cfg.pgConfig.User,
-		cfg.pgConfig.Password,
-		cfg.pgConfig.DatabaseName,
-		cfg.pgConfig.Port,
+		cfg.PgConfig.Host,
+		cfg.PgConfig.User,
+		cfg.PgConfig.Password,
+		cfg.PgConfig.DatabaseName,
+		cfg.PgConfig.Port,
 	)
 
 	var pgDB *gorm.DB
@@ -49,9 +49,9 @@ func New(logger logger.Logger, cfg Config) (store.Store, error) {
 		return nil, err
 	}
 
-	endpoint := fmt.Sprintf("%s:%s", cfg.minioConfig.Host, cfg.minioConfig.Port)
-	accessKey := cfg.minioConfig.AccessKey
-	secretAccessKey := cfg.minioConfig.SecretKey
+	endpoint := fmt.Sprintf("%s:%s", cfg.MinioConfig.Host, cfg.MinioConfig.Port)
+	accessKey := cfg.MinioConfig.AccessKey
+	secretAccessKey := cfg.MinioConfig.SecretKey
 	useSSL := false
 
 	minioDB, err := minio.New(endpoint, &minio.Options{
@@ -62,13 +62,13 @@ func New(logger logger.Logger, cfg Config) (store.Store, error) {
 		return nil, err
 	}
 
-	exists, err := minioDB.BucketExists(context.Background(), cfg.minioConfig.Bucket)
+	exists, err := minioDB.BucketExists(context.Background(), cfg.MinioConfig.Bucket)
 	if err != nil {
 		return nil, err
 	}
 
 	if !exists {
-		if err := minioDB.MakeBucket(context.Background(), cfg.minioConfig.Bucket, minio.MakeBucketOptions{}); err != nil {
+		if err := minioDB.MakeBucket(context.Background(), cfg.MinioConfig.Bucket, minio.MakeBucketOptions{}); err != nil {
 			return nil, err
 		}
 	}
@@ -82,7 +82,7 @@ func New(logger logger.Logger, cfg Config) (store.Store, error) {
 		metaDB: pgDB,
 		fileDB: minioDB,
 		meta:   pg.New(pgDB, logger),
-		file:   mn.New(minioDB, logger, cfg.minioConfig.Bucket),
+		file:   mn.New(minioDB, logger, cfg.MinioConfig.Bucket),
 	}, nil
 }
 
