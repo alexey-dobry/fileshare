@@ -8,6 +8,10 @@ github.com/alexey-dobry/fileshare/pkg v0.0.0-20251215155156-b16a3871b04d h1:VV3F
 github.com/alexey-dobry/fileshare/pkg v0.0.0-20251215155156-b16a3871b04d/go.mod h1:1akuhUHzIt1knxd2QgSOFSvSiFZj+gb1S6KuW1w+H3A=
 github.com/alexey-dobry/fileshare/pkg v0.0.0-20251220065309-7bc4042ac847 h1:2tF8iMdACXv274h4akyKYkHOTKQ4GLNd0vg/d4xS+jY=
 github.com/alexey-dobry/fileshare/pkg v0.0.0-20251220065309-7bc4042ac847/go.mod h1:KQDJImWgYZphs2dISScMhOcms1U+TCC0fQ0ULByS3NY=
+github.com/alexey-dobry/fileshare/pkg v0.0.0-20251220162526-121589f2e1a8 h1:W0lJiaeVIJelAh+ljWu6fHLiS25Y+o/qm9bhYlw7Zhs=
+github.com/alexey-dobry/fileshare/pkg v0.0.0-20251220162526-121589f2e1a8/go.mod h1:KQDJImWgYZphs2dISScMhOcms1U+TCC0fQ0ULByS3NY=
+github.com/alexey-dobry/fileshare/pkg v0.0.0-20251220175846-c587610b7f95 h1:kurk6PRMWiX4qSlPzbCRb8+8LDM4OTNXrCSPjjWYW7k=
+github.com/alexey-dobry/fileshare/pkg v0.0.0-20251220175846-c587610b7f95/go.mod h1:/m1//dgcJ5H+IJwCleFw/wmvZTdmi+3SSZUINLPebqI=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/gabriel-vasile/mimetype v1.4.10 h1:zyueNbySn/z8mJZHLt6IPw0KoZsiQNszIpU+bX4+ZK0=
@@ -24,6 +28,8 @@ github.com/go-playground/universal-translator v0.18.1 h1:Bcnm0ZwsGyWbCzImXv+pAJn
 github.com/go-playground/universal-translator v0.18.1/go.mod h1:xekY+UJKNuX9WP91TpwSH2VMlDf28Uj24BCp08ZFTUY=
 github.com/go-playground/validator/v10 v10.28.0 h1:Q7ibns33JjyW48gHkuFT91qX48KG0ktULL6FgHdG688=
 github.com/go-playground/validator/v10 v10.28.0/go.mod h1:GoI6I1SjPBh9p7ykNE/yj3fFYbyDOpwMn5KXd+m2hUU=
+github.com/golang-jwt/jwt/v5 v5.3.0 h1:pv4AsKCKKZuqlgs5sUmn4x8UlGa0kEVt/puTpKx9vvo=
+github.com/golang-jwt/jwt/v5 v5.3.0/go.mod h1:fxCRLWMO43lRc8nhHWY6LGqRcf+1gQWArsqaEUEa5bE=
 github.com/golang/protobuf v1.5.4 h1:i7eJL8qZTpSEXOPTxNKhASYpMn+8e5Q6AdndVa1dWek=
 github.com/golang/protobuf v1.5.4/go.mod h1:lnTiLA8Wa4RWRcIUkrtSVa5nRhsEGBg48fD6rSs7xps=
 github.com/google/go-cmp v0.7.0 h1:wk8382ETsv4JYUZwIsn6YpYiWiBsYLSJiTsyBybVuN8=

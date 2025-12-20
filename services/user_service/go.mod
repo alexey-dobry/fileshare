@@ -4,7 +4,7 @@ go 1.25.3
 
 require (
 	github.com/Masterminds/squirrel v1.5.4
-	github.com/alexey-dobry/fileshare/pkg v0.0.0-20251220065309-7bc4042ac847
+	github.com/alexey-dobry/fileshare/pkg v0.0.0-20251220175846-c587610b7f95
 	github.com/google/uuid v1.6.0
 	github.com/ilyakaznacheev/cleanenv v1.5.0
 	github.com/lib/pq v1.10.9
@@ -18,6 +18,7 @@ require (
 	github.com/go-playground/locales v0.14.1 // indirect
 	github.com/go-playground/universal-translator v0.18.1 // indirect
 	github.com/go-playground/validator/v10 v10.28.0 // indirect
+	github.com/golang-jwt/jwt/v5 v5.3.0 // indirect
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.27.3 // indirect
 	github.com/joho/godotenv v1.5.1 // indirect
 	github.com/lann/builder v0.0.0-20180802200727-47ae307949d0 // indirect

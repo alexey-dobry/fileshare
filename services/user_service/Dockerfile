@@ -25,7 +25,4 @@ COPY --from=builder /app/user_service .
 COPY --from=builder /app/config ./config
 COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 
-EXPOSE 50051
-EXPOSE 50052
-
 CMD ["./user_service"]

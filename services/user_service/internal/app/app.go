@@ -34,6 +34,7 @@ type app struct {
 
 	gatewayServer  *http.Server
 	gatewayAddress string
+	jwtSecret      string
 
 	store  store.Store
 	logger logger.Logger
@@ -48,14 +49,14 @@ func New(cfg config.Config) App {
 	a.gatewayAddress = fmt.Sprintf(":%s", cfg.GRPC.GatewayPort)
 	a.publicServerAddress = fmt.Sprintf(":%s", cfg.GRPC.PublicPort)
 	a.internalServerAddress = fmt.Sprintf(":%s", cfg.GRPC.InternalPort)
-
+	a.jwtSecret = cfg.GRPC.JWTSecret
 	a.store, err = userdb.New(a.logger, cfg.Store)
 	if err != nil {
 		a.logger.Fatalf("Failed to create store instance: %s", err)
 	}
 
-	a.internalServer = userrpc.NewInternalServer(a.logger, a.store)
-	a.publicServer = userrpc.NewPublicServer(a.logger, a.store)
+	a.internalServer = userrpc.NewInternalServer(a.logger, a.store, a.jwtSecret)
+	a.publicServer = userrpc.NewPublicServer(a.logger, a.store, a.jwtSecret)
 
 	a.logger.Info("app was built")
 	return &a

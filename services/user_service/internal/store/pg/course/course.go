@@ -1,6 +1,8 @@
 package course
 
 import (
+	"fmt"
+
 	"github.com/Masterminds/squirrel"
 	"github.com/alexey-dobry/fileshare/services/user_service/internal/domain/models"
 )
@@ -32,27 +34,27 @@ func (r *Repository) GetCoursesByUserID(userID string) ([]models.Course, error) 
 
 	// build query
 	query, args, err := squirrel.Select("c.id", "c.name", "c.created_at").
-		From("user u").
-		Join("user_group gu ON gu.user_id = u.id").
+		From("users u").
+		Join("user_group gu ON gu.user_id = u.uuid").
 		Join("group_course gc ON gc.group_id = gu.group_id").
 		Join("course c ON c.id = gc.course_id").
 		Where(squirrel.Eq{"u.uuid": userID}).
 		ToSql()
 	if err != nil {
-		return []models.Course{}, err
+		return []models.Course{}, fmt.Errorf("failed to create sql query: %s", err)
 	}
 
 	// executing query
 	rows, err := r.db.Query(query, args...)
 	if err != nil {
-		return []models.Course{}, err
+		return []models.Course{}, fmt.Errorf("failed to query data: %s", err)
 	}
 
 	for rows.Next() {
 		var c models.Course
 		err = rows.Scan(&c.ID, &c.Name, &c.CreatedAt)
 		if err != nil {
-			return []models.Course{}, err
+			return []models.Course{}, fmt.Errorf("failed to marshall data: %s", err)
 		}
 
 		result = append(result, c)

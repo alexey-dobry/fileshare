@@ -24,6 +24,7 @@ type GroupRepository interface {
 	DetachGroupToCourse(groupID string) error
 
 	AssignUserToGroup(userID, groupID string) error
+	DetachUserFromGroup(userID, groupID string) error
 
 	DeleteGroup(ID string) error
 }

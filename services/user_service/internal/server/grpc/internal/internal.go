@@ -174,3 +174,21 @@ func (s *InternalServer) GetCoursesData(ctx context.Context, req *emptypb.Empty)
 		CoursesData: result,
 	}, nil
 }
+
+func (s *InternalServer) AttachStudentToCourse(ctx context.Context, req *pb.AttachStudentToCourseRequest) (*emptypb.Empty, error) {
+	err := s.store.Group().AssignUserToGroup(req.StudentId, req.GroupId)
+	if err != nil {
+		return nil, status.Error(codes.Internal, "Internal server error")
+	}
+
+	return &emptypb.Empty{}, nil
+}
+
+func (s *InternalServer) DetachStudentToCourse(ctx context.Context, req *pb.DetachStudentToCourseRequest) (*emptypb.Empty, error) {
+	err := s.store.Group().DetachUserFromGroup(req.StudentId, req.GroupId)
+	if err != nil {
+		return nil, status.Error(codes.Internal, "Internal server error")
+	}
+
+	return &emptypb.Empty{}, nil
+}

@@ -232,3 +232,23 @@ func (r *Repository) GetGroups() ([]models.Group, error) {
 
 	return result, nil
 }
+
+func (r *Repository) DetachUserFromGroup(userID, groupID string) error {
+	psql := squirrel.StatementBuilder.PlaceholderFormat(squirrel.Dollar)
+
+	// build query
+	query, args, err := psql.Delete("user_group").
+		Where(squirrel.Eq{"user_id": userID, "group_id": groupID}).
+		ToSql()
+	if err != nil {
+		return err
+	}
+
+	// executing query
+	_, err = r.db.Exec(query, args...)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}

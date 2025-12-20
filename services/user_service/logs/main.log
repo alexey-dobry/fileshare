@@ -34,3 +34,72 @@
 {"L":"INFO","T":"2025-12-20T11:24:37.118+0300","M":"shutdown signal received","layer":"app"}
 {"L":"INFO","T":"2025-12-20T11:24:37.119+0300","M":"stopping all services","layer":"app"}
 {"L":"INFO","T":"2025-12-20T11:24:37.119+0300","M":"app was gracefully shutdown","layer":"app"}
+{"L":"INFO","T":"2025-12-20T18:05:01.602+0300","M":"pgstore was connected","layer":"app","layer":"pgstore"}
+{"L":"FATAL","T":"2025-12-20T18:05:01.611+0300","M":"Failed to create store instance: ERROR 20251220083755_init.sql: failed to run SQL migration: failed to execute SQL query \"CREATE TABLE user (\\n    id SERIAL PRIMARY KEY,\\n    uuid VARCHAR(50) NOT NULL UNIQUE,\\n    name VARCHAR(50) NOT NULL,\\n    surname VARCHAR(50) NOT NULL,\\n    email VARCHAR(50) NOT NULL,\\n    role VARCHAR(50) NOT NULL,\\n    created_at TIMESTAMP NOT NULL DEFAULT NOW(),\\n    updated_at TIMESTAMP\\n);\\nCREATE TABLE groups (\\n    id SERIAL PRIMARY KEY,\\n    name VARCHAR(50) NOT NULL,\\n    created_at TIMESTAMP NOT NULL DEFAULT NOW()\\n);\\nCREATE TABLE course (\\n    id SERIAL PRIMARY KEY,\\n    name VARCHAR(50) NOT NULL,\\n    created_at TIMESTAMP NOT NULL DEFAULT NOW()\\n);\\nCREATE TABLE user_group (\\n    id SERIAL PRIMARY KEY,\\n    user_id VARCHAR(50) NOT NULL REFERENCES user(uuid) ON DELETE CASCADE,\\n    group_id INT NOT NULL REFERENCES groups(id) ON DELETE CASCADE,\\n    UNIQUE (user_id, group_id)\\n);\\nCREATE TABLE user_course (\\n    id SERIAL PRIMARY KEY,\\n    user_id VARCHAR(50) NOT NULL REFERENCES user(uuid) ON DELETE CASCADE,\\n    course_id INT NOT NULL REFERENCES course(id) ON DELETE CASCADE,\\n    UNIQUE (user_id, course_id)\\n);\\nCREATE TABLE teacher_course (\\n    id SERIAL PRIMARY KEY,\\n    user_id VARCHAR(50) NOT NULL REFERENCES user(uuid) ON DELETE CASCADE,\\n    course_id INT NOT NULL REFERENCES course(id) ON DELETE CASCADE,\\n    UNIQUE (user_id, course_id)\\n);\\nCREATE TABLE group_course (\\n    id SERIAL PRIMARY KEY,\\n    group_id INT NOT NULL REFERENCES groups(id) ON DELETE CASCADE,\\n    course_id INT NOT NULL REFERENCES course(id) ON DELETE CASCADE,\\n    UNIQUE (group_id, course_id)\\n);\": pq: syntax error at or near \"user\"","layer":"app"}
+{"L":"INFO","T":"2025-12-20T18:11:06.764+0300","M":"pgstore was connected","layer":"app","layer":"pgstore"}
+{"L":"FATAL","T":"2025-12-20T18:11:06.771+0300","M":"Failed to create store instance: ERROR 20251220083755_init.sql: failed to run SQL migration: failed to execute SQL query \"CREATE TABLE user (\\n    id SERIAL PRIMARY KEY,\\n    uuid VARCHAR(50) NOT NULL UNIQUE,\\n    name VARCHAR(50) NOT NULL,\\n    surname VARCHAR(50) NOT NULL,\\n    email VARCHAR(50) NOT NULL,\\n    role VARCHAR(50) NOT NULL,\\n    created_at TIMESTAMP NOT NULL DEFAULT NOW(),\\n    updated_at TIMESTAMP\\n);\\nCREATE TABLE groups (\\n    id SERIAL PRIMARY KEY,\\n    name VARCHAR(50) NOT NULL,\\n    created_at TIMESTAMP NOT NULL DEFAULT NOW()\\n);\\nCREATE TABLE course (\\n    id SERIAL PRIMARY KEY,\\n    name VARCHAR(50) NOT NULL,\\n    created_at TIMESTAMP NOT NULL DEFAULT NOW()\\n);\\nCREATE TABLE user_group (\\n    id SERIAL PRIMARY KEY,\\n    user_id VARCHAR(50) NOT NULL REFERENCES user(uuid) ON DELETE CASCADE,\\n    group_id INT NOT NULL REFERENCES groups(id) ON DELETE CASCADE,\\n    UNIQUE (user_id, group_id)\\n);\\nCREATE TABLE user_course (\\n    id SERIAL PRIMARY KEY,\\n    user_id VARCHAR(50) NOT NULL REFERENCES user(uuid) ON DELETE CASCADE,\\n    course_id INT NOT NULL REFERENCES course(id) ON DELETE CASCADE,\\n    UNIQUE (user_id, course_id)\\n);\\nCREATE TABLE teacher_course (\\n    id SERIAL PRIMARY KEY,\\n    user_id VARCHAR(50) NOT NULL REFERENCES user(uuid) ON DELETE CASCADE,\\n    course_id INT NOT NULL REFERENCES course(id) ON DELETE CASCADE,\\n    UNIQUE (user_id, course_id)\\n);\\nCREATE TABLE group_course (\\n    id SERIAL PRIMARY KEY,\\n    group_id INT NOT NULL REFERENCES groups(id) ON DELETE CASCADE,\\n    course_id INT NOT NULL REFERENCES course(id) ON DELETE CASCADE,\\n    UNIQUE (group_id, course_id)\\n);\": pq: syntax error at or near \"user\"","layer":"app"}
+{"L":"INFO","T":"2025-12-20T18:12:11.702+0300","M":"pgstore was connected","layer":"app","layer":"pgstore"}
+{"L":"FATAL","T":"2025-12-20T18:12:11.707+0300","M":"Failed to create store instance: ERROR 20251220083755_init.sql: failed to run SQL migration: failed to execute SQL query \"CREATE TABLE user (\\n    id SERIAL PRIMARY KEY,\\n    uuid VARCHAR(50) NOT NULL UNIQUE,\\n    name VARCHAR(50) NOT NULL,\\n    surname VARCHAR(50) NOT NULL,\\n    email VARCHAR(50) NOT NULL,\\n    role VARCHAR(50) NOT NULL,\\n    created_at TIMESTAMP NOT NULL DEFAULT NOW(),\\n    updated_at TIMESTAMP\\n);\\nCREATE TABLE groups (\\n    id SERIAL PRIMARY KEY,\\n    name VARCHAR(50) NOT NULL,\\n    created_at TIMESTAMP NOT NULL DEFAULT NOW()\\n);\\nCREATE TABLE course (\\n    id SERIAL PRIMARY KEY,\\n    name VARCHAR(50) NOT NULL,\\n    created_at TIMESTAMP NOT NULL DEFAULT NOW()\\n);\\nCREATE TABLE user_group (\\n    id SERIAL PRIMARY KEY,\\n    user_id VARCHAR(50) NOT NULL REFERENCES user(uuid) ON DELETE CASCADE,\\n    group_id INT NOT NULL REFERENCES groups(id) ON DELETE CASCADE,\\n    UNIQUE (user_id, group_id)\\n);\\nCREATE TABLE user_course (\\n    id SERIAL PRIMARY KEY,\\n    user_id VARCHAR(50) NOT NULL REFERENCES user(uuid) ON DELETE CASCADE,\\n    course_id INT NOT NULL REFERENCES course(id) ON DELETE CASCADE,\\n    UNIQUE (user_id, course_id)\\n);\\nCREATE TABLE teacher_course (\\n    id SERIAL PRIMARY KEY,\\n    user_id VARCHAR(50) NOT NULL REFERENCES user(uuid) ON DELETE CASCADE,\\n    course_id INT NOT NULL REFERENCES course(id) ON DELETE CASCADE,\\n    UNIQUE (user_id, course_id)\\n);\\nCREATE TABLE group_course (\\n    id SERIAL PRIMARY KEY,\\n    group_id INT NOT NULL REFERENCES groups(id) ON DELETE CASCADE,\\n    course_id INT NOT NULL REFERENCES course(id) ON DELETE CASCADE,\\n    UNIQUE (group_id, course_id)\\n);\": pq: syntax error at or near \"user\"","layer":"app"}
+{"L":"INFO","T":"2025-12-20T18:15:15.231+0300","M":"pgstore was connected","layer":"app","layer":"pgstore"}
+{"L":"INFO","T":"2025-12-20T18:15:15.241+0300","M":"migrations are up","layer":"app","layer":"pgstore"}
+{"L":"ERROR","T":"2025-12-20T18:15:15.241+0300","M":"Ignored key without a value.","layer":"app","ignored":"internal"}
+{"L":"ERROR","T":"2025-12-20T18:15:15.241+0300","M":"Ignored key without a value.","layer":"app","ignored":"public"}
+{"L":"INFO","T":"2025-12-20T18:15:15.241+0300","M":"app was built","layer":"app"}
+{"L":"INFO","T":"2025-12-20T18:15:15.242+0300","M":"App is running...","layer":"app"}
+{"L":"INFO","T":"2025-12-20T18:15:15.242+0300","M":"Starting http gateway at :8082","layer":"app"}
+{"L":"INFO","T":"2025-12-20T18:15:15.242+0300","M":"Starting internal grpc server at address :50054...","layer":"app"}
+{"L":"INFO","T":"2025-12-20T18:15:15.242+0300","M":"Starting public grpc server at address :50053...","layer":"app"}
+{"L":"INFO","T":"2025-12-20T18:24:35.448+0300","M":"shutdown signal received","layer":"app"}
+{"L":"INFO","T":"2025-12-20T18:24:35.448+0300","M":"stopping all services","layer":"app"}
+{"L":"INFO","T":"2025-12-20T18:24:35.449+0300","M":"app was gracefully shutdown","layer":"app"}
+{"L":"INFO","T":"2025-12-20T18:37:57.766+0300","M":"pgstore was connected","layer":"app","layer":"pgstore"}
+{"L":"INFO","T":"2025-12-20T18:37:57.769+0300","M":"migrations are up","layer":"app","layer":"pgstore"}
+{"L":"ERROR","T":"2025-12-20T18:37:57.769+0300","M":"Ignored key without a value.","layer":"app","ignored":"internal"}
+{"L":"ERROR","T":"2025-12-20T18:37:57.769+0300","M":"Ignored key without a value.","layer":"app","ignored":"public"}
+{"L":"INFO","T":"2025-12-20T18:37:57.769+0300","M":"app was built","layer":"app"}
+{"L":"INFO","T":"2025-12-20T18:37:57.772+0300","M":"App is running...","layer":"app"}
+{"L":"INFO","T":"2025-12-20T18:37:57.773+0300","M":"Starting http gateway at :8082","layer":"app"}
+{"L":"INFO","T":"2025-12-20T18:37:57.773+0300","M":"Starting internal grpc server at address :50054...","layer":"app"}
+{"L":"INFO","T":"2025-12-20T18:37:57.773+0300","M":"Starting public grpc server at address :50053...","layer":"app"}
+{"L":"INFO","T":"2025-12-20T18:43:11.543+0300","M":"shutdown signal received","layer":"app"}
+{"L":"INFO","T":"2025-12-20T18:43:11.546+0300","M":"stopping all services","layer":"app"}
+{"L":"INFO","T":"2025-12-20T18:43:11.547+0300","M":"app was gracefully shutdown","layer":"app"}
+{"L":"INFO","T":"2025-12-20T18:43:34.382+0300","M":"pgstore was connected","layer":"app","layer":"pgstore"}
+{"L":"INFO","T":"2025-12-20T18:43:34.384+0300","M":"migrations are up","layer":"app","layer":"pgstore"}
+{"L":"ERROR","T":"2025-12-20T18:43:34.384+0300","M":"Ignored key without a value.","layer":"app","ignored":"internal"}
+{"L":"ERROR","T":"2025-12-20T18:43:34.384+0300","M":"Ignored key without a value.","layer":"app","ignored":"public"}
+{"L":"INFO","T":"2025-12-20T18:43:34.384+0300","M":"app was built","layer":"app"}
+{"L":"INFO","T":"2025-12-20T18:43:34.384+0300","M":"App is running...","layer":"app"}
+{"L":"INFO","T":"2025-12-20T18:43:34.385+0300","M":"Starting http gateway at :8082","layer":"app"}
+{"L":"INFO","T":"2025-12-20T18:43:34.385+0300","M":"Starting public grpc server at address :50053...","layer":"app"}
+{"L":"INFO","T":"2025-12-20T18:43:34.385+0300","M":"Starting internal grpc server at address :50054...","layer":"app"}
+{"L":"ERROR","T":"2025-12-20T18:57:08.955+0300","M":"Failed to get courses data from database: pq: syntax error at end of input","layer":"app","layer":"grpc server api"}
+{"L":"INFO","T":"2025-12-20T19:00:03.508+0300","M":"shutdown signal received","layer":"app"}
+{"L":"INFO","T":"2025-12-20T19:00:03.509+0300","M":"stopping all services","layer":"app"}
+{"L":"INFO","T":"2025-12-20T19:00:03.511+0300","M":"app was gracefully shutdown","layer":"app"}
+{"L":"INFO","T":"2025-12-20T19:27:33.135+0300","M":"pgstore was connected","layer":"app","layer":"pgstore"}
+{"L":"INFO","T":"2025-12-20T19:27:33.138+0300","M":"migrations are up","layer":"app","layer":"pgstore"}
+{"L":"ERROR","T":"2025-12-20T19:27:33.138+0300","M":"Ignored key without a value.","layer":"app","ignored":"internal"}
+{"L":"ERROR","T":"2025-12-20T19:27:33.138+0300","M":"Ignored key without a value.","layer":"app","ignored":"public"}
+{"L":"INFO","T":"2025-12-20T19:27:33.138+0300","M":"app was built","layer":"app"}
+{"L":"INFO","T":"2025-12-20T19:27:33.140+0300","M":"App is running...","layer":"app"}
+{"L":"INFO","T":"2025-12-20T19:27:33.141+0300","M":"Starting http gateway at :8082","layer":"app"}
+{"L":"INFO","T":"2025-12-20T19:27:33.141+0300","M":"Starting public grpc server at address :50053...","layer":"app"}
+{"L":"INFO","T":"2025-12-20T19:27:33.141+0300","M":"Starting internal grpc server at address :50054...","layer":"app"}
+{"L":"ERROR","T":"2025-12-20T19:27:36.758+0300","M":"Failed to get courses data from database: pq: syntax error at end of input","layer":"app","layer":"grpc server api"}
+{"L":"INFO","T":"2025-12-20T19:28:57.238+0300","M":"shutdown signal received","layer":"app"}
+{"L":"INFO","T":"2025-12-20T19:28:57.238+0300","M":"stopping all services","layer":"app"}
+{"L":"INFO","T":"2025-12-20T19:28:57.239+0300","M":"app was gracefully shutdown","layer":"app"}
+{"L":"INFO","T":"2025-12-20T19:28:59.880+0300","M":"pgstore was connected","layer":"app","layer":"pgstore"}
+{"L":"INFO","T":"2025-12-20T19:28:59.882+0300","M":"migrations are up","layer":"app","layer":"pgstore"}
+{"L":"ERROR","T":"2025-12-20T19:28:59.882+0300","M":"Ignored key without a value.","layer":"app","ignored":"internal"}
+{"L":"ERROR","T":"2025-12-20T19:28:59.882+0300","M":"Ignored key without a value.","layer":"app","ignored":"public"}
+{"L":"INFO","T":"2025-12-20T19:28:59.882+0300","M":"app was built","layer":"app"}
+{"L":"INFO","T":"2025-12-20T19:28:59.883+0300","M":"App is running...","layer":"app"}
+{"L":"INFO","T":"2025-12-20T19:28:59.883+0300","M":"Starting http gateway at :8082","layer":"app"}
+{"L":"INFO","T":"2025-12-20T19:28:59.883+0300","M":"Starting public grpc server at address :50053...","layer":"app"}
+{"L":"INFO","T":"2025-12-20T19:28:59.883+0300","M":"Starting internal grpc server at address :50054...","layer":"app"}
+{"L":"ERROR","T":"2025-12-20T19:29:12.890+0300","M":"Failed to get courses data from database: failed to query data: pq: syntax error at end of input","layer":"app","layer":"grpc server api"}
+{"L":"INFO","T":"2025-12-20T19:30:28.862+0300","M":"shutdown signal received","layer":"app"}
+{"L":"INFO","T":"2025-12-20T19:30:28.862+0300","M":"stopping all services","layer":"app"}
+{"L":"INFO","T":"2025-12-20T19:30:28.863+0300","M":"app was gracefully shutdown","layer":"app"}

@@ -10,7 +10,7 @@ func (r *Repository) CreateUser(userData models.User) error {
 	psql := squirrel.StatementBuilder.PlaceholderFormat(squirrel.Dollar)
 
 	// build query
-	query, args, err := psql.Insert("user").
+	query, args, err := psql.Insert("users").
 		Columns("uuid", "name", "surname", "email", "role", "created_at").
 		Values(userData.ID, userData.Name, userData.Surname, userData.Email, userData.Role, userData.CreatedAt).
 		ToSql()
@@ -34,7 +34,7 @@ func (r *Repository) GetUserByID(ID string) (models.User, error) {
 
 	// build query
 	query, args, err := psql.Select("name", "surname", "email").
-		From("user").
+		From("users").
 		Where(squirrel.Eq{"uuid": ID}).
 		ToSql()
 	if err != nil {
@@ -56,7 +56,7 @@ func (r *Repository) DeleteUser(Email string) error {
 	psql := squirrel.StatementBuilder.PlaceholderFormat(squirrel.Dollar)
 
 	// build query
-	query, args, err := psql.Delete("user").
+	query, args, err := psql.Delete("users").
 		Where(squirrel.Eq{"email": Email}).
 		ToSql()
 	if err != nil {
@@ -80,7 +80,7 @@ func (r *Repository) GetUsersByGroupID(groupID string) ([]models.User, error) {
 	// build query
 	query, args, err := psql.Select("uuid", "name", "surname", "email").
 		From("user_group").
-		Join("user ON user_group.user_id = user.uuid").
+		Join("users ON user_group.user_id = users.uuid").
 		Where(squirrel.Eq{"group_id": groupID}).
 		ToSql()
 	if err != nil {
@@ -113,8 +113,8 @@ func (r *Repository) GetTeachersByCourseID(courseID string) ([]models.User, erro
 
 	// build query
 	query, args, err := psql.Select("uuid", "name", "surname", "email").
-		From("user").
-		Join("teacher_course ON teacher_course.user_id = user.uuid").
+		From("users").
+		Join("teacher_course ON teacher_course.user_id = users.uuid").
 		Where(squirrel.Eq{"course_id": courseID}).
 		ToSql()
 	if err != nil {
