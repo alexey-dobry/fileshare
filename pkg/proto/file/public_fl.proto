@@ -50,6 +50,12 @@ service FileService {
 
   // ===== List =====
 
+  rpc ListFilesByUser(ListFilesByUserRequest) returns (ListFilesResponse) {
+    option (google.api.http) = {
+      get: "/files/user/{user_id}"
+    };
+  }
+
   rpc ListFilesByCourse(ListFilesByCourseRequest) returns (ListFilesResponse) {
     option (google.api.http) = {
       get: "/files/course/{course_id}"
@@ -112,6 +118,11 @@ message DeleteFileResponse {
 }
 
 // ---------- List ----------
+
+message ListFilesByUserRequest {
+  string user_id = 1;
+}
+
 
 message ListFilesByCourseRequest {
   string course_id = 1;

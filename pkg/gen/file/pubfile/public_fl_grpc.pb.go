@@ -23,6 +23,7 @@ const (
 	FileService_DownloadFileUnary_FullMethodName = "/file.FileService/DownloadFileUnary"
 	FileService_GetFile_FullMethodName           = "/file.FileService/GetFile"
 	FileService_DeleteFile_FullMethodName        = "/file.FileService/DeleteFile"
+	FileService_ListFilesByUser_FullMethodName   = "/file.FileService/ListFilesByUser"
 	FileService_ListFilesByCourse_FullMethodName = "/file.FileService/ListFilesByCourse"
 	FileService_ListFilesByGroup_FullMethodName  = "/file.FileService/ListFilesByGroup"
 )
@@ -36,6 +37,7 @@ type FileServiceClient interface {
 	DownloadFileUnary(ctx context.Context, in *DownloadFileUnaryRequest, opts ...grpc.CallOption) (*DownloadFileUnaryResponse, error)
 	GetFile(ctx context.Context, in *GetFileRequest, opts ...grpc.CallOption) (*File, error)
 	DeleteFile(ctx context.Context, in *DeleteFileRequest, opts ...grpc.CallOption) (*DeleteFileResponse, error)
+	ListFilesByUser(ctx context.Context, in *ListFilesByUserRequest, opts ...grpc.CallOption) (*ListFilesResponse, error)
 	ListFilesByCourse(ctx context.Context, in *ListFilesByCourseRequest, opts ...grpc.CallOption) (*ListFilesResponse, error)
 	ListFilesByGroup(ctx context.Context, in *ListFilesByGroupRequest, opts ...grpc.CallOption) (*ListFilesResponse, error)
 }
@@ -88,6 +90,16 @@ func (c *fileServiceClient) DeleteFile(ctx context.Context, in *DeleteFileReques
 	return out, nil
 }
 
+func (c *fileServiceClient) ListFilesByUser(ctx context.Context, in *ListFilesByUserRequest, opts ...grpc.CallOption) (*ListFilesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListFilesResponse)
+	err := c.cc.Invoke(ctx, FileService_ListFilesByUser_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *fileServiceClient) ListFilesByCourse(ctx context.Context, in *ListFilesByCourseRequest, opts ...grpc.CallOption) (*ListFilesResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ListFilesResponse)
@@ -117,6 +129,7 @@ type FileServiceServer interface {
 	DownloadFileUnary(context.Context, *DownloadFileUnaryRequest) (*DownloadFileUnaryResponse, error)
 	GetFile(context.Context, *GetFileRequest) (*File, error)
 	DeleteFile(context.Context, *DeleteFileRequest) (*DeleteFileResponse, error)
+	ListFilesByUser(context.Context, *ListFilesByUserRequest) (*ListFilesResponse, error)
 	ListFilesByCourse(context.Context, *ListFilesByCourseRequest) (*ListFilesResponse, error)
 	ListFilesByGroup(context.Context, *ListFilesByGroupRequest) (*ListFilesResponse, error)
 	mustEmbedUnimplementedFileServiceServer()
@@ -140,6 +153,9 @@ func (UnimplementedFileServiceServer) GetFile(context.Context, *GetFileRequest) 
 }
 func (UnimplementedFileServiceServer) DeleteFile(context.Context, *DeleteFileRequest) (*DeleteFileResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method DeleteFile not implemented")
+}
+func (UnimplementedFileServiceServer) ListFilesByUser(context.Context, *ListFilesByUserRequest) (*ListFilesResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method ListFilesByUser not implemented")
 }
 func (UnimplementedFileServiceServer) ListFilesByCourse(context.Context, *ListFilesByCourseRequest) (*ListFilesResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method ListFilesByCourse not implemented")
@@ -240,6 +256,24 @@ func _FileService_DeleteFile_Handler(srv interface{}, ctx context.Context, dec f
 	return interceptor(ctx, in, info, handler)
 }
 
+func _FileService_ListFilesByUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListFilesByUserRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(FileServiceServer).ListFilesByUser(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: FileService_ListFilesByUser_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(FileServiceServer).ListFilesByUser(ctx, req.(*ListFilesByUserRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _FileService_ListFilesByCourse_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListFilesByCourseRequest)
 	if err := dec(in); err != nil {
@@ -298,6 +332,10 @@ var FileService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "DeleteFile",
 			Handler:    _FileService_DeleteFile_Handler,
+		},
+		{
+			MethodName: "ListFilesByUser",
+			Handler:    _FileService_ListFilesByUser_Handler,
 		},
 		{
 			MethodName: "ListFilesByCourse",
